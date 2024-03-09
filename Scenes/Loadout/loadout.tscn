@@ -1,0 +1,231 @@
+[gd_scene load_steps=6 format=3 uid="uid://cs0bcmdwjjmdb"]
+
+[ext_resource type="Script" path="res://Scenes/Loadout/loadout.gd" id="1_svrqx"]
+[ext_resource type="PackedScene" uid="uid://dnephrsd5mmc6" path="res://Scenes/Loadout/weapon_equip.tscn" id="2_8nhnf"]
+[ext_resource type="Texture2D" uid="uid://b324o1kpjcxge" path="res://PlaceholderSprite2.png" id="2_w4oh0"]
+[ext_resource type="Texture2D" uid="uid://dlan7rb5jaia2" path="res://PlaceholderSprite.png" id="3_ho2me"]
+[ext_resource type="PackedScene" uid="uid://bccr4q46k41d3" path="res://Scenes/Loadout/modifier_equip.tscn" id="5_fmppv"]
+
+[node name="Loadout" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_svrqx")
+
+[node name="MainBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.0117647, 0.109804, 0.188235, 1)
+
+[node name="GC" type="GridContainer" parent="MainBackground"]
+layout_mode = 0
+offset_right = 1474.0
+offset_bottom = 884.0
+columns = 3
+
+[node name="GCLeft" type="GridContainer" parent="MainBackground/GC"]
+layout_mode = 2
+
+[node name="MC" type="MarginContainer" parent="MainBackground/GC/GCLeft"]
+layout_mode = 2
+
+[node name="Border" type="ColorRect" parent="MainBackground/GC/GCLeft/MC"]
+custom_minimum_size = Vector2(25, 800)
+layout_mode = 2
+color = Color(0.282353, 0.243137, 0, 1)
+
+[node name="GCMid" type="GridContainer" parent="MainBackground/GC"]
+layout_mode = 2
+
+[node name="MC" type="MarginContainer" parent="MainBackground/GC/GCMid"]
+layout_mode = 2
+
+[node name="SceneBG" type="ColorRect" parent="MainBackground/GC/GCMid/MC"]
+custom_minimum_size = Vector2(25, 800)
+layout_mode = 2
+color = Color(0.345098, 0.368627, 0.6, 1)
+
+[node name="PlayerLoadout" type="TextureRect" parent="MainBackground/GC/GCMid/MC"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(640, 640)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_w4oh0")
+expand_mode = 1
+
+[node name="Lbl" type="Label" parent="MainBackground/GC/GCMid/MC"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.870588, 0.654902, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 65
+text = "Loadout"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Border" type="ColorRect" parent="MainBackground/GC/GCMid/MC"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 8
+color = Color(0.282353, 0.243137, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="MainBackground/GC"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 0
+
+[node name="Background" type="ColorRect" parent="MainBackground/GC/MarginContainer"]
+layout_mode = 2
+color = Color(0.392157, 0.341176, 0, 1)
+
+[node name="GCRight" type="GridContainer" parent="MainBackground/GC/MarginContainer"]
+layout_mode = 2
+
+[node name="MCMod1" type="MarginContainer" parent="MainBackground/GC/MarginContainer/GCRight"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Modifier1" type="TextureButton" parent="MainBackground/GC/MarginContainer/GCRight/MCMod1"]
+unique_name_in_owner = true
+show_behind_parent = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture_normal = ExtResource("3_ho2me")
+stretch_mode = 5
+
+[node name="MCMod2" type="MarginContainer" parent="MainBackground/GC/MarginContainer/GCRight"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Modifier2" type="TextureButton" parent="MainBackground/GC/MarginContainer/GCRight/MCMod2"]
+unique_name_in_owner = true
+show_behind_parent = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture_normal = ExtResource("3_ho2me")
+stretch_mode = 5
+
+[node name="MCMod3" type="MarginContainer" parent="MainBackground/GC/MarginContainer/GCRight"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Modifier3" type="TextureButton" parent="MainBackground/GC/MarginContainer/GCRight/MCMod3"]
+unique_name_in_owner = true
+show_behind_parent = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture_normal = ExtResource("3_ho2me")
+stretch_mode = 5
+
+[node name="MCWep" type="MarginContainer" parent="MainBackground/GC/MarginContainer/GCRight"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="WeaponEquiped" type="TextureButton" parent="MainBackground/GC/MarginContainer/GCRight/MCWep"]
+unique_name_in_owner = true
+show_behind_parent = true
+custom_minimum_size = Vector2(176, 176)
+layout_mode = 2
+texture_normal = ExtResource("3_ho2me")
+stretch_mode = 5
+
+[node name="WeaponEquip" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+offset_left = 895.0
+offset_right = 1527.0
+offset_bottom = 840.0
+
+[node name="WeaponEquip" parent="WeaponEquip" instance=ExtResource("2_8nhnf")]
+layout_mode = 1
+anchors_preset = 13
+anchor_top = 0.0
+anchor_bottom = 1.0
+offset_left = -316.0
+offset_top = 0.0
+offset_right = 316.0
+offset_bottom = -1.0
+
+[node name="ModEquip" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+offset_left = 895.0
+offset_right = 1527.0
+offset_bottom = 840.0
+
+[node name="ModifierEquip" parent="ModEquip" instance=ExtResource("5_fmppv")]
+layout_mode = 1
+offset_left = -316.0
+offset_top = -420.0
+offset_right = 316.0
+offset_bottom = 420.0
+
+[node name="ExitBtn" type="Button" parent="."]
+custom_minimum_size = Vector2(350, 150)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -150.0
+offset_right = 350.0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.701961, 0.572549, 0.247059, 1)
+theme_override_colors/font_hover_color = Color(0.933333, 0.792157, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 95
+text = "EXIT"
+
+[node name="PlayBtn" type="Button" parent="."]
+custom_minimum_size = Vector2(350, 150)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -350.0
+offset_top = -150.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.701961, 0.572549, 0.247059, 1)
+theme_override_colors/font_hover_color = Color(0.933333, 0.792157, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 95
+text = "PLAY"
+
+[connection signal="pressed" from="MainBackground/GC/MarginContainer/GCRight/MCMod1/Modifier1" to="." method="_on_modifier_1_pressed"]
+[connection signal="pressed" from="MainBackground/GC/MarginContainer/GCRight/MCMod2/Modifier2" to="." method="_on_modifier_2_pressed"]
+[connection signal="pressed" from="MainBackground/GC/MarginContainer/GCRight/MCMod3/Modifier3" to="." method="_on_modifier_3_pressed"]
+[connection signal="pressed" from="MainBackground/GC/MarginContainer/GCRight/MCWep/WeaponEquiped" to="." method="_on_weapon_equiped_pressed"]
+[connection signal="pressed" from="ExitBtn" to="." method="_on_exit_btn_pressed"]
+[connection signal="pressed" from="PlayBtn" to="." method="_on_play_btn_pressed"]

@@ -1,0 +1,92 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh812ic52oj0a"]
+
+[ext_resource type="Script" path="res://MainMenu/main_menu.gd" id="1_74j5r"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_74j5r")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.858824, 0.521569, 0.466667, 1)
+
+[node name="GC" type="GridContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/v_separation = 50
+
+[node name="Title" type="GridContainer" parent="Background/GC"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+theme_override_constants/v_separation = 110
+
+[node name="Label" type="Label" parent="Background/GC/Title"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.00392157, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.431373, 0, 0.0666667, 1)
+theme_override_constants/shadow_offset_y = 150
+theme_override_constants/outline_size = 50
+theme_override_constants/shadow_outline_size = 20
+theme_override_font_sizes/font_size = 175
+text = "Pawisite"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Background/GC/Title"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.776471, 0.776471, 0.776471, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 50
+text = "Potato-Stamp Games"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="padding" type="VBoxContainer" parent="Background/GC"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+
+[node name="PlayBtn" type="Button" parent="Background/GC"]
+custom_minimum_size = Vector2(350, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.701961, 0.572549, 0.247059, 1)
+theme_override_colors/font_hover_color = Color(0.933333, 0.792157, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 95
+text = "PLAY"
+
+[node name="ExitBtn" type="Button" parent="Background/GC"]
+custom_minimum_size = Vector2(350, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.701961, 0.572549, 0.247059, 1)
+theme_override_colors/font_hover_color = Color(0.933333, 0.792157, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 95
+text = "EXIT"
+
+[connection signal="pressed" from="Background/GC/PlayBtn" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="Background/GC/ExitBtn" to="." method="_on_exit_btn_pressed"]
