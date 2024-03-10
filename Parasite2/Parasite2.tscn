@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://dl1a65o5s0fbf"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_e3fml"]
+[ext_resource type="Texture2D" uid="uid://4hp8btacn2ds" path="res://Assets/Parasite Sprites/BossBasicParasite.png" id="3_ykrjf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52ckc"]
+atlas = ExtResource("3_ykrjf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ee8e0"]
+atlas = ExtResource("3_ykrjf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpuwq"]
+atlas = ExtResource("3_ykrjf")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0mf7"]
+atlas = ExtResource("3_ykrjf")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mgd2a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52ckc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee8e0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpuwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0mf7")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n71jj"]
+radius = 9.0
+height = 18.0
+
+[node name="Enemy" type="CharacterBody2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_e3fml")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_mgd2a")
+animation = &"new_animation"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_n71jj")

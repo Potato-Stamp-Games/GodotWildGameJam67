@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ujuyk7vdsagi"
-path="res://.godot/imported/LittleParasite.png-1c97fd25d84906c0f315ff33375eddba.ctex"
+uid="uid://b02d6ywrnvb63"
+path="res://.godot/imported/PlayerNoSuitForwardWalk.png-c59dc3ba4c5d7d573872dea3a5417a42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/LittleParasite.png"
-dest_files=["res://.godot/imported/LittleParasite.png-1c97fd25d84906c0f315ff33375eddba.ctex"]
+source_file="res://Assets/PlayerSpriteSheets/NoSuit/PlayerNoSuitForwardWalk.png"
+dest_files=["res://.godot/imported/PlayerNoSuitForwardWalk.png-c59dc3ba4c5d7d573872dea3a5417a42.ctex"]
 
 [params]
 

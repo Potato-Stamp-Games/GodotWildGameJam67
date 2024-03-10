@@ -1,70 +1,70 @@
 [gd_scene load_steps=21 format=3 uid="uid://djymsywqdo47t"]
 
-[ext_resource type="Script" path="res://enemy.gd" id="1_2x3ko"]
-[ext_resource type="Texture2D" uid="uid://ujuyk7vdsagi" path="res://Assets/LittleParasite.png" id="2_ajw45"]
+[ext_resource type="Script" path="res://enemy.gd" id="1_q8gg8"]
+[ext_resource type="Texture2D" uid="uid://ujuyk7vdsagi" path="res://Assets/Parasite Sprites/LittleParasite.png" id="2_w38h7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_erpgb"]
-atlas = ExtResource("2_ajw45")
+atlas = ExtResource("2_w38h7")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gm7ho"]
-atlas = ExtResource("2_ajw45")
+atlas = ExtResource("2_w38h7")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tv366"]
-atlas = ExtResource("2_ajw45")
+atlas = ExtResource("2_w38h7")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r215s"]
-atlas = ExtResource("2_ajw45")
+atlas = ExtResource("2_w38h7")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uqlpl"]
-atlas = ExtResource("2_ajw45")
+atlas = ExtResource("2_w38h7")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cbrlw"]
-atlas = ExtResource("2_ajw45")
+atlas = ExtResource("2_w38h7")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gywfq"]
-atlas = ExtResource("2_ajw45")
+atlas = ExtResource("2_w38h7")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_40lt3"]
-atlas = ExtResource("2_ajw45")
+atlas = ExtResource("2_w38h7")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xewi3"]
-atlas = ExtResource("2_ajw45")
+atlas = ExtResource("2_w38h7")
 region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h58ra"]
-atlas = ExtResource("2_ajw45")
+atlas = ExtResource("2_w38h7")
 region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_quure"]
-atlas = ExtResource("2_ajw45")
+atlas = ExtResource("2_w38h7")
 region = Rect2(320, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nj665"]
-atlas = ExtResource("2_ajw45")
+atlas = ExtResource("2_w38h7")
 region = Rect2(352, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q13ww"]
-atlas = ExtResource("2_ajw45")
+atlas = ExtResource("2_w38h7")
 region = Rect2(384, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w18lg"]
-atlas = ExtResource("2_ajw45")
+atlas = ExtResource("2_w38h7")
 region = Rect2(416, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ciskm"]
-atlas = ExtResource("2_ajw45")
+atlas = ExtResource("2_w38h7")
 region = Rect2(448, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7qb4i"]
-atlas = ExtResource("2_ajw45")
+atlas = ExtResource("2_w38h7")
 region = Rect2(480, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mgd2a"]
@@ -128,15 +128,14 @@ radius = 9.0
 height = 18.0
 
 [node name="Enemy" type="CharacterBody2D"]
-scale = Vector2(4, 4)
-script = ExtResource("1_2x3ko")
+scale = Vector2(5, 5)
+script = ExtResource("1_q8gg8")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_mgd2a")
 animation = &"new_animation"
-frame_progress = 0.788847
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_n71jj")
