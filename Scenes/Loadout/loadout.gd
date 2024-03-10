@@ -43,4 +43,4 @@ func _on_exit_btn_pressed():
 
 
 func _on_play_btn_pressed():
-	get_tree().change_scene_to_file("res://MainMenu/main_menu.tscn")
+	get_tree().change_scene_to_file("res://world.tscn")

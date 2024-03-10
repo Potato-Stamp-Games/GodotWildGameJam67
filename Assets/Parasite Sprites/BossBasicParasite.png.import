@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://curi8cg3m87kg"
-path="res://.godot/imported/ProtoTypeEnemy.png-b0dc2d24c9ffc701056a6a997daaaf5f.ctex"
+uid="uid://4hp8btacn2ds"
+path="res://.godot/imported/BossBasicParasite.png-f1592297698eb9e7d758c094a203d0e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ProtoTypeEnemy.png"
-dest_files=["res://.godot/imported/ProtoTypeEnemy.png-b0dc2d24c9ffc701056a6a997daaaf5f.ctex"]
+source_file="res://Assets/Parasite Sprites/BossBasicParasite.png"
+dest_files=["res://.godot/imported/BossBasicParasite.png-f1592297698eb9e7d758c094a203d0e0.ctex"]
 
 [params]
 
