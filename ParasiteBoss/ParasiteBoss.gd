@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var movement_speed = 40.0
-
+@export var hp = 500
 @onready var player = get_tree().get_first_node_in_group("player")
 
 func _ready():
