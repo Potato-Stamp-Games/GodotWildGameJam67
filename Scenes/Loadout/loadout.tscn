@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs0bcmdwjjmdb"]
+[gd_scene load_steps=7 format=3 uid="uid://cs0bcmdwjjmdb"]
 
 [ext_resource type="Script" path="res://Scenes/Loadout/loadout.gd" id="1_svrqx"]
 [ext_resource type="PackedScene" uid="uid://dnephrsd5mmc6" path="res://Scenes/Loadout/weapon_equip.tscn" id="2_8nhnf"]
-[ext_resource type="Texture2D" uid="uid://b324o1kpjcxge" path="res://PlaceholderSprites/PlaceholderSprite2.png" id="2_w4oh0"]
-[ext_resource type="Texture2D" uid="uid://dlan7rb5jaia2" path="res://PlaceholderSprites/PlaceholderSprite.png" id="3_ho2me"]
+[ext_resource type="Texture2D" uid="uid://dnp6v66udp7u8" path="res://Assets/PlayerSpriteSheets/SuitedUp/PlayerForwardWalk.png" id="2_m5byk"]
+[ext_resource type="Texture2D" uid="uid://d3b0a318730dg" path="res://Scenes/Loadout/LoadoutOnlySprites/EmptySlotSprite.png" id="3_ut23p"]
 [ext_resource type="PackedScene" uid="uid://bccr4q46k41d3" path="res://Scenes/Loadout/modifier_equip.tscn" id="5_fmppv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqm8s"]
+atlas = ExtResource("2_m5byk")
+region = Rect2(0, 0, 32, 32)
+margin = Rect2(0, -5, 0, 0)
 
 [node name="Loadout" type="Control"]
 layout_mode = 3
@@ -59,7 +64,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(640, 640)
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("2_w4oh0")
+texture = SubResource("AtlasTexture_eqm8s")
 expand_mode = 1
 
 [node name="Lbl" type="Label" parent="MainBackground/GC/GCMid/MC"]
@@ -103,7 +108,20 @@ unique_name_in_owner = true
 show_behind_parent = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture_normal = ExtResource("3_ho2me")
+texture_normal = ExtResource("3_ut23p")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="EquipedMod1" type="TextureRect" parent="MainBackground/GC/MarginContainer/GCRight/MCMod1/Modifier1"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
 stretch_mode = 5
 
 [node name="MCMod2" type="MarginContainer" parent="MainBackground/GC/MarginContainer/GCRight"]
@@ -118,7 +136,21 @@ unique_name_in_owner = true
 show_behind_parent = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture_normal = ExtResource("3_ho2me")
+texture_normal = ExtResource("3_ut23p")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="EquipedMod2" type="TextureRect" parent="MainBackground/GC/MarginContainer/GCRight/MCMod2/Modifier2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
 stretch_mode = 5
 
 [node name="MCMod3" type="MarginContainer" parent="MainBackground/GC/MarginContainer/GCRight"]
@@ -133,7 +165,21 @@ unique_name_in_owner = true
 show_behind_parent = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture_normal = ExtResource("3_ho2me")
+texture_normal = ExtResource("3_ut23p")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="EquipedMod3" type="TextureRect" parent="MainBackground/GC/MarginContainer/GCRight/MCMod3/Modifier3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
 stretch_mode = 5
 
 [node name="MCWep" type="MarginContainer" parent="MainBackground/GC/MarginContainer/GCRight"]
@@ -143,12 +189,29 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="WeaponEquiped" type="TextureButton" parent="MainBackground/GC/MarginContainer/GCRight/MCWep"]
+[node name="WeaponSlot1" type="TextureButton" parent="MainBackground/GC/MarginContainer/GCRight/MCWep"]
 unique_name_in_owner = true
 show_behind_parent = true
 custom_minimum_size = Vector2(176, 176)
 layout_mode = 2
-texture_normal = ExtResource("3_ho2me")
+texture_normal = ExtResource("3_ut23p")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="EquipedWeapon" type="TextureRect" parent="MainBackground/GC/MarginContainer/GCRight/MCWep/WeaponSlot1"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 11.0
+offset_right = -10.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
 stretch_mode = 5
 
 [node name="WeaponEquip" type="ColorRect" parent="."]
@@ -226,6 +289,6 @@ text = "PLAY"
 [connection signal="pressed" from="MainBackground/GC/MarginContainer/GCRight/MCMod1/Modifier1" to="." method="_on_modifier_1_pressed"]
 [connection signal="pressed" from="MainBackground/GC/MarginContainer/GCRight/MCMod2/Modifier2" to="." method="_on_modifier_2_pressed"]
 [connection signal="pressed" from="MainBackground/GC/MarginContainer/GCRight/MCMod3/Modifier3" to="." method="_on_modifier_3_pressed"]
-[connection signal="pressed" from="MainBackground/GC/MarginContainer/GCRight/MCWep/WeaponEquiped" to="." method="_on_weapon_equiped_pressed"]
+[connection signal="pressed" from="MainBackground/GC/MarginContainer/GCRight/MCWep/WeaponSlot1" to="." method="_on_weapon_equiped_pressed"]
 [connection signal="pressed" from="ExitBtn" to="." method="_on_exit_btn_pressed"]
 [connection signal="pressed" from="PlayBtn" to="." method="_on_play_btn_pressed"]

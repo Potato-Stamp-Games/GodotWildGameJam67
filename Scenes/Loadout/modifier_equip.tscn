@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bccr4q46k41d3"]
+[gd_scene load_steps=5 format=3 uid="uid://bccr4q46k41d3"]
 
+[ext_resource type="Script" path="res://Scenes/Loadout/modifier_equip.gd" id="1_gxuqv"]
 [ext_resource type="Theme" uid="uid://dy6705h5bwoor" path="res://Scenes/Loadout/icon_panel_theme.tres" id="1_ppd80"]
-[ext_resource type="Texture2D" uid="uid://c75op2lcw4r0w" path="res://Assets/icon.svg" id="2_xtci8"]
-[ext_resource type="Texture2D" uid="uid://yoe5tftdrgn4" path="res://PlaceholderSprites/placeholderSprite3.png" id="3_a30wn"]
+[ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="3_d4huf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7l26"]
+atlas = ExtResource("3_d4huf")
+region = Rect2(32, 0, 32, 32)
 
 [node name="ModifierEquip" type="MarginContainer"]
 custom_minimum_size = Vector2(625, 55)
@@ -11,10 +15,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -262.0
+offset_left = -312.0
 offset_top = -27.0
-offset_right = 263.0
-offset_bottom = 520.0
+offset_right = 313.0
+offset_bottom = 582.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -23,6 +27,7 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+script = ExtResource("1_gxuqv")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
@@ -34,47 +39,47 @@ layout_mode = 2
 [node name="GCMain" type="GridContainer" parent="ScrollContainer"]
 layout_mode = 2
 
-[node name="Mod1" type="MarginContainer" parent="ScrollContainer/GCMain"]
+[node name="Poison" type="MarginContainer" parent="ScrollContainer/GCMain"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Border" type="ColorRect" parent="ScrollContainer/GCMain/Mod1"]
+[node name="Border" type="ColorRect" parent="ScrollContainer/GCMain/Poison"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0.129412, 0.129412, 0.129412, 1)
 
-[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Mod1"]
+[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Poison"]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/Mod1/MCMod"]
+[node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/Poison/MCMod"]
 show_behind_parent = true
 layout_mode = 2
 color = Color(0.713726, 0.713726, 0.713726, 1)
 
-[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Mod1/MCMod"]
+[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Poison/MCMod"]
 layout_mode = 2
 
-[node name="GCMod1" type="GridContainer" parent="ScrollContainer/GCMain/Mod1/MCMod/MCMod"]
+[node name="GCMod" type="GridContainer" parent="ScrollContainer/GCMain/Poison/MCMod/MCMod"]
 layout_mode = 2
 columns = 2
 
-[node name="MCModIcon" type="MarginContainer" parent="ScrollContainer/GCMain/Mod1/MCMod/MCMod/GCMod1"]
+[node name="MCModIcon" type="MarginContainer" parent="ScrollContainer/GCMain/Poison/MCMod/MCMod/GCMod"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Border" type="Panel" parent="ScrollContainer/GCMain/Mod1/MCMod/MCMod/GCMod1/MCModIcon"]
+[node name="Border" type="Panel" parent="ScrollContainer/GCMain/Poison/MCMod/MCMod/GCMod/MCModIcon"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme = ExtResource("1_ppd80")
 
-[node name="MCBorder" type="MarginContainer" parent="ScrollContainer/GCMain/Mod1/MCMod/MCMod/GCMod1/MCModIcon"]
+[node name="MCBorder" type="MarginContainer" parent="ScrollContainer/GCMain/Poison/MCMod/MCMod/GCMod/MCModIcon"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/margin_left = 6
@@ -82,44 +87,50 @@ theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="Mod1Icon" type="TextureRect" parent="ScrollContainer/GCMain/Mod1/MCMod/MCMod/GCMod1/MCModIcon/MCBorder"]
+[node name="PoisonIcon" type="TextureRect" parent="ScrollContainer/GCMain/Poison/MCMod/MCMod/GCMod/MCModIcon/MCBorder"]
 unique_name_in_owner = true
 show_behind_parent = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture = ExtResource("2_xtci8")
+texture = SubResource("AtlasTexture_g7l26")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Mod1Equiped" type="TextureRect" parent="ScrollContainer/GCMain/Mod1/MCMod/MCMod/GCMod1/MCModIcon/MCBorder/Mod1Icon"]
+[node name="PoisonEquiped" type="Label" parent="ScrollContainer/GCMain/Poison/MCMod/MCMod/GCMod/MCModIcon/MCBorder/PoisonIcon"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_a30wn")
-expand_mode = 1
-stretch_mode = 5
+offset_left = -15.0
+offset_top = -14.0
+offset_right = 178.0
+offset_bottom = 49.0
+grow_vertical = 0
+rotation = -1.0472
+theme_override_colors/font_color = Color(0.835294, 0.666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 45
+text = "EQUIPED"
 
-[node name="GC" type="GridContainer" parent="ScrollContainer/GCMain/Mod1/MCMod/MCMod/GCMod1"]
+[node name="GC" type="GridContainer" parent="ScrollContainer/GCMain/Poison/MCMod/MCMod/GCMod"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="ModName1" type="Label" parent="ScrollContainer/GCMain/Mod1/MCMod/MCMod/GCMod1/GC"]
+[node name="ModName" type="Label" parent="ScrollContainer/GCMain/Poison/MCMod/MCMod/GCMod/GC"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.67451, 0.345098, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "POISION MODIFCATION"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PoisonEquipedBtn" type="Button" parent="ScrollContainer/GCMain/Poison/MCMod/MCMod/GCMod/GC"]
 unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.67451, 0.345098, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 25
-text = "This is a modifier template"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="ScrollContainer/GCMain/Mod1/MCMod/MCMod/GCMod1/GC"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -128,58 +139,56 @@ theme_override_font_sizes/font_size = 30
 toggle_mode = true
 text = "EQUIP"
 
-[node name="ModDesc1" type="Label" parent="ScrollContainer/GCMain/Mod1/MCMod/MCMod/GCMod1/GC"]
+[node name="ModDesc" type="Label" parent="ScrollContainer/GCMain/Poison/MCMod/MCMod/GCMod/GC"]
 custom_minimum_size = Vector2(410, 0)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-text = "This is where we put weapon stats like:
-'Describe weapon'
-Damage:
-Accuracy:
-Speed:"
+text = "Apply stacking poison on hit
+50% resistance to poision elements
+50% Increased damage taken from fire elements"
 
-[node name="Mod2" type="MarginContainer" parent="ScrollContainer/GCMain"]
+[node name="Ice" type="MarginContainer" parent="ScrollContainer/GCMain"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Border" type="ColorRect" parent="ScrollContainer/GCMain/Mod2"]
+[node name="Border" type="ColorRect" parent="ScrollContainer/GCMain/Ice"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0.129412, 0.129412, 0.129412, 1)
 
-[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Mod2"]
+[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Ice"]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/Mod2/MCMod"]
+[node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/Ice/MCMod"]
 show_behind_parent = true
 layout_mode = 2
 color = Color(0.713726, 0.713726, 0.713726, 1)
 
-[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Mod2/MCMod"]
+[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Ice/MCMod"]
 layout_mode = 2
 
-[node name="GCMod1" type="GridContainer" parent="ScrollContainer/GCMain/Mod2/MCMod/MCMod"]
+[node name="GCMod" type="GridContainer" parent="ScrollContainer/GCMain/Ice/MCMod/MCMod"]
 layout_mode = 2
 columns = 2
 
-[node name="MCModIcon" type="MarginContainer" parent="ScrollContainer/GCMain/Mod2/MCMod/MCMod/GCMod1"]
+[node name="MCModIcon" type="MarginContainer" parent="ScrollContainer/GCMain/Ice/MCMod/MCMod/GCMod"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Border" type="Panel" parent="ScrollContainer/GCMain/Mod2/MCMod/MCMod/GCMod1/MCModIcon"]
+[node name="Border" type="Panel" parent="ScrollContainer/GCMain/Ice/MCMod/MCMod/GCMod/MCModIcon"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme = ExtResource("1_ppd80")
 
-[node name="MCBorder" type="MarginContainer" parent="ScrollContainer/GCMain/Mod2/MCMod/MCMod/GCMod1/MCModIcon"]
+[node name="MCBorder" type="MarginContainer" parent="ScrollContainer/GCMain/Ice/MCMod/MCMod/GCMod/MCModIcon"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/margin_left = 6
@@ -187,40 +196,49 @@ theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="Mod1Icon" type="TextureRect" parent="ScrollContainer/GCMain/Mod2/MCMod/MCMod/GCMod1/MCModIcon/MCBorder"]
+[node name="IceIcon" type="TextureRect" parent="ScrollContainer/GCMain/Ice/MCMod/MCMod/GCMod/MCModIcon/MCBorder"]
 show_behind_parent = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture = ExtResource("2_xtci8")
+texture = SubResource("AtlasTexture_g7l26")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Mod1Equiped" type="TextureRect" parent="ScrollContainer/GCMain/Mod2/MCMod/MCMod/GCMod1/MCModIcon/MCBorder/Mod1Icon"]
+[node name="IceEquiped" type="Label" parent="ScrollContainer/GCMain/Ice/MCMod/MCMod/GCMod/MCModIcon/MCBorder/IceIcon"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_a30wn")
-expand_mode = 1
-stretch_mode = 5
+offset_left = -15.0
+offset_top = -14.0
+offset_right = 178.0
+offset_bottom = 49.0
+grow_vertical = 0
+rotation = -1.0472
+theme_override_colors/font_color = Color(0.835294, 0.666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 45
+text = "EQUIPED"
 
-[node name="GC" type="GridContainer" parent="ScrollContainer/GCMain/Mod2/MCMod/MCMod/GCMod1"]
+[node name="GC" type="GridContainer" parent="ScrollContainer/GCMain/Ice/MCMod/MCMod/GCMod"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="ModName1" type="Label" parent="ScrollContainer/GCMain/Mod2/MCMod/MCMod/GCMod1/GC"]
+[node name="ModName" type="Label" parent="ScrollContainer/GCMain/Ice/MCMod/MCMod/GCMod/GC"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.67451, 0.345098, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
-text = "This is a modifier template"
+text = "ICE MODIFCATION"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="ScrollContainer/GCMain/Mod2/MCMod/MCMod/GCMod1/GC"]
+[node name="IceEquipedBtn" type="Button" parent="ScrollContainer/GCMain/Ice/MCMod/MCMod/GCMod/GC"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -229,58 +247,56 @@ theme_override_font_sizes/font_size = 30
 toggle_mode = true
 text = "EQUIP"
 
-[node name="ModDesc1" type="Label" parent="ScrollContainer/GCMain/Mod2/MCMod/MCMod/GCMod1/GC"]
+[node name="ModDesc" type="Label" parent="ScrollContainer/GCMain/Ice/MCMod/MCMod/GCMod/GC"]
 custom_minimum_size = Vector2(410, 0)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-text = "This is where we put weapon stats like:
-'Describe weapon'
-Damage:
-Accuracy:
-Speed:"
+text = "Apply a slow on hit
+50% resistance to ice elements
+50% Increased damage taken from poison elements"
 
-[node name="Mod3" type="MarginContainer" parent="ScrollContainer/GCMain"]
+[node name="Fire" type="MarginContainer" parent="ScrollContainer/GCMain"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Border" type="ColorRect" parent="ScrollContainer/GCMain/Mod3"]
+[node name="Border" type="ColorRect" parent="ScrollContainer/GCMain/Fire"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0.129412, 0.129412, 0.129412, 1)
 
-[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Mod3"]
+[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Fire"]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/Mod3/MCMod"]
+[node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/Fire/MCMod"]
 show_behind_parent = true
 layout_mode = 2
 color = Color(0.713726, 0.713726, 0.713726, 1)
 
-[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Mod3/MCMod"]
+[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Fire/MCMod"]
 layout_mode = 2
 
-[node name="GCMod1" type="GridContainer" parent="ScrollContainer/GCMain/Mod3/MCMod/MCMod"]
+[node name="GCMod" type="GridContainer" parent="ScrollContainer/GCMain/Fire/MCMod/MCMod"]
 layout_mode = 2
 columns = 2
 
-[node name="MCModIcon" type="MarginContainer" parent="ScrollContainer/GCMain/Mod3/MCMod/MCMod/GCMod1"]
+[node name="MCModIcon" type="MarginContainer" parent="ScrollContainer/GCMain/Fire/MCMod/MCMod/GCMod"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Border" type="Panel" parent="ScrollContainer/GCMain/Mod3/MCMod/MCMod/GCMod1/MCModIcon"]
+[node name="Border" type="Panel" parent="ScrollContainer/GCMain/Fire/MCMod/MCMod/GCMod/MCModIcon"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme = ExtResource("1_ppd80")
 
-[node name="MCBorder" type="MarginContainer" parent="ScrollContainer/GCMain/Mod3/MCMod/MCMod/GCMod1/MCModIcon"]
+[node name="MCBorder" type="MarginContainer" parent="ScrollContainer/GCMain/Fire/MCMod/MCMod/GCMod/MCModIcon"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/margin_left = 6
@@ -288,40 +304,49 @@ theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="Mod1Icon" type="TextureRect" parent="ScrollContainer/GCMain/Mod3/MCMod/MCMod/GCMod1/MCModIcon/MCBorder"]
+[node name="FireIcon" type="TextureRect" parent="ScrollContainer/GCMain/Fire/MCMod/MCMod/GCMod/MCModIcon/MCBorder"]
 show_behind_parent = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture = ExtResource("2_xtci8")
+texture = SubResource("AtlasTexture_g7l26")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Mod1Equiped" type="TextureRect" parent="ScrollContainer/GCMain/Mod3/MCMod/MCMod/GCMod1/MCModIcon/MCBorder/Mod1Icon"]
+[node name="FireEquiped" type="Label" parent="ScrollContainer/GCMain/Fire/MCMod/MCMod/GCMod/MCModIcon/MCBorder/FireIcon"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_a30wn")
-expand_mode = 1
-stretch_mode = 5
+offset_left = -15.0
+offset_top = -14.0
+offset_right = 178.0
+offset_bottom = 49.0
+grow_vertical = 0
+rotation = -1.0472
+theme_override_colors/font_color = Color(0.835294, 0.666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 45
+text = "EQUIPED"
 
-[node name="GC" type="GridContainer" parent="ScrollContainer/GCMain/Mod3/MCMod/MCMod/GCMod1"]
+[node name="GC" type="GridContainer" parent="ScrollContainer/GCMain/Fire/MCMod/MCMod/GCMod"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="ModName1" type="Label" parent="ScrollContainer/GCMain/Mod3/MCMod/MCMod/GCMod1/GC"]
+[node name="ModName" type="Label" parent="ScrollContainer/GCMain/Fire/MCMod/MCMod/GCMod/GC"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.67451, 0.345098, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
-text = "This is a modifier template"
+text = "FIRE MODIFCATION"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="ScrollContainer/GCMain/Mod3/MCMod/MCMod/GCMod1/GC"]
+[node name="FireEquipedBtn" type="Button" parent="ScrollContainer/GCMain/Fire/MCMod/MCMod/GCMod/GC"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -330,114 +355,16 @@ theme_override_font_sizes/font_size = 30
 toggle_mode = true
 text = "EQUIP"
 
-[node name="ModDesc1" type="Label" parent="ScrollContainer/GCMain/Mod3/MCMod/MCMod/GCMod1/GC"]
+[node name="ModDesc" type="Label" parent="ScrollContainer/GCMain/Fire/MCMod/MCMod/GCMod/GC"]
 custom_minimum_size = Vector2(410, 0)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-text = "This is where we put weapon stats like:
-'Describe weapon'
-Damage:
-Accuracy:
-Speed:"
+text = "Apply burn which deals 15% max health damage
+per second
+50% resistance to fire elements
+50% Increased damage taken from ice elements"
 
-[node name="Mod4" type="MarginContainer" parent="ScrollContainer/GCMain"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Border" type="ColorRect" parent="ScrollContainer/GCMain/Mod4"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-color = Color(0.129412, 0.129412, 0.129412, 1)
-
-[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Mod4"]
-layout_mode = 2
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_top = 6
-theme_override_constants/margin_right = 6
-theme_override_constants/margin_bottom = 6
-
-[node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/Mod4/MCMod"]
-show_behind_parent = true
-layout_mode = 2
-color = Color(0.713726, 0.713726, 0.713726, 1)
-
-[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Mod4/MCMod"]
-layout_mode = 2
-
-[node name="GCMod1" type="GridContainer" parent="ScrollContainer/GCMain/Mod4/MCMod/MCMod"]
-layout_mode = 2
-columns = 2
-
-[node name="MCModIcon" type="MarginContainer" parent="ScrollContainer/GCMain/Mod4/MCMod/MCMod/GCMod1"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Border" type="Panel" parent="ScrollContainer/GCMain/Mod4/MCMod/MCMod/GCMod1/MCModIcon"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-theme = ExtResource("1_ppd80")
-
-[node name="MCBorder" type="MarginContainer" parent="ScrollContainer/GCMain/Mod4/MCMod/MCMod/GCMod1/MCModIcon"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_top = 6
-theme_override_constants/margin_right = 6
-theme_override_constants/margin_bottom = 6
-
-[node name="Mod1Icon" type="TextureRect" parent="ScrollContainer/GCMain/Mod4/MCMod/MCMod/GCMod1/MCModIcon/MCBorder"]
-show_behind_parent = true
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-texture = ExtResource("2_xtci8")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Mod1Equiped" type="TextureRect" parent="ScrollContainer/GCMain/Mod4/MCMod/MCMod/GCMod1/MCModIcon/MCBorder/Mod1Icon"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_a30wn")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="GC" type="GridContainer" parent="ScrollContainer/GCMain/Mod4/MCMod/MCMod/GCMod1"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="ModName1" type="Label" parent="ScrollContainer/GCMain/Mod4/MCMod/MCMod/GCMod1/GC"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.67451, 0.345098, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 25
-text = "This is a modifier template"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="ScrollContainer/GCMain/Mod4/MCMod/MCMod/GCMod1/GC"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 11
-theme_override_font_sizes/font_size = 30
-toggle_mode = true
-text = "EQUIP"
-
-[node name="ModDesc1" type="Label" parent="ScrollContainer/GCMain/Mod4/MCMod/MCMod/GCMod1/GC"]
-custom_minimum_size = Vector2(410, 0)
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-text = "This is where we put weapon stats like:
-'Describe weapon'
-Damage:
-Accuracy:
-Speed:"
+[connection signal="pressed" from="ScrollContainer/GCMain/Poison/MCMod/MCMod/GCMod/GC/PoisonEquipedBtn" to="." method="_on_poision_equiped_btn_pressed"]
+[connection signal="pressed" from="ScrollContainer/GCMain/Ice/MCMod/MCMod/GCMod/GC/IceEquipedBtn" to="." method="_on_ice_equiped_btn_pressed"]
+[connection signal="pressed" from="ScrollContainer/GCMain/Fire/MCMod/MCMod/GCMod/GC/FireEquipedBtn" to="." method="_on_fire_equiped_btn_pressed"]
