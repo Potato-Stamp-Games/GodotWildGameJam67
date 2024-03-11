@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scenes/Loadout/loadout.gd" id="1_svrqx"]
 [ext_resource type="PackedScene" uid="uid://dnephrsd5mmc6" path="res://Scenes/Loadout/weapon_equip.tscn" id="2_8nhnf"]
-[ext_resource type="Texture2D" uid="uid://b324o1kpjcxge" path="res://PlaceholderSprite2.png" id="2_w4oh0"]
-[ext_resource type="Texture2D" uid="uid://dlan7rb5jaia2" path="res://PlaceholderSprite.png" id="3_ho2me"]
+[ext_resource type="Texture2D" uid="uid://b324o1kpjcxge" path="res://PlaceholderSprites/PlaceholderSprite2.png" id="2_w4oh0"]
+[ext_resource type="Texture2D" uid="uid://dlan7rb5jaia2" path="res://PlaceholderSprites/PlaceholderSprite.png" id="3_ho2me"]
 [ext_resource type="PackedScene" uid="uid://bccr4q46k41d3" path="res://Scenes/Loadout/modifier_equip.tscn" id="5_fmppv"]
 
 [node name="Loadout" type="Control"]
