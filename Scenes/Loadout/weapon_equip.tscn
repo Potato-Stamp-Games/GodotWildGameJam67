@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnephrsd5mmc6"]
+[gd_scene load_steps=7 format=3 uid="uid://dnephrsd5mmc6"]
 
 [ext_resource type="Theme" uid="uid://dy6705h5bwoor" path="res://Scenes/Loadout/icon_panel_theme.tres" id="1_rajqd"]
-[ext_resource type="Texture2D" uid="uid://c75op2lcw4r0w" path="res://Assets/icon.svg" id="2_kop3x"]
-[ext_resource type="Texture2D" uid="uid://yoe5tftdrgn4" path="res://PlaceholderSprites/placeholderSprite3.png" id="3_u3ts0"]
+[ext_resource type="Script" path="res://Scenes/Loadout/weapon_equip.gd" id="1_w2dgh"]
+[ext_resource type="Texture2D" uid="uid://d2qt040mfo17a" path="res://PlaceholderSprites/icon.svg" id="3_4jqra"]
+[ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="3_xmq8h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsnjw"]
+atlas = ExtResource("3_xmq8h")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbni2"]
+atlas = ExtResource("3_xmq8h")
+region = Rect2(96, 0, 32, 32)
 
 [node name="WeaponEquip" type="MarginContainer"]
 custom_minimum_size = Vector2(625, 55)
@@ -11,10 +20,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -262.0
+offset_left = -312.0
 offset_top = -27.0
-offset_right = 263.0
-offset_bottom = 520.0
+offset_right = 313.0
+offset_bottom = 847.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -23,6 +32,7 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+script = ExtResource("1_w2dgh")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
@@ -34,47 +44,47 @@ layout_mode = 2
 [node name="GCMain" type="GridContainer" parent="ScrollContainer"]
 layout_mode = 2
 
-[node name="Weapon1" type="MarginContainer" parent="ScrollContainer/GCMain"]
+[node name="Nailgun" type="MarginContainer" parent="ScrollContainer/GCMain"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Border" type="ColorRect" parent="ScrollContainer/GCMain/Weapon1"]
+[node name="Border" type="ColorRect" parent="ScrollContainer/GCMain/Nailgun"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0.129412, 0.129412, 0.129412, 1)
 
-[node name="MCWeapon" type="MarginContainer" parent="ScrollContainer/GCMain/Weapon1"]
+[node name="MCWeapon" type="MarginContainer" parent="ScrollContainer/GCMain/Nailgun"]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/Weapon1/MCWeapon"]
+[node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/Nailgun/MCWeapon"]
 show_behind_parent = true
 layout_mode = 2
 color = Color(0.713726, 0.713726, 0.713726, 1)
 
-[node name="MCWeapon" type="MarginContainer" parent="ScrollContainer/GCMain/Weapon1/MCWeapon"]
+[node name="MCWeapon" type="MarginContainer" parent="ScrollContainer/GCMain/Nailgun/MCWeapon"]
 layout_mode = 2
 
-[node name="GCWeapon1" type="GridContainer" parent="ScrollContainer/GCMain/Weapon1/MCWeapon/MCWeapon"]
+[node name="GCWeapon" type="GridContainer" parent="ScrollContainer/GCMain/Nailgun/MCWeapon/MCWeapon"]
 layout_mode = 2
 columns = 2
 
-[node name="MCWeaponIcon" type="MarginContainer" parent="ScrollContainer/GCMain/Weapon1/MCWeapon/MCWeapon/GCWeapon1"]
+[node name="MCWeaponIcon" type="MarginContainer" parent="ScrollContainer/GCMain/Nailgun/MCWeapon/MCWeapon/GCWeapon"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Border" type="Panel" parent="ScrollContainer/GCMain/Weapon1/MCWeapon/MCWeapon/GCWeapon1/MCWeaponIcon"]
+[node name="Border" type="Panel" parent="ScrollContainer/GCMain/Nailgun/MCWeapon/MCWeapon/GCWeapon/MCWeaponIcon"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme = ExtResource("1_rajqd")
 
-[node name="MCBorder" type="MarginContainer" parent="ScrollContainer/GCMain/Weapon1/MCWeapon/MCWeapon/GCWeapon1/MCWeaponIcon"]
+[node name="MCBorder" type="MarginContainer" parent="ScrollContainer/GCMain/Nailgun/MCWeapon/MCWeapon/GCWeapon/MCWeaponIcon"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/margin_left = 6
@@ -82,43 +92,50 @@ theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="Weapon1Icon" type="TextureRect" parent="ScrollContainer/GCMain/Weapon1/MCWeapon/MCWeapon/GCWeapon1/MCWeaponIcon/MCBorder"]
+[node name="NailGunIcon" type="TextureRect" parent="ScrollContainer/GCMain/Nailgun/MCWeapon/MCWeapon/GCWeapon/MCWeaponIcon/MCBorder"]
 unique_name_in_owner = true
 show_behind_parent = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture = ExtResource("2_kop3x")
+texture = SubResource("AtlasTexture_lsnjw")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="W1Equiped" type="TextureRect" parent="ScrollContainer/GCMain/Weapon1/MCWeapon/MCWeapon/GCWeapon1/MCWeaponIcon/MCBorder/Weapon1Icon"]
+[node name="NailgunEquiped" type="Label" parent="ScrollContainer/GCMain/Nailgun/MCWeapon/MCWeapon/GCWeapon/MCWeaponIcon/MCBorder/NailGunIcon"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_u3ts0")
-expand_mode = 1
-stretch_mode = 5
+offset_left = -15.0
+offset_top = -14.0
+offset_right = 178.0
+offset_bottom = 49.0
+grow_vertical = 0
+rotation = -1.0472
+theme_override_colors/font_color = Color(0.835294, 0.666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 45
+text = "EQUIPED"
 
-[node name="GC" type="GridContainer" parent="ScrollContainer/GCMain/Weapon1/MCWeapon/MCWeapon/GCWeapon1"]
+[node name="GC" type="GridContainer" parent="ScrollContainer/GCMain/Nailgun/MCWeapon/MCWeapon/GCWeapon"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="WeaponName1" type="Label" parent="ScrollContainer/GCMain/Weapon1/MCWeapon/MCWeapon/GCWeapon1/GC"]
+[node name="WeaponName1" type="Label" parent="ScrollContainer/GCMain/Nailgun/MCWeapon/MCWeapon/GCWeapon/GC"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.67451, 0.345098, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
-text = "This is a weapon template"
+text = "NAILGUN"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="ScrollContainer/GCMain/Weapon1/MCWeapon/MCWeapon/GCWeapon1/GC"]
+[node name="NailgunBtn" type="Button" parent="ScrollContainer/GCMain/Nailgun/MCWeapon/MCWeapon/GCWeapon/GC"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -127,58 +144,57 @@ theme_override_font_sizes/font_size = 30
 toggle_mode = true
 text = "EQUIP"
 
-[node name="WeaponDesc1" type="Label" parent="ScrollContainer/GCMain/Weapon1/MCWeapon/MCWeapon/GCWeapon1/GC"]
+[node name="WeaponDesc1" type="Label" parent="ScrollContainer/GCMain/Nailgun/MCWeapon/MCWeapon/GCWeapon/GC"]
 custom_minimum_size = Vector2(410, 0)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-text = "This is where we put weapon stats like:
-'Describe weapon'
-Damage:
-Accuracy:
-Speed:"
+text = "Shoots a spread of penatrating nails
+Damage: 3
+Accuracy: 80 degrees
+Speed: 4 shots a second"
 
-[node name="Weapon2" type="MarginContainer" parent="ScrollContainer/GCMain"]
+[node name="Crowbar" type="MarginContainer" parent="ScrollContainer/GCMain"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Border" type="ColorRect" parent="ScrollContainer/GCMain/Weapon2"]
+[node name="Border" type="ColorRect" parent="ScrollContainer/GCMain/Crowbar"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0.129412, 0.129412, 0.129412, 1)
 
-[node name="MCWeapon" type="MarginContainer" parent="ScrollContainer/GCMain/Weapon2"]
+[node name="MCWeapon" type="MarginContainer" parent="ScrollContainer/GCMain/Crowbar"]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/Weapon2/MCWeapon"]
+[node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/Crowbar/MCWeapon"]
 show_behind_parent = true
 layout_mode = 2
 color = Color(0.713726, 0.713726, 0.713726, 1)
 
-[node name="MCWeapon" type="MarginContainer" parent="ScrollContainer/GCMain/Weapon2/MCWeapon"]
+[node name="MCWeapon" type="MarginContainer" parent="ScrollContainer/GCMain/Crowbar/MCWeapon"]
 layout_mode = 2
 
-[node name="GCWeapon1" type="GridContainer" parent="ScrollContainer/GCMain/Weapon2/MCWeapon/MCWeapon"]
+[node name="GCWeapon" type="GridContainer" parent="ScrollContainer/GCMain/Crowbar/MCWeapon/MCWeapon"]
 layout_mode = 2
 columns = 2
 
-[node name="MCWeaponIcon" type="MarginContainer" parent="ScrollContainer/GCMain/Weapon2/MCWeapon/MCWeapon/GCWeapon1"]
+[node name="MCWeaponIcon" type="MarginContainer" parent="ScrollContainer/GCMain/Crowbar/MCWeapon/MCWeapon/GCWeapon"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Border" type="Panel" parent="ScrollContainer/GCMain/Weapon2/MCWeapon/MCWeapon/GCWeapon1/MCWeaponIcon"]
+[node name="Border" type="Panel" parent="ScrollContainer/GCMain/Crowbar/MCWeapon/MCWeapon/GCWeapon/MCWeaponIcon"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme = ExtResource("1_rajqd")
 
-[node name="MCBorder" type="MarginContainer" parent="ScrollContainer/GCMain/Weapon2/MCWeapon/MCWeapon/GCWeapon1/MCWeaponIcon"]
+[node name="MCBorder" type="MarginContainer" parent="ScrollContainer/GCMain/Crowbar/MCWeapon/MCWeapon/GCWeapon/MCWeaponIcon"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/margin_left = 6
@@ -186,40 +202,49 @@ theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="Weapon1Icon" type="TextureRect" parent="ScrollContainer/GCMain/Weapon2/MCWeapon/MCWeapon/GCWeapon1/MCWeaponIcon/MCBorder"]
+[node name="CrowbarIcon" type="TextureRect" parent="ScrollContainer/GCMain/Crowbar/MCWeapon/MCWeapon/GCWeapon/MCWeaponIcon/MCBorder"]
+unique_name_in_owner = true
 show_behind_parent = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture = ExtResource("2_kop3x")
+texture = SubResource("AtlasTexture_mbni2")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="W1Equiped" type="TextureRect" parent="ScrollContainer/GCMain/Weapon2/MCWeapon/MCWeapon/GCWeapon1/MCWeaponIcon/MCBorder/Weapon1Icon"]
+[node name="CrowbarEquiped" type="Label" parent="ScrollContainer/GCMain/Crowbar/MCWeapon/MCWeapon/GCWeapon/MCWeaponIcon/MCBorder/CrowbarIcon"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_u3ts0")
-expand_mode = 1
-stretch_mode = 5
+offset_left = -15.0
+offset_top = -14.0
+offset_right = 178.0
+offset_bottom = 49.0
+grow_vertical = 0
+rotation = -1.0472
+theme_override_colors/font_color = Color(0.835294, 0.666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 45
+text = "EQUIPED"
 
-[node name="GC" type="GridContainer" parent="ScrollContainer/GCMain/Weapon2/MCWeapon/MCWeapon/GCWeapon1"]
+[node name="GC" type="GridContainer" parent="ScrollContainer/GCMain/Crowbar/MCWeapon/MCWeapon/GCWeapon"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="WeaponName1" type="Label" parent="ScrollContainer/GCMain/Weapon2/MCWeapon/MCWeapon/GCWeapon1/GC"]
+[node name="WeaponName1" type="Label" parent="ScrollContainer/GCMain/Crowbar/MCWeapon/MCWeapon/GCWeapon/GC"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.67451, 0.345098, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
-text = "This is a weapon template"
+text = "CROWBAR"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="ScrollContainer/GCMain/Weapon2/MCWeapon/MCWeapon/GCWeapon1/GC"]
+[node name="CrowbarBtn" type="Button" parent="ScrollContainer/GCMain/Crowbar/MCWeapon/MCWeapon/GCWeapon/GC"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -228,58 +253,57 @@ theme_override_font_sizes/font_size = 30
 toggle_mode = true
 text = "EQUIP"
 
-[node name="WeaponDesc1" type="Label" parent="ScrollContainer/GCMain/Weapon2/MCWeapon/MCWeapon/GCWeapon1/GC"]
+[node name="WeaponDesc1" type="Label" parent="ScrollContainer/GCMain/Crowbar/MCWeapon/MCWeapon/GCWeapon/GC"]
 custom_minimum_size = Vector2(410, 0)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-text = "This is where we put weapon stats like:
-'Describe weapon'
-Damage:
-Accuracy:
-Speed:"
+text = "Swings 60 degrees in front of you
+Damage: 10
+Size: 60 degrees
+Speed: 1 swing a second"
 
-[node name="Weapon3" type="MarginContainer" parent="ScrollContainer/GCMain"]
+[node name="TapeMeasure" type="MarginContainer" parent="ScrollContainer/GCMain"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Border" type="ColorRect" parent="ScrollContainer/GCMain/Weapon3"]
+[node name="Border" type="ColorRect" parent="ScrollContainer/GCMain/TapeMeasure"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0.129412, 0.129412, 0.129412, 1)
 
-[node name="MCWeapon" type="MarginContainer" parent="ScrollContainer/GCMain/Weapon3"]
+[node name="MCWeapon" type="MarginContainer" parent="ScrollContainer/GCMain/TapeMeasure"]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/Weapon3/MCWeapon"]
+[node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/TapeMeasure/MCWeapon"]
 show_behind_parent = true
 layout_mode = 2
 color = Color(0.713726, 0.713726, 0.713726, 1)
 
-[node name="MCWeapon" type="MarginContainer" parent="ScrollContainer/GCMain/Weapon3/MCWeapon"]
+[node name="MCWeapon" type="MarginContainer" parent="ScrollContainer/GCMain/TapeMeasure/MCWeapon"]
 layout_mode = 2
 
-[node name="GCWeapon1" type="GridContainer" parent="ScrollContainer/GCMain/Weapon3/MCWeapon/MCWeapon"]
+[node name="GCWeapon" type="GridContainer" parent="ScrollContainer/GCMain/TapeMeasure/MCWeapon/MCWeapon"]
 layout_mode = 2
 columns = 2
 
-[node name="MCWeaponIcon" type="MarginContainer" parent="ScrollContainer/GCMain/Weapon3/MCWeapon/MCWeapon/GCWeapon1"]
+[node name="MCWeaponIcon" type="MarginContainer" parent="ScrollContainer/GCMain/TapeMeasure/MCWeapon/MCWeapon/GCWeapon"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Border" type="Panel" parent="ScrollContainer/GCMain/Weapon3/MCWeapon/MCWeapon/GCWeapon1/MCWeaponIcon"]
+[node name="Border" type="Panel" parent="ScrollContainer/GCMain/TapeMeasure/MCWeapon/MCWeapon/GCWeapon/MCWeaponIcon"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme = ExtResource("1_rajqd")
 
-[node name="MCBorder" type="MarginContainer" parent="ScrollContainer/GCMain/Weapon3/MCWeapon/MCWeapon/GCWeapon1/MCWeaponIcon"]
+[node name="MCBorder" type="MarginContainer" parent="ScrollContainer/GCMain/TapeMeasure/MCWeapon/MCWeapon/GCWeapon/MCWeaponIcon"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/margin_left = 6
@@ -287,40 +311,48 @@ theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="Weapon1Icon" type="TextureRect" parent="ScrollContainer/GCMain/Weapon3/MCWeapon/MCWeapon/GCWeapon1/MCWeaponIcon/MCBorder"]
+[node name="TapeMeasureIcon" type="TextureRect" parent="ScrollContainer/GCMain/TapeMeasure/MCWeapon/MCWeapon/GCWeapon/MCWeaponIcon/MCBorder"]
 show_behind_parent = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture = ExtResource("2_kop3x")
+texture = ExtResource("3_4jqra")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="W1Equiped" type="TextureRect" parent="ScrollContainer/GCMain/Weapon3/MCWeapon/MCWeapon/GCWeapon1/MCWeaponIcon/MCBorder/Weapon1Icon"]
+[node name="TapeMeasureEquipped" type="Label" parent="ScrollContainer/GCMain/TapeMeasure/MCWeapon/MCWeapon/GCWeapon/MCWeaponIcon/MCBorder/TapeMeasureIcon"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_u3ts0")
-expand_mode = 1
-stretch_mode = 5
+offset_left = -15.0
+offset_top = -14.0
+offset_right = 178.0
+offset_bottom = 49.0
+grow_vertical = 0
+rotation = -1.0472
+theme_override_colors/font_color = Color(0.835294, 0.666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 45
+text = "EQUIPED"
 
-[node name="GC" type="GridContainer" parent="ScrollContainer/GCMain/Weapon3/MCWeapon/MCWeapon/GCWeapon1"]
+[node name="GC" type="GridContainer" parent="ScrollContainer/GCMain/TapeMeasure/MCWeapon/MCWeapon/GCWeapon"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="WeaponName1" type="Label" parent="ScrollContainer/GCMain/Weapon3/MCWeapon/MCWeapon/GCWeapon1/GC"]
+[node name="WeaponName1" type="Label" parent="ScrollContainer/GCMain/TapeMeasure/MCWeapon/MCWeapon/GCWeapon/GC"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.67451, 0.345098, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
-text = "This is a weapon template"
+text = "TAPEMEASURE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="ScrollContainer/GCMain/Weapon3/MCWeapon/MCWeapon/GCWeapon1/GC"]
+[node name="TapeMeasureBtn" type="Button" parent="ScrollContainer/GCMain/TapeMeasure/MCWeapon/MCWeapon/GCWeapon/GC"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -329,58 +361,57 @@ theme_override_font_sizes/font_size = 30
 toggle_mode = true
 text = "EQUIP"
 
-[node name="WeaponDesc1" type="Label" parent="ScrollContainer/GCMain/Weapon3/MCWeapon/MCWeapon/GCWeapon1/GC"]
+[node name="WeaponDesc1" type="Label" parent="ScrollContainer/GCMain/TapeMeasure/MCWeapon/MCWeapon/GCWeapon/GC"]
 custom_minimum_size = Vector2(410, 0)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-text = "This is where we put weapon stats like:
-'Describe weapon'
-Damage:
-Accuracy:
-Speed:"
+text = "Lashes out in front of you in an arching motion
+Damage increase with each succesful hit
+Damage: 3 (+2 per hit)
+Speed: 2 swings a second"
 
-[node name="Weapon4" type="MarginContainer" parent="ScrollContainer/GCMain"]
+[node name="SixPack" type="MarginContainer" parent="ScrollContainer/GCMain"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Border" type="ColorRect" parent="ScrollContainer/GCMain/Weapon4"]
+[node name="Border" type="ColorRect" parent="ScrollContainer/GCMain/SixPack"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0.129412, 0.129412, 0.129412, 1)
 
-[node name="MCWeapon" type="MarginContainer" parent="ScrollContainer/GCMain/Weapon4"]
+[node name="MCWeapon" type="MarginContainer" parent="ScrollContainer/GCMain/SixPack"]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/Weapon4/MCWeapon"]
+[node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/SixPack/MCWeapon"]
 show_behind_parent = true
 layout_mode = 2
 color = Color(0.713726, 0.713726, 0.713726, 1)
 
-[node name="MCWeapon" type="MarginContainer" parent="ScrollContainer/GCMain/Weapon4/MCWeapon"]
+[node name="MCWeapon" type="MarginContainer" parent="ScrollContainer/GCMain/SixPack/MCWeapon"]
 layout_mode = 2
 
-[node name="GCWeapon1" type="GridContainer" parent="ScrollContainer/GCMain/Weapon4/MCWeapon/MCWeapon"]
+[node name="GCWeapon" type="GridContainer" parent="ScrollContainer/GCMain/SixPack/MCWeapon/MCWeapon"]
 layout_mode = 2
 columns = 2
 
-[node name="MCWeaponIcon" type="MarginContainer" parent="ScrollContainer/GCMain/Weapon4/MCWeapon/MCWeapon/GCWeapon1"]
+[node name="MCWeaponIcon" type="MarginContainer" parent="ScrollContainer/GCMain/SixPack/MCWeapon/MCWeapon/GCWeapon"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Border" type="Panel" parent="ScrollContainer/GCMain/Weapon4/MCWeapon/MCWeapon/GCWeapon1/MCWeaponIcon"]
+[node name="Border" type="Panel" parent="ScrollContainer/GCMain/SixPack/MCWeapon/MCWeapon/GCWeapon/MCWeaponIcon"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme = ExtResource("1_rajqd")
 
-[node name="MCBorder" type="MarginContainer" parent="ScrollContainer/GCMain/Weapon4/MCWeapon/MCWeapon/GCWeapon1/MCWeaponIcon"]
+[node name="MCBorder" type="MarginContainer" parent="ScrollContainer/GCMain/SixPack/MCWeapon/MCWeapon/GCWeapon/MCWeaponIcon"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/margin_left = 6
@@ -388,40 +419,48 @@ theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="Weapon1Icon" type="TextureRect" parent="ScrollContainer/GCMain/Weapon4/MCWeapon/MCWeapon/GCWeapon1/MCWeaponIcon/MCBorder"]
+[node name="6PackIcon" type="TextureRect" parent="ScrollContainer/GCMain/SixPack/MCWeapon/MCWeapon/GCWeapon/MCWeaponIcon/MCBorder"]
 show_behind_parent = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture = ExtResource("2_kop3x")
+texture = ExtResource("3_4jqra")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="W1Equiped" type="TextureRect" parent="ScrollContainer/GCMain/Weapon4/MCWeapon/MCWeapon/GCWeapon1/MCWeaponIcon/MCBorder/Weapon1Icon"]
+[node name="SixPackEquiped" type="Label" parent="ScrollContainer/GCMain/SixPack/MCWeapon/MCWeapon/GCWeapon/MCWeaponIcon/MCBorder/6PackIcon"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_u3ts0")
-expand_mode = 1
-stretch_mode = 5
+offset_left = -15.0
+offset_top = -14.0
+offset_right = 178.0
+offset_bottom = 49.0
+grow_vertical = 0
+rotation = -1.0472
+theme_override_colors/font_color = Color(0.835294, 0.666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 45
+text = "EQUIPED"
 
-[node name="GC" type="GridContainer" parent="ScrollContainer/GCMain/Weapon4/MCWeapon/MCWeapon/GCWeapon1"]
+[node name="GC" type="GridContainer" parent="ScrollContainer/GCMain/SixPack/MCWeapon/MCWeapon/GCWeapon"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="WeaponName1" type="Label" parent="ScrollContainer/GCMain/Weapon4/MCWeapon/MCWeapon/GCWeapon1/GC"]
+[node name="WeaponName1" type="Label" parent="ScrollContainer/GCMain/SixPack/MCWeapon/MCWeapon/GCWeapon/GC"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.67451, 0.345098, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
-text = "This is a weapon template"
+text = "6-PACK"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="ScrollContainer/GCMain/Weapon4/MCWeapon/MCWeapon/GCWeapon1/GC"]
+[node name="SixPackBtn" type="Button" parent="ScrollContainer/GCMain/SixPack/MCWeapon/MCWeapon/GCWeapon/GC"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -430,13 +469,17 @@ theme_override_font_sizes/font_size = 30
 toggle_mode = true
 text = "EQUIP"
 
-[node name="WeaponDesc1" type="Label" parent="ScrollContainer/GCMain/Weapon4/MCWeapon/MCWeapon/GCWeapon1/GC"]
+[node name="WeaponDesc1" type="Label" parent="ScrollContainer/GCMain/SixPack/MCWeapon/MCWeapon/GCWeapon/GC"]
 custom_minimum_size = Vector2(410, 0)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-text = "This is where we put weapon stats like:
-'Describe weapon'
-Damage:
-Accuracy:
-Speed:"
+text = "Throw an explosive 6-pack
+Slow parasites caught in the explosion
+Damage: 7
+Speed: 1 throw a second"
+
+[connection signal="pressed" from="ScrollContainer/GCMain/Nailgun/MCWeapon/MCWeapon/GCWeapon/GC/NailgunBtn" to="." method="_on_nailgun_btn_pressed"]
+[connection signal="pressed" from="ScrollContainer/GCMain/Crowbar/MCWeapon/MCWeapon/GCWeapon/GC/CrowbarBtn" to="." method="_on_crowbar_btn_pressed"]
+[connection signal="pressed" from="ScrollContainer/GCMain/TapeMeasure/MCWeapon/MCWeapon/GCWeapon/GC/TapeMeasureBtn" to="." method="_on_tape_measure_btn_pressed"]
+[connection signal="pressed" from="ScrollContainer/GCMain/SixPack/MCWeapon/MCWeapon/GCWeapon/GC/SixPackBtn" to="." method="_on_six_pack_btn_pressed"]
