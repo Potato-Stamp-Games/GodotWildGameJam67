@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi03j0nny0tpa"]
+
+[ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="1_fbfer"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qguox"]
+atlas = ExtResource("1_fbfer")
+region = Rect2(32, 0, 32, 32)
+
+[node name="Research" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0470588, 0.286275, 0.270588, 1)
+
+[node name="Header" type="GridContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Background/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 35
+theme_override_font_sizes/font_size = 200
+text = "R&D"
+
+[node name="RSPoints" type="GridContainer" parent="Background"]
+layout_mode = 1
+offset_right = 21.0
+offset_bottom = 23.0
+columns = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/RSPoints"]
+texture_filter = 1
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("AtlasTexture_qguox")
+expand_mode = 1
+
+[node name="rsPointsLbl" type="Label" parent="Background/RSPoints"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 55
+text = "555"
+
+[node name="Research" type="GridContainer" parent="Background"]
+custom_minimum_size = Vector2(0, 800)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -800.0
+offset_right = 1920.0
+grow_vertical = 0
