@@ -105,19 +105,19 @@ func _process(_delta):
 		modifier1Atlas.region = Rect2(32, 32, 32, 32)
 		%EquipedMod1.texture = modifier1Atlas
 	if are_elements_unequiped() == true:
-		modifier1Atlas.region = Rect2(32, 32, 32, 32)
+		modifier1Atlas.region = Rect2(0, 0, 0, 0)
 		%EquipedMod1.texture = modifier1Atlas
 	
 	if Global.speedEquiped == true:
 		modifier2Atlas.region = Rect2(0, 64, 32, 32)
 		%EquipedMod2.texture = modifier2Atlas
 	elif Global.damageEquiped == true:
-		modifier2Atlas.region = Rect2(32, 32, 32, 32)
+		modifier2Atlas.region = Rect2(0, 32, 32, 32)
 		%EquipedMod2.texture = modifier2Atlas
 	elif Global.attackSEquiped == true:
 		modifier2Atlas.region = Rect2(32, 32, 32, 32)
 		%EquipedMod2.texture = modifier2Atlas
 	if are_modifiers2_unequiped() == true:
-		modifier2Atlas.region = Rect2(32, 32, 32, 32)
+		modifier2Atlas.region = Rect2(0, 0, 0, 0)
 		%EquipedMod2.texture = modifier2Atlas
 

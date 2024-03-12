@@ -1,16 +1,55 @@
-[gd_scene load_steps=6 format=3 uid="uid://bh812ic52oj0a"]
+[gd_scene load_steps=14 format=3 uid="uid://bh812ic52oj0a"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu/main_menu.gd" id="1_74j5r"]
 [ext_resource type="Texture2D" uid="uid://2umjv7csq7np" path="res://Scenes/MainMenu/PAWISITELOGOLARGE.png" id="2_xubuu"]
+[ext_resource type="Texture2D" uid="uid://ujuyk7vdsagi" path="res://Assets/Parasite Sprites/LittleParasite.png" id="3_ohn7r"]
 [ext_resource type="Texture2D" uid="uid://camujexa7mw5p" path="res://Assets/MenuAssets/MenuIcons.png" id="3_tsnvq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4pqvl"]
+bg_color = Color(0.631373, 0.760784, 0.988235, 1)
+border_width_left = 60
+border_width_top = 60
+border_width_right = 60
+border_width_bottom = 60
+border_color = Color(0.384314, 0.568627, 0.988235, 1)
+border_blend = true
+corner_detail = 13
+
+[sub_resource type="Theme" id="Theme_adyde"]
+Panel/styles/panel = SubResource("StyleBoxFlat_4pqvl")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aoyvw"]
+bg_color = Color(1, 1, 1, 0.878431)
+border_width_left = 760
+border_width_top = 240
+border_width_right = 1004
+border_width_bottom = 820
+border_color = Color(0, 0, 0, 0.368627)
+border_blend = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mdehx"]
 atlas = ExtResource("3_tsnvq")
 region = Rect2(16, 48, 48, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ega74"]
+atlas = ExtResource("3_tsnvq")
+region = Rect2(16, 64, 48, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_eu4ew"]
 atlas = ExtResource("3_tsnvq")
 region = Rect2(16, 80, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvpkd"]
+atlas = ExtResource("3_tsnvq")
+region = Rect2(16, 96, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcha0"]
+atlas = ExtResource("3_tsnvq")
+region = Rect2(80, 80, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pufic"]
+atlas = ExtResource("3_tsnvq")
+region = Rect2(80, 96, 48, 16)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -21,61 +60,94 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_74j5r")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0156863, 0.137255, 0.192157, 1)
+theme = SubResource("Theme_adyde")
 
-[node name="Sprite2D" type="Sprite2D" parent="Background"]
-position = Vector2(710, 321)
+[node name="BackgroundGradient" type="Panel" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_adyde")
+theme_override_styles/panel = SubResource("StyleBoxFlat_aoyvw")
+
+[node name="Title" type="Sprite2D" parent="Background/BackgroundGradient"]
+position = Vector2(705, 287)
+scale = Vector2(0.9, 0.9)
 texture = ExtResource("2_xubuu")
 
-[node name="GC" type="GridContainer" parent="Background"]
+[node name="Sprite2D" type="Sprite2D" parent="Background/BackgroundGradient"]
+texture = ExtResource("3_ohn7r")
+hframes = 16
+frame = 1
+
+[node name="Padding" type="VBoxContainer" parent="Background/BackgroundGradient"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -447.5
-offset_right = 350.0
-offset_bottom = 447.5
-grow_vertical = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -935.0
+offset_right = 390.0
+offset_bottom = -40.0
+grow_vertical = 0
+
+[node name="GC" type="GridContainer" parent="Background/BackgroundGradient/Padding"]
+layout_mode = 2
 theme_override_constants/v_separation = 50
 
-[node name="Title" type="GridContainer" parent="Background/GC"]
+[node name="Title" type="GridContainer" parent="Background/BackgroundGradient/Padding/GC"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 0
 theme_override_constants/v_separation = 110
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/GC/Title"]
-custom_minimum_size = Vector2(0, 325)
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/BackgroundGradient/Padding/GC/Title"]
+custom_minimum_size = Vector2(0, 185)
 layout_mode = 2
 
-[node name="padding" type="VBoxContainer" parent="Background/GC"]
+[node name="padding" type="VBoxContainer" parent="Background/BackgroundGradient/Padding/GC"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 
-[node name="PlayBtn" type="TextureButton" parent="Background/GC"]
+[node name="PlayBtn" type="TextureButton" parent="Background/BackgroundGradient/Padding/GC"]
 texture_filter = 1
-custom_minimum_size = Vector2(350, 150)
+custom_minimum_size = Vector2(256, 128)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 6
 texture_normal = SubResource("AtlasTexture_mdehx")
+texture_pressed = SubResource("AtlasTexture_ega74")
+texture_hover = SubResource("AtlasTexture_ega74")
 stretch_mode = 0
 
-[node name="ExitBtn" type="TextureButton" parent="Background/GC"]
+[node name="ExitBtn" type="TextureButton" parent="Background/BackgroundGradient/Padding/GC"]
 texture_filter = 1
-custom_minimum_size = Vector2(350, 150)
+custom_minimum_size = Vector2(256, 128)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
 texture_normal = SubResource("AtlasTexture_eu4ew")
+texture_pressed = SubResource("AtlasTexture_jvpkd")
+texture_hover = SubResource("AtlasTexture_jvpkd")
 stretch_mode = 0
 
-[connection signal="pressed" from="Background/GC/PlayBtn" to="." method="_on_play_btn_pressed"]
-[connection signal="pressed" from="Background/GC/ExitBtn" to="." method="_on_exit_btn_pressed"]
+[node name="OptionSBtn" type="TextureButton" parent="Background/BackgroundGradient/Padding/GC"]
+texture_filter = 1
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = SubResource("AtlasTexture_wcha0")
+texture_pressed = SubResource("AtlasTexture_pufic")
+texture_hover = SubResource("AtlasTexture_pufic")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="Background/BackgroundGradient/Padding/GC/PlayBtn" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="Background/BackgroundGradient/Padding/GC/ExitBtn" to="." method="_on_exit_btn_pressed"]

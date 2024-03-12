@@ -24,3 +24,7 @@ func _on_fire_equiped_btn_pressed():
 		unequipAllElements()
 		%FireEquiped.show()
 		Global.fireEquiped = true
+
+
+func _on_unequip_btn_pressed():
+	unequipAllElements()
