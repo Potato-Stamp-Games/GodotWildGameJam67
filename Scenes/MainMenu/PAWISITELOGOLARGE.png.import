@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4cgthhxlxjgu"
-path="res://.godot/imported/tempsprite2.png-d6f438148bb9d88dabf231952886a4eb.ctex"
+uid="uid://2umjv7csq7np"
+path="res://.godot/imported/PAWISITELOGOLARGE.png-5b60e6850e0cb6ee8c8f053430b624aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PlaceholderSprites/tempsprite2.png"
-dest_files=["res://.godot/imported/tempsprite2.png-d6f438148bb9d88dabf231952886a4eb.ctex"]
+source_file="res://Scenes/MainMenu/PAWISITELOGOLARGE.png"
+dest_files=["res://.godot/imported/PAWISITELOGOLARGE.png-5b60e6850e0cb6ee8c8f053430b624aa.ctex"]
 
 [params]
 

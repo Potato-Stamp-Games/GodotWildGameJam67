@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgjqiu611h6jy"
-path="res://.godot/imported/tempsprite1.png-443b45b6dfc13ee69eba9301ec5712de.ctex"
+uid="uid://c3ocd0v667m4l"
+path="res://.godot/imported/BossFloatingParasitespritesheet.png-1bf5ac87a1e75a9f0aed5d132837b3b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PlaceholderSprites/tempsprite1.png"
-dest_files=["res://.godot/imported/tempsprite1.png-443b45b6dfc13ee69eba9301ec5712de.ctex"]
+source_file="res://Assets/Parasite Sprites/BossFloatingParasitespritesheet.png"
+dest_files=["res://.godot/imported/BossFloatingParasitespritesheet.png-1bf5ac87a1e75a9f0aed5d132837b3b1.ctex"]
 
 [params]
 

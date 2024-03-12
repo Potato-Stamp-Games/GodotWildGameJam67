@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yoe5tftdrgn4"
-path="res://.godot/imported/placeholderSprite3.png-b14382bd4c9a27aa96494c5906e63f55.ctex"
+uid="uid://dhsol1rdin0p5"
+path="res://.godot/imported/wormparasite.png-05d9e26d730dcd4a63f97d3e40de4020.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PlaceholderSprites/placeholderSprite3.png"
-dest_files=["res://.godot/imported/placeholderSprite3.png-b14382bd4c9a27aa96494c5906e63f55.ctex"]
+source_file="res://Assets/Parasite Sprites/wormparasite.png"
+dest_files=["res://.godot/imported/wormparasite.png-05d9e26d730dcd4a63f97d3e40de4020.ctex"]
 
 [params]
 

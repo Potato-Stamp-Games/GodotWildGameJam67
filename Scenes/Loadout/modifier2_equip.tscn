@@ -1,14 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bccr4q46k41d3"]
+[gd_scene load_steps=6 format=3 uid="uid://bml0u73hmsfx2"]
 
-[ext_resource type="Script" path="res://Scenes/Loadout/modifier_equip.gd" id="1_gxuqv"]
-[ext_resource type="Theme" uid="uid://dy6705h5bwoor" path="res://Scenes/Loadout/icon_panel_theme.tres" id="1_ppd80"]
-[ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="3_d4huf"]
+[ext_resource type="Script" path="res://Scenes/Loadout/modifier2_equip.gd" id="1_afsre"]
+[ext_resource type="Theme" uid="uid://dy6705h5bwoor" path="res://Scenes/Loadout/icon_panel_theme.tres" id="2_o4nq1"]
+[ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="3_vg3kn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_551et"]
+atlas = ExtResource("3_vg3kn")
+region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g7l26"]
-atlas = ExtResource("3_d4huf")
+atlas = ExtResource("3_vg3kn")
 region = Rect2(32, 0, 32, 32)
 
-[node name="ModifierEquip" type="MarginContainer"]
+[node name="Modifier2Equip" type="MarginContainer"]
 custom_minimum_size = Vector2(625, 55)
 anchors_preset = 8
 anchor_left = 0.5
@@ -16,9 +20,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -312.0
-offset_top = -35.0
+offset_top = -27.0
 offset_right = 313.0
-offset_bottom = 744.0
+offset_bottom = 542.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -27,7 +31,7 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
-script = ExtResource("1_gxuqv")
+script = ExtResource("1_afsre")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
@@ -41,47 +45,47 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
-[node name="Poison" type="MarginContainer" parent="ScrollContainer/GCMain"]
+[node name="Speed" type="MarginContainer" parent="ScrollContainer/GCMain"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Border" type="ColorRect" parent="ScrollContainer/GCMain/Poison"]
+[node name="Border" type="ColorRect" parent="ScrollContainer/GCMain/Speed"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0.129412, 0.129412, 0.129412, 1)
 
-[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Poison"]
+[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Speed"]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/Poison/MCMod"]
+[node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/Speed/MCMod"]
 show_behind_parent = true
 layout_mode = 2
 color = Color(0.713726, 0.713726, 0.713726, 1)
 
-[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Poison/MCMod"]
+[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Speed/MCMod"]
 layout_mode = 2
 
-[node name="GCMod" type="GridContainer" parent="ScrollContainer/GCMain/Poison/MCMod/MCMod"]
+[node name="GCMod" type="GridContainer" parent="ScrollContainer/GCMain/Speed/MCMod/MCMod"]
 layout_mode = 2
 columns = 2
 
-[node name="MCModIcon" type="MarginContainer" parent="ScrollContainer/GCMain/Poison/MCMod/MCMod/GCMod"]
+[node name="MCModIcon" type="MarginContainer" parent="ScrollContainer/GCMain/Speed/MCMod/MCMod/GCMod"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Border" type="Panel" parent="ScrollContainer/GCMain/Poison/MCMod/MCMod/GCMod/MCModIcon"]
+[node name="Border" type="Panel" parent="ScrollContainer/GCMain/Speed/MCMod/MCMod/GCMod/MCModIcon"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-theme = ExtResource("1_ppd80")
+theme = ExtResource("2_o4nq1")
 
-[node name="MCBorder" type="MarginContainer" parent="ScrollContainer/GCMain/Poison/MCMod/MCMod/GCMod/MCModIcon"]
+[node name="MCBorder" type="MarginContainer" parent="ScrollContainer/GCMain/Speed/MCMod/MCMod/GCMod/MCModIcon"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/margin_left = 6
@@ -89,17 +93,17 @@ theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="PoisonIcon" type="TextureRect" parent="ScrollContainer/GCMain/Poison/MCMod/MCMod/GCMod/MCModIcon/MCBorder"]
+[node name="SpeedIcon" type="TextureRect" parent="ScrollContainer/GCMain/Speed/MCMod/MCMod/GCMod/MCModIcon/MCBorder"]
 unique_name_in_owner = true
 show_behind_parent = true
 texture_filter = 1
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture = SubResource("AtlasTexture_g7l26")
+texture = SubResource("AtlasTexture_551et")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="PoisonEquiped" type="Label" parent="ScrollContainer/GCMain/Poison/MCMod/MCMod/GCMod/MCModIcon/MCBorder/PoisonIcon"]
+[node name="SpeedEquiped" type="Label" parent="ScrollContainer/GCMain/Speed/MCMod/MCMod/GCMod/MCModIcon/MCBorder/SpeedIcon"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -118,82 +122,80 @@ theme_override_constants/outline_size = 20
 theme_override_font_sizes/font_size = 45
 text = "EQUIPED"
 
-[node name="GC" type="GridContainer" parent="ScrollContainer/GCMain/Poison/MCMod/MCMod/GCMod"]
+[node name="GC" type="GridContainer" parent="ScrollContainer/GCMain/Speed/MCMod/MCMod/GCMod"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="ModName" type="Label" parent="ScrollContainer/GCMain/Poison/MCMod/MCMod/GCMod/GC"]
+[node name="ModName" type="Label" parent="ScrollContainer/GCMain/Speed/MCMod/MCMod/GCMod/GC"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.67451, 0.345098, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
-text = "POISION MODIFCATION"
+text = "SPEED MODIFCATION"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PoisonEquipedBtn" type="Button" parent="ScrollContainer/GCMain/Poison/MCMod/MCMod/GCMod/GC"]
+[node name="SpeedEquipedBtn" type="Button" parent="ScrollContainer/GCMain/Speed/MCMod/MCMod/GCMod/GC"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 11
 theme_override_font_sizes/font_size = 30
+toggle_mode = true
 text = "EQUIP"
 
-[node name="ModDesc" type="Label" parent="ScrollContainer/GCMain/Poison/MCMod/MCMod/GCMod/GC"]
+[node name="ModDesc" type="Label" parent="ScrollContainer/GCMain/Speed/MCMod/MCMod/GCMod/GC"]
 custom_minimum_size = Vector2(410, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 21
-text = "Apply stacking poison on hit
-50% resistance to poision elements
-50% Increased damage 
-taken from fire elements"
+text = "15% increased movement speed"
 
-[node name="Ice" type="MarginContainer" parent="ScrollContainer/GCMain"]
+[node name="Damage" type="MarginContainer" parent="ScrollContainer/GCMain"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Border" type="ColorRect" parent="ScrollContainer/GCMain/Ice"]
+[node name="Border" type="ColorRect" parent="ScrollContainer/GCMain/Damage"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0.129412, 0.129412, 0.129412, 1)
 
-[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Ice"]
+[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Damage"]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/Ice/MCMod"]
+[node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/Damage/MCMod"]
 show_behind_parent = true
 layout_mode = 2
 color = Color(0.713726, 0.713726, 0.713726, 1)
 
-[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Ice/MCMod"]
+[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Damage/MCMod"]
 layout_mode = 2
 
-[node name="GCMod" type="GridContainer" parent="ScrollContainer/GCMain/Ice/MCMod/MCMod"]
+[node name="GCMod" type="GridContainer" parent="ScrollContainer/GCMain/Damage/MCMod/MCMod"]
 layout_mode = 2
 columns = 2
 
-[node name="MCModIcon" type="MarginContainer" parent="ScrollContainer/GCMain/Ice/MCMod/MCMod/GCMod"]
+[node name="MCModIcon" type="MarginContainer" parent="ScrollContainer/GCMain/Damage/MCMod/MCMod/GCMod"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Border" type="Panel" parent="ScrollContainer/GCMain/Ice/MCMod/MCMod/GCMod/MCModIcon"]
+[node name="Border" type="Panel" parent="ScrollContainer/GCMain/Damage/MCMod/MCMod/GCMod/MCModIcon"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-theme = ExtResource("1_ppd80")
+theme = ExtResource("2_o4nq1")
 
-[node name="MCBorder" type="MarginContainer" parent="ScrollContainer/GCMain/Ice/MCMod/MCMod/GCMod/MCModIcon"]
+[node name="MCBorder" type="MarginContainer" parent="ScrollContainer/GCMain/Damage/MCMod/MCMod/GCMod/MCModIcon"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/margin_left = 6
@@ -201,7 +203,7 @@ theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="IceIcon" type="TextureRect" parent="ScrollContainer/GCMain/Ice/MCMod/MCMod/GCMod/MCModIcon/MCBorder"]
+[node name="DamageIcon" type="TextureRect" parent="ScrollContainer/GCMain/Damage/MCMod/MCMod/GCMod/MCModIcon/MCBorder"]
 show_behind_parent = true
 texture_filter = 1
 custom_minimum_size = Vector2(128, 128)
@@ -210,7 +212,7 @@ texture = SubResource("AtlasTexture_g7l26")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="IceEquiped" type="Label" parent="ScrollContainer/GCMain/Ice/MCMod/MCMod/GCMod/MCModIcon/MCBorder/IceIcon"]
+[node name="DamageEquiped" type="Label" parent="ScrollContainer/GCMain/Damage/MCMod/MCMod/GCMod/MCModIcon/MCBorder/DamageIcon"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -229,82 +231,80 @@ theme_override_constants/outline_size = 20
 theme_override_font_sizes/font_size = 45
 text = "EQUIPED"
 
-[node name="GC" type="GridContainer" parent="ScrollContainer/GCMain/Ice/MCMod/MCMod/GCMod"]
+[node name="GC" type="GridContainer" parent="ScrollContainer/GCMain/Damage/MCMod/MCMod/GCMod"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="ModName" type="Label" parent="ScrollContainer/GCMain/Ice/MCMod/MCMod/GCMod/GC"]
+[node name="ModName" type="Label" parent="ScrollContainer/GCMain/Damage/MCMod/MCMod/GCMod/GC"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.67451, 0.345098, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
-text = "ICE MODIFCATION"
+text = "DAMAGE MODIFCATION"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="IceEquipedBtn" type="Button" parent="ScrollContainer/GCMain/Ice/MCMod/MCMod/GCMod/GC"]
+[node name="DamageEquipedBtn" type="Button" parent="ScrollContainer/GCMain/Damage/MCMod/MCMod/GCMod/GC"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 11
 theme_override_font_sizes/font_size = 30
+toggle_mode = true
 text = "EQUIP"
 
-[node name="ModDesc" type="Label" parent="ScrollContainer/GCMain/Ice/MCMod/MCMod/GCMod/GC"]
+[node name="ModDesc" type="Label" parent="ScrollContainer/GCMain/Damage/MCMod/MCMod/GCMod/GC"]
 custom_minimum_size = Vector2(410, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 21
-text = "Apply a slow on hit
-50% resistance to ice elements
-50% Increased damage 
-taken from poison elements"
+text = "+3 attack damage"
 
-[node name="Fire" type="MarginContainer" parent="ScrollContainer/GCMain"]
+[node name="AttackSpeed" type="MarginContainer" parent="ScrollContainer/GCMain"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Border" type="ColorRect" parent="ScrollContainer/GCMain/Fire"]
+[node name="Border" type="ColorRect" parent="ScrollContainer/GCMain/AttackSpeed"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0.129412, 0.129412, 0.129412, 1)
 
-[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Fire"]
+[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/AttackSpeed"]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/Fire/MCMod"]
+[node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/AttackSpeed/MCMod"]
 show_behind_parent = true
 layout_mode = 2
 color = Color(0.713726, 0.713726, 0.713726, 1)
 
-[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Fire/MCMod"]
+[node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/AttackSpeed/MCMod"]
 layout_mode = 2
 
-[node name="GCMod" type="GridContainer" parent="ScrollContainer/GCMain/Fire/MCMod/MCMod"]
+[node name="GCMod" type="GridContainer" parent="ScrollContainer/GCMain/AttackSpeed/MCMod/MCMod"]
 layout_mode = 2
 columns = 2
 
-[node name="MCModIcon" type="MarginContainer" parent="ScrollContainer/GCMain/Fire/MCMod/MCMod/GCMod"]
+[node name="MCModIcon" type="MarginContainer" parent="ScrollContainer/GCMain/AttackSpeed/MCMod/MCMod/GCMod"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Border" type="Panel" parent="ScrollContainer/GCMain/Fire/MCMod/MCMod/GCMod/MCModIcon"]
+[node name="Border" type="Panel" parent="ScrollContainer/GCMain/AttackSpeed/MCMod/MCMod/GCMod/MCModIcon"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-theme = ExtResource("1_ppd80")
+theme = ExtResource("2_o4nq1")
 
-[node name="MCBorder" type="MarginContainer" parent="ScrollContainer/GCMain/Fire/MCMod/MCMod/GCMod/MCModIcon"]
+[node name="MCBorder" type="MarginContainer" parent="ScrollContainer/GCMain/AttackSpeed/MCMod/MCMod/GCMod/MCModIcon"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/margin_left = 6
@@ -312,7 +312,7 @@ theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="FireIcon" type="TextureRect" parent="ScrollContainer/GCMain/Fire/MCMod/MCMod/GCMod/MCModIcon/MCBorder"]
+[node name="AttackSIcon" type="TextureRect" parent="ScrollContainer/GCMain/AttackSpeed/MCMod/MCMod/GCMod/MCModIcon/MCBorder"]
 show_behind_parent = true
 texture_filter = 1
 custom_minimum_size = Vector2(128, 128)
@@ -321,7 +321,7 @@ texture = SubResource("AtlasTexture_g7l26")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="FireEquiped" type="Label" parent="ScrollContainer/GCMain/Fire/MCMod/MCMod/GCMod/MCModIcon/MCBorder/FireIcon"]
+[node name="AttackSEquiped" type="Label" parent="ScrollContainer/GCMain/AttackSpeed/MCMod/MCMod/GCMod/MCModIcon/MCBorder/AttackSIcon"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -340,42 +340,39 @@ theme_override_constants/outline_size = 20
 theme_override_font_sizes/font_size = 45
 text = "EQUIPED"
 
-[node name="GC" type="GridContainer" parent="ScrollContainer/GCMain/Fire/MCMod/MCMod/GCMod"]
+[node name="GC" type="GridContainer" parent="ScrollContainer/GCMain/AttackSpeed/MCMod/MCMod/GCMod"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="ModName" type="Label" parent="ScrollContainer/GCMain/Fire/MCMod/MCMod/GCMod/GC"]
+[node name="ModName" type="Label" parent="ScrollContainer/GCMain/AttackSpeed/MCMod/MCMod/GCMod/GC"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.67451, 0.345098, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
-text = "FIRE MODIFCATION"
+text = "ATTACK SPEED MODIFCATION"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FireEquipedBtn" type="Button" parent="ScrollContainer/GCMain/Fire/MCMod/MCMod/GCMod/GC"]
+[node name="AttackSEquipedBtn" type="Button" parent="ScrollContainer/GCMain/AttackSpeed/MCMod/MCMod/GCMod/GC"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 11
 theme_override_font_sizes/font_size = 30
+toggle_mode = true
 text = "EQUIP"
 
-[node name="ModDesc" type="Label" parent="ScrollContainer/GCMain/Fire/MCMod/MCMod/GCMod/GC"]
+[node name="ModDesc" type="Label" parent="ScrollContainer/GCMain/AttackSpeed/MCMod/MCMod/GCMod/GC"]
 custom_minimum_size = Vector2(410, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 21
-text = "Apply burn which deals 15% max health 
-damage per second
-50% resistance to fire elements
-50% Increased damage 
-taken from ice elements"
+text = "-0.25 seconds per atack"
 
-[connection signal="pressed" from="ScrollContainer/GCMain/Poison/MCMod/MCMod/GCMod/GC/PoisonEquipedBtn" to="." method="_on_poision_equiped_btn_pressed"]
-[connection signal="pressed" from="ScrollContainer/GCMain/Ice/MCMod/MCMod/GCMod/GC/IceEquipedBtn" to="." method="_on_ice_equiped_btn_pressed"]
-[connection signal="pressed" from="ScrollContainer/GCMain/Fire/MCMod/MCMod/GCMod/GC/FireEquipedBtn" to="." method="_on_fire_equiped_btn_pressed"]
+[connection signal="pressed" from="ScrollContainer/GCMain/Speed/MCMod/MCMod/GCMod/GC/SpeedEquipedBtn" to="." method="_on_speed_btn_pressed"]
+[connection signal="pressed" from="ScrollContainer/GCMain/Damage/MCMod/MCMod/GCMod/GC/DamageEquipedBtn" to="." method="_on_damage_btn_pressed"]
+[connection signal="pressed" from="ScrollContainer/GCMain/AttackSpeed/MCMod/MCMod/GCMod/GC/AttackSEquipedBtn" to="." method="_on_attack_s_btn_pressed"]
