@@ -41,6 +41,28 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
+[node name="UnequipBtn" type="Button" parent="ScrollContainer/GCMain"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.764706, 0.529412, 0.101961, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_font_sizes/font_size = 125
+text = "UNEQUIP"
+
+[node name="Panel" type="Panel" parent="ScrollContainer/GCMain/UnequipBtn"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 16.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_ppd80")
+
 [node name="Poison" type="MarginContainer" parent="ScrollContainer/GCMain"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -376,6 +398,7 @@ damage per second
 50% Increased damage 
 taken from ice elements"
 
+[connection signal="pressed" from="ScrollContainer/GCMain/UnequipBtn" to="." method="_on_unequip_btn_pressed"]
 [connection signal="pressed" from="ScrollContainer/GCMain/Poison/MCMod/MCMod/GCMod/GC/PoisonEquipedBtn" to="." method="_on_poision_equiped_btn_pressed"]
 [connection signal="pressed" from="ScrollContainer/GCMain/Ice/MCMod/MCMod/GCMod/GC/IceEquipedBtn" to="." method="_on_ice_equiped_btn_pressed"]
 [connection signal="pressed" from="ScrollContainer/GCMain/Fire/MCMod/MCMod/GCMod/GC/FireEquipedBtn" to="." method="_on_fire_equiped_btn_pressed"]
