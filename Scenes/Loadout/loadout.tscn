@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cs0bcmdwjjmdb"]
+[gd_scene load_steps=11 format=3 uid="uid://cs0bcmdwjjmdb"]
 
 [ext_resource type="Script" path="res://Scenes/Loadout/loadout.gd" id="1_svrqx"]
 [ext_resource type="PackedScene" uid="uid://dnephrsd5mmc6" path="res://Scenes/Loadout/weapon_equip.tscn" id="2_8nhnf"]
@@ -6,11 +6,20 @@
 [ext_resource type="Texture2D" uid="uid://d3b0a318730dg" path="res://Scenes/Loadout/LoadoutOnlySprites/EmptySlotSprite.png" id="3_ut23p"]
 [ext_resource type="PackedScene" uid="uid://bccr4q46k41d3" path="res://Scenes/Loadout/modifier_equip.tscn" id="5_fmppv"]
 [ext_resource type="PackedScene" uid="uid://bml0u73hmsfx2" path="res://Scenes/Loadout/modifier2_equip.tscn" id="6_qmv3n"]
+[ext_resource type="Texture2D" uid="uid://camujexa7mw5p" path="res://Assets/MenuAssets/MenuIcons.png" id="7_3qx1d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eqm8s"]
 atlas = ExtResource("2_m5byk")
 region = Rect2(0, 0, 32, 32)
 margin = Rect2(0, -5, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1npu3"]
+atlas = ExtResource("7_3qx1d")
+region = Rect2(16, 80, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5s3qg"]
+atlas = ExtResource("7_3qx1d")
+region = Rect2(15.0207, 47.2098, 50.2963, 17.6432)
 
 [node name="Loadout" type="Control"]
 layout_mode = 3
@@ -97,7 +106,7 @@ color = Color(0.635294, 0.45098, 0.101961, 1)
 
 [node name="GCRight" type="GridContainer" parent="MainBackground/GC/MarginContainer"]
 layout_mode = 2
-theme_override_constants/v_separation = 100
+theme_override_constants/v_separation = 83
 
 [node name="MCMod1" type="MarginContainer" parent="MainBackground/GC/MarginContainer/GCRight"]
 layout_mode = 2
@@ -109,22 +118,34 @@ theme_override_constants/margin_bottom = 25
 [node name="Modifier1" type="TextureButton" parent="MainBackground/GC/MarginContainer/GCRight/MCMod1"]
 unique_name_in_owner = true
 show_behind_parent = true
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(149, 149)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource("3_ut23p")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="EquipedMod1" type="TextureRect" parent="MainBackground/GC/MarginContainer/GCRight/MCMod1/Modifier1"]
-unique_name_in_owner = true
-texture_filter = 1
+[node name="MC" type="MarginContainer" parent="MainBackground/GC/MarginContainer/GCRight/MCMod1/Modifier1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = -10
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+theme_override_constants/margin_bottom = -10
+
+[node name="EquipedMod1" type="TextureRect" parent="MainBackground/GC/MarginContainer/GCRight/MCMod1/Modifier1/MC"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
@@ -139,23 +160,34 @@ theme_override_constants/margin_bottom = 25
 [node name="Modifier2" type="TextureButton" parent="MainBackground/GC/MarginContainer/GCRight/MCMod2"]
 unique_name_in_owner = true
 show_behind_parent = true
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(149, 149)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource("3_ut23p")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="EquipedMod2" type="TextureRect" parent="MainBackground/GC/MarginContainer/GCRight/MCMod2/Modifier2"]
-unique_name_in_owner = true
-texture_filter = 1
-custom_minimum_size = Vector2(128, 128)
+[node name="MC" type="MarginContainer" parent="MainBackground/GC/MarginContainer/GCRight/MCMod2/Modifier2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = -5
+theme_override_constants/margin_top = -5
+theme_override_constants/margin_right = -5
+theme_override_constants/margin_bottom = -5
+
+[node name="EquipedMod2" type="TextureRect" parent="MainBackground/GC/MarginContainer/GCRight/MCMod2/Modifier2/MC"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
@@ -170,25 +202,33 @@ theme_override_constants/margin_bottom = 25
 [node name="WeaponSlot1" type="TextureButton" parent="MainBackground/GC/MarginContainer/GCRight/MCWep"]
 unique_name_in_owner = true
 show_behind_parent = true
-custom_minimum_size = Vector2(176, 176)
+custom_minimum_size = Vector2(185, 185)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("3_ut23p")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="EquipedWeapon" type="TextureRect" parent="MainBackground/GC/MarginContainer/GCRight/MCWep/WeaponSlot1"]
-unique_name_in_owner = true
-texture_filter = 1
+[node name="MarginContainer" type="MarginContainer" parent="MainBackground/GC/MarginContainer/GCRight/MCWep/WeaponSlot1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 11.0
-offset_right = -10.0
-offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = -6
+theme_override_constants/margin_top = -6
+theme_override_constants/margin_right = -6
+theme_override_constants/margin_bottom = -6
+
+[node name="EquipedWeapon" type="TextureRect" parent="MainBackground/GC/MarginContainer/GCRight/MCWep/WeaponSlot1/MarginContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
@@ -246,7 +286,8 @@ offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="ExitBtn" type="Button" parent="."]
+[node name="ExitBtn" type="TextureButton" parent="."]
+texture_filter = 1
 custom_minimum_size = Vector2(350, 150)
 layout_mode = 1
 anchors_preset = 2
@@ -257,14 +298,12 @@ offset_right = 350.0
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0.701961, 0.572549, 0.247059, 1)
-theme_override_colors/font_hover_color = Color(0.933333, 0.792157, 0, 1)
-theme_override_constants/outline_size = 30
-theme_override_font_sizes/font_size = 95
-text = "EXIT"
+texture_normal = SubResource("AtlasTexture_1npu3")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="PlayBtn" type="Button" parent="."]
+[node name="PlayBtn" type="TextureButton" parent="."]
+texture_filter = 1
 custom_minimum_size = Vector2(350, 150)
 layout_mode = 1
 anchors_preset = 3
@@ -278,12 +317,8 @@ grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0.701961, 0.572549, 0.247059, 1)
-theme_override_colors/font_hover_color = Color(0.933333, 0.792157, 0, 1)
-theme_override_constants/outline_size = 30
-theme_override_font_sizes/font_size = 95
-text = "PLAY"
+texture_normal = SubResource("AtlasTexture_5s3qg")
+stretch_mode = 0
 
 [connection signal="pressed" from="MainBackground/GC/MarginContainer/GCRight/MCMod1/Modifier1" to="." method="_on_modifier_1_pressed"]
 [connection signal="pressed" from="MainBackground/GC/MarginContainer/GCRight/MCMod2/Modifier2" to="." method="_on_modifier_2_pressed"]

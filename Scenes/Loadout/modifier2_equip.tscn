@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bml0u73hmsfx2"]
+[gd_scene load_steps=6 format=3 uid="uid://bml0u73hmsfx2"]
 
 [ext_resource type="Script" path="res://Scenes/Loadout/modifier2_equip.gd" id="1_afsre"]
 [ext_resource type="Theme" uid="uid://dy6705h5bwoor" path="res://Scenes/Loadout/icon_panel_theme.tres" id="2_o4nq1"]
 [ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="3_vg3kn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_551et"]
+atlas = ExtResource("3_vg3kn")
+region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g7l26"]
 atlas = ExtResource("3_vg3kn")
@@ -95,7 +99,7 @@ show_behind_parent = true
 texture_filter = 1
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture = SubResource("AtlasTexture_g7l26")
+texture = SubResource("AtlasTexture_551et")
 expand_mode = 1
 stretch_mode = 5
 

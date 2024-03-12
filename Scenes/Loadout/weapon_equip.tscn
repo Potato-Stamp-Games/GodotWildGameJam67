@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnephrsd5mmc6"]
+[gd_scene load_steps=8 format=3 uid="uid://dnephrsd5mmc6"]
 
 [ext_resource type="Theme" uid="uid://dy6705h5bwoor" path="res://Scenes/Loadout/icon_panel_theme.tres" id="1_rajqd"]
 [ext_resource type="Script" path="res://Scenes/Loadout/weapon_equip.gd" id="1_w2dgh"]
-[ext_resource type="Texture2D" uid="uid://d2qt040mfo17a" path="res://icon.svg" id="3_4jqra"]
 [ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="3_xmq8h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lsnjw"]
@@ -11,7 +10,15 @@ region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mbni2"]
 atlas = ExtResource("3_xmq8h")
-region = Rect2(96, 0, 32, 32)
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkdk3"]
+atlas = ExtResource("3_xmq8h")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svuro"]
+atlas = ExtResource("3_xmq8h")
+region = Rect2(32, 32, 32, 32)
 
 [node name="WeaponEquip" type="MarginContainer"]
 custom_minimum_size = Vector2(625, 55)
@@ -323,9 +330,10 @@ theme_override_constants/margin_bottom = 6
 
 [node name="TapeMeasureIcon" type="TextureRect" parent="ScrollContainer/GCMain/TapeMeasure/MCWeapon/MCWeapon/GCWeapon/MCWeaponIcon/MCBorder"]
 show_behind_parent = true
+texture_filter = 1
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture = ExtResource("3_4jqra")
+texture = SubResource("AtlasTexture_nkdk3")
 expand_mode = 1
 stretch_mode = 5
 
@@ -433,9 +441,10 @@ theme_override_constants/margin_bottom = 6
 
 [node name="6PackIcon" type="TextureRect" parent="ScrollContainer/GCMain/SixPack/MCWeapon/MCWeapon/GCWeapon/MCWeaponIcon/MCBorder"]
 show_behind_parent = true
+texture_filter = 1
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture = ExtResource("3_4jqra")
+texture = SubResource("AtlasTexture_svuro")
 expand_mode = 1
 stretch_mode = 5
 

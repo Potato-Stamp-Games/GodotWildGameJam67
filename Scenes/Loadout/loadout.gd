@@ -83,41 +83,41 @@ func _process(_delta):
 		weaponAtlas.region = Rect2(0, 0, 32, 32)
 		%EquipedWeapon.texture = weaponAtlas
 	elif Global.crowbarEquiped == true:
-		weaponAtlas.region = Rect2(96, 0, 32, 32)
+		weaponAtlas.region = Rect2(32, 64, 32, 32)
 		%EquipedWeapon.texture = weaponAtlas
 	elif Global.tapeMeasureEquiped == true:
-		weaponAtlas.region = Rect2(32, 0, 32, 32)
+		weaponAtlas.region = Rect2(32, 32, 32, 32)
 		%EquipedWeapon.texture = weaponAtlas
 	elif Global.sixPackEquiped == true:
-		weaponAtlas.region = Rect2(32, 0, 32, 32)
+		weaponAtlas.region = Rect2(32, 32, 32, 32)
 		%EquipedWeapon.texture = weaponAtlas
 	else:
 		weaponAtlas.region = Rect2(0, 0, 0, 0)
 		%EquipedWeapon.texture = weaponAtlas
 		
 	if Global.poisonEquiped == true:
-		modifier1Atlas.region = Rect2(32, 0, 32, 32)
+		modifier1Atlas.region = Rect2(32, 32, 32, 32)
 		%EquipedMod1.texture = modifier1Atlas
 	elif Global.iceEquiped == true:
-		modifier1Atlas.region = Rect2(26, 0, 32, 32)
+		modifier1Atlas.region = Rect2(32, 32, 32, 32)
 		%EquipedMod1.texture = modifier1Atlas
 	elif Global.fireEquiped == true:
-		modifier1Atlas.region = Rect2(18, 0, 32, 32)
+		modifier1Atlas.region = Rect2(32, 32, 32, 32)
 		%EquipedMod1.texture = modifier1Atlas
 	if are_elements_unequiped() == true:
-		modifier1Atlas.region = Rect2(0, 0, 0, 0)
+		modifier1Atlas.region = Rect2(32, 32, 32, 32)
 		%EquipedMod1.texture = modifier1Atlas
 	
 	if Global.speedEquiped == true:
-		modifier2Atlas.region = Rect2(32, 0, 32, 32)
+		modifier2Atlas.region = Rect2(0, 64, 32, 32)
 		%EquipedMod2.texture = modifier2Atlas
 	elif Global.damageEquiped == true:
-		modifier2Atlas.region = Rect2(22, 0, 32, 32)
+		modifier2Atlas.region = Rect2(32, 32, 32, 32)
 		%EquipedMod2.texture = modifier2Atlas
 	elif Global.attackSEquiped == true:
-		modifier2Atlas.region = Rect2(10, 0, 32, 32)
+		modifier2Atlas.region = Rect2(32, 32, 32, 32)
 		%EquipedMod2.texture = modifier2Atlas
 	if are_modifiers2_unequiped() == true:
-		modifier2Atlas.region = Rect2(0, 0, 0, 0)
+		modifier2Atlas.region = Rect2(32, 32, 32, 32)
 		%EquipedMod2.texture = modifier2Atlas
 
