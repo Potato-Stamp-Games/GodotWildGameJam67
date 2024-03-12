@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://dy6705h5bwoor" path="res://Scenes/Loadout/icon_panel_theme.tres" id="1_rajqd"]
 [ext_resource type="Script" path="res://Scenes/Loadout/weapon_equip.gd" id="1_w2dgh"]
-[ext_resource type="Texture2D" uid="uid://d2qt040mfo17a" path="res://PlaceholderSprites/icon.svg" id="3_4jqra"]
+[ext_resource type="Texture2D" uid="uid://d2qt040mfo17a" path="res://icon.svg" id="3_4jqra"]
 [ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="3_xmq8h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lsnjw"]
@@ -23,7 +23,7 @@ anchor_bottom = 0.5
 offset_left = -312.0
 offset_top = -27.0
 offset_right = 313.0
-offset_bottom = 847.0
+offset_bottom = 912.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -39,10 +39,14 @@ layout_mode = 2
 color = Color(0, 0.121569, 0.156863, 1)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="GCMain" type="GridContainer" parent="ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
 
 [node name="Nailgun" type="MarginContainer" parent="ScrollContainer/GCMain"]
 layout_mode = 2
@@ -95,6 +99,7 @@ theme_override_constants/margin_bottom = 6
 [node name="NailGunIcon" type="TextureRect" parent="ScrollContainer/GCMain/Nailgun/MCWeapon/MCWeapon/GCWeapon/MCWeaponIcon/MCBorder"]
 unique_name_in_owner = true
 show_behind_parent = true
+texture_filter = 1
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = SubResource("AtlasTexture_lsnjw")
@@ -147,8 +152,10 @@ text = "EQUIP"
 [node name="WeaponDesc1" type="Label" parent="ScrollContainer/GCMain/Nailgun/MCWeapon/MCWeapon/GCWeapon/GC"]
 custom_minimum_size = Vector2(410, 0)
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 21
 text = "Shoots a spread of penatrating nails
 Damage: 3
 Accuracy: 80 degrees
@@ -205,6 +212,7 @@ theme_override_constants/margin_bottom = 6
 [node name="CrowbarIcon" type="TextureRect" parent="ScrollContainer/GCMain/Crowbar/MCWeapon/MCWeapon/GCWeapon/MCWeaponIcon/MCBorder"]
 unique_name_in_owner = true
 show_behind_parent = true
+texture_filter = 1
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = SubResource("AtlasTexture_mbni2")
@@ -256,8 +264,10 @@ text = "EQUIP"
 [node name="WeaponDesc1" type="Label" parent="ScrollContainer/GCMain/Crowbar/MCWeapon/MCWeapon/GCWeapon/GC"]
 custom_minimum_size = Vector2(410, 0)
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 18
 text = "Swings 60 degrees in front of you
 Damage: 10
 Size: 60 degrees
@@ -364,8 +374,10 @@ text = "EQUIP"
 [node name="WeaponDesc1" type="Label" parent="ScrollContainer/GCMain/TapeMeasure/MCWeapon/MCWeapon/GCWeapon/GC"]
 custom_minimum_size = Vector2(410, 0)
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 18
 text = "Lashes out in front of you in an arching motion
 Damage increase with each succesful hit
 Damage: 3 (+2 per hit)
@@ -472,8 +484,10 @@ text = "EQUIP"
 [node name="WeaponDesc1" type="Label" parent="ScrollContainer/GCMain/SixPack/MCWeapon/MCWeapon/GCWeapon/GC"]
 custom_minimum_size = Vector2(410, 0)
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 18
 text = "Throw an explosive 6-pack
 Slow parasites caught in the explosion
 Damage: 7

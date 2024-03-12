@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b324o1kpjcxge"
-path="res://.godot/imported/PlaceholderSprite2.png-761bfc87dd62b692210e11a03ff8f026.ctex"
+uid="uid://2umjv7csq7np"
+path="res://.godot/imported/PAWISITELOGOLARGE.png-5b60e6850e0cb6ee8c8f053430b624aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PlaceholderSprites/PlaceholderSprite2.png"
-dest_files=["res://.godot/imported/PlaceholderSprite2.png-761bfc87dd62b692210e11a03ff8f026.ctex"]
+source_file="res://Scenes/MainMenu/PAWISITELOGOLARGE.png"
+dest_files=["res://.godot/imported/PAWISITELOGOLARGE.png-5b60e6850e0cb6ee8c8f053430b624aa.ctex"]
 
 [params]
 
