@@ -1,13 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://cs0bcmdwjjmdb"]
+[gd_scene load_steps=29 format=3 uid="uid://cs0bcmdwjjmdb"]
 
 [ext_resource type="Script" path="res://Scenes/Loadout/loadout.gd" id="1_svrqx"]
 [ext_resource type="PackedScene" uid="uid://dnephrsd5mmc6" path="res://Scenes/Loadout/weapon_equip.tscn" id="2_8nhnf"]
+[ext_resource type="Texture2D" uid="uid://cpahuhcpy6wtb" path="res://Assets/Tiles/garage.png" id="2_yvoi8"]
 [ext_resource type="Texture2D" uid="uid://d3b0a318730dg" path="res://Scenes/Loadout/LoadoutOnlySprites/EmptySlotSprite.png" id="3_ut23p"]
 [ext_resource type="Texture2D" uid="uid://b02d6ywrnvb63" path="res://Assets/PlayerSpriteSheets/NoSuit/PlayerNoSuitForwardWalk.png" id="3_v36r4"]
 [ext_resource type="PackedScene" uid="uid://bccr4q46k41d3" path="res://Scenes/Loadout/modifier_equip.tscn" id="5_fmppv"]
 [ext_resource type="PackedScene" uid="uid://bml0u73hmsfx2" path="res://Scenes/Loadout/modifier2_equip.tscn" id="6_qmv3n"]
 [ext_resource type="Texture2D" uid="uid://camujexa7mw5p" path="res://Assets/MenuAssets/MenuIcons.png" id="7_3qx1d"]
 [ext_resource type="Texture2D" uid="uid://bx5nj7i348k3p" path="res://Assets/Tiles/Pickuptileset.png" id="8_s5plg"]
+[ext_resource type="PackedScene" uid="uid://cmeq1lvudan1s" path="res://PlayerNoSuit/playerNoSuit.tscn" id="10_ire7r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c8roa"]
 atlas = ExtResource("7_3qx1d")
@@ -20,6 +22,18 @@ region = Rect2(146, 83, 34, 14)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ay0sg"]
 atlas = ExtResource("3_v36r4")
 region = Rect2(70, 8, 20, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xblr0"]
+size = Vector2(324, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pys7p"]
+size = Vector2(327, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejjeh"]
+size = Vector2(536.681, 208.253)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bgjg8"]
+size = Vector2(499.407, 26.8757)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sv7hn"]
 atlas = ExtResource("7_3qx1d")
@@ -82,6 +96,14 @@ _data = {
 "rotate-loop": SubResource("Animation_4i3jp")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjnig"]
+atlas = ExtResource("7_3qx1d")
+region = Rect2(80, 80, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2do6w"]
+atlas = ExtResource("7_3qx1d")
+region = Rect2(80, 96, 48, 16)
+
 [node name="Loadout" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -91,7 +113,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_svrqx")
 
-[node name="MainBackground" type="ColorRect" parent="."]
+[node name="MainBackground" type="TextureRect" parent="."]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,9 +123,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-color = Color(0.0117647, 0.109804, 0.188235, 1)
+texture = ExtResource("2_yvoi8")
 
 [node name="DriversLicense" type="TextureRect" parent="MainBackground"]
+visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(256, 128)
 layout_mode = 0
@@ -262,6 +286,43 @@ mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
 
+[node name="StaticPerspective" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="Player" parent="StaticPerspective" instance=ExtResource("10_ire7r")]
+position = Vector2(226, 256)
+
+[node name="Workbench" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Workbench"]
+position = Vector2(1017, 608)
+shape = SubResource("RectangleShape2D_xblr0")
+
+[node name="WorkToolbench" type="Area2D" parent="Workbench"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Workbench/WorkToolbench"]
+position = Vector2(1016.5, 694)
+shape = SubResource("RectangleShape2D_pys7p")
+
+[node name="ResearchTable" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ResearchTable"]
+position = Vector2(1564.98, 808.865)
+rotation = 0.959931
+shape = SubResource("RectangleShape2D_ejjeh")
+
+[node name="WorkResearchTable" type="Area2D" parent="ResearchTable"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ResearchTable/WorkResearchTable"]
+position = Vector2(1458.47, 864.97)
+rotation = 0.959931
+shape = SubResource("RectangleShape2D_bgjg8")
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+polygon = PackedVector2Array(-1, 1080, 35, 981, 336, 587, 570, 587, 570, 645, 646, 661, 732, 644, 852, 643, 852, 526, 1193, 532, 1178, 674, 1328, 646, 1506, 526, 1817, 988, 1625, 1091, 1599, 1129, 73, 1129, -8, 1078, -8, 1266, 1829, 1247, 2007, 1020, 1985, -27, -56, -27, -36, 1018)
+
 [node name="WeaponEquip" type="ColorRect" parent="."]
 unique_name_in_owner = true
 visible = false
@@ -359,6 +420,7 @@ texture_hover = SubResource("AtlasTexture_5s3qg")
 stretch_mode = 0
 
 [node name="ResearchBtn" type="TextureButton" parent="."]
+visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 1
@@ -367,9 +429,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -150.0
-offset_bottom = -22.0
+offset_left = 525.0
+offset_top = -356.0
+offset_right = 653.0
+offset_bottom = -228.0
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = SubResource("AtlasTexture_e1m32")
@@ -395,11 +458,30 @@ libraries = {
 }
 speed_scale = 2.0
 
+[node name="SettingsBtn" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 304.0
+offset_top = -150.0
+offset_right = 560.0
+offset_bottom = -22.0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_sjnig")
+texture_pressed = SubResource("AtlasTexture_2do6w")
+texture_hover = SubResource("AtlasTexture_2do6w")
+stretch_mode = 0
+
 [connection signal="pressed" from="MainBackground/DriversLicense/GC/InvSlots/Modifier1" to="." method="_on_modifier_1_pressed"]
 [connection signal="pressed" from="MainBackground/DriversLicense/GC/InvSlots/Modifier2" to="." method="_on_modifier_2_pressed"]
 [connection signal="pressed" from="MainBackground/DriversLicense/GC/InvSlots/WeaponSlot1" to="." method="_on_weapon_equiped_pressed"]
+[connection signal="body_shape_entered" from="Workbench/WorkToolbench" to="." method="_on_work_toolbench_body_shape_entered"]
+[connection signal="body_shape_exited" from="Workbench/WorkToolbench" to="." method="_on_work_toolbench_body_shape_exited"]
+[connection signal="body_shape_entered" from="ResearchTable/WorkResearchTable" to="." method="_on_work_research_table_body_shape_entered"]
+[connection signal="body_shape_exited" from="ResearchTable/WorkResearchTable" to="." method="_on_work_research_table_body_shape_exited"]
 [connection signal="pressed" from="ExitBtn" to="." method="_on_exit_btn_pressed"]
 [connection signal="pressed" from="PlayBtn" to="." method="_on_play_btn_pressed"]
-[connection signal="mouse_entered" from="ResearchBtn" to="." method="_on_research_btn_mouse_entered"]
-[connection signal="mouse_exited" from="ResearchBtn" to="." method="_on_research_btn_mouse_exited"]
 [connection signal="pressed" from="ResearchBtn" to="." method="_on_research_btn_pressed"]
+[connection signal="pressed" from="SettingsBtn" to="." method="_on_settings_btn_pressed"]

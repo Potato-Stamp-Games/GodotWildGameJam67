@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddqf26n40s8ar"]
+
+[ext_resource type="Texture2D" uid="uid://camujexa7mw5p" path="res://Assets/MenuAssets/MenuIcons.png" id="1_6oamd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0aee"]
+atlas = ExtResource("1_6oamd")
+region = Rect2(145, 145, 78, 47)
+filter_clip = true
+
+[node name="OptionsMenu" type="ScrollContainer"]
+offset_left = 45.0
+offset_top = 7.0
+offset_right = 823.0
+offset_bottom = 650.0
+
+[node name="C" type="Control" parent="."]
+custom_minimum_size = Vector2(400, 600)
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="C"]
+texture_filter = 1
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_p0aee")
+region_rect = Rect2(0, 0, 78, 47)
+patch_margin_left = 3
+patch_margin_top = 4
+patch_margin_right = 2
+patch_margin_bottom = 4
+
+[node name="GC" type="GridContainer" parent="C/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

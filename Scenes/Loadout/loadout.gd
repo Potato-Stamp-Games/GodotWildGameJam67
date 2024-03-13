@@ -76,12 +76,27 @@ func _on_play_btn_pressed():
 	get_tree().change_scene_to_file("res://world.tscn")
 func _on_research_btn_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Loadout/research.tscn")
+
+func _on_settings_btn_pressed():
+	pass # Replace with function body.
+
+func _on_work_toolbench_body_shape_entered(_body_rid, _body, _body_shape_index, _local_shape_index):
+	$MainBackground/DriversLicense.show()
+func _on_work_toolbench_body_shape_exited(_body_rid, body, _body_shape_index, _local_shape_index):
+	$MainBackground/DriversLicense.hide()
+	%WeaponEquip.hide()
+	%ModEquip1.hide()
+	%ModEquip2.hide()
+
 var rsHover = false
-func _on_research_btn_mouse_entered():
+func _on_work_research_table_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	rsHover = true
-func _on_research_btn_mouse_exited():
+	$ResearchBtn.show()
+func _on_work_research_table_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
+	$ResearchBtn.hide()
 	%RsAnimate.stop()
 	rsHover = false
+
 
 
 func _process(_delta):
@@ -130,5 +145,10 @@ func _process(_delta):
 	if are_modifiers2_unequiped() == true:
 		modifier2Atlas.region = Rect2(0, 0, 0, 0)
 		%EquipedMod2.texture = modifier2Atlas
+
+
+
+
+
 
 
