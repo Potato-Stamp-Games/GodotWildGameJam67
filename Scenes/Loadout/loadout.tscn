@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cs0bcmdwjjmdb"]
+[gd_scene load_steps=16 format=3 uid="uid://cs0bcmdwjjmdb"]
 
 [ext_resource type="Script" path="res://Scenes/Loadout/loadout.gd" id="1_svrqx"]
 [ext_resource type="PackedScene" uid="uid://dnephrsd5mmc6" path="res://Scenes/Loadout/weapon_equip.tscn" id="2_8nhnf"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bccr4q46k41d3" path="res://Scenes/Loadout/modifier_equip.tscn" id="5_fmppv"]
 [ext_resource type="PackedScene" uid="uid://bml0u73hmsfx2" path="res://Scenes/Loadout/modifier2_equip.tscn" id="6_qmv3n"]
 [ext_resource type="Texture2D" uid="uid://camujexa7mw5p" path="res://Assets/MenuAssets/MenuIcons.png" id="7_3qx1d"]
+[ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="8_xtcqv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c8roa"]
 atlas = ExtResource("7_3qx1d")
@@ -16,13 +17,25 @@ region = Rect2(144, 16, 80, 48)
 atlas = ExtResource("3_v36r4")
 region = Rect2(70, 8, 20, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sv7hn"]
+atlas = ExtResource("7_3qx1d")
+region = Rect2(16, 80, 48, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1npu3"]
 atlas = ExtResource("7_3qx1d")
 region = Rect2(16, 96, 48, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne7aa"]
+atlas = ExtResource("7_3qx1d")
+region = Rect2(16, 48, 48, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_5s3qg"]
 atlas = ExtResource("7_3qx1d")
 region = Rect2(16, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1m32"]
+atlas = ExtResource("8_xtcqv")
+region = Rect2(32, 0, 32, 32)
 
 [node name="Loadout" type="Control"]
 layout_mode = 3
@@ -44,7 +57,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.0117647, 0.109804, 0.188235, 1)
 
-[node name="TextureRect" type="TextureRect" parent="MainBackground"]
+[node name="DriversLicense" type="TextureRect" parent="MainBackground"]
 texture_filter = 1
 custom_minimum_size = Vector2(256, 128)
 layout_mode = 0
@@ -56,7 +69,7 @@ scale = Vector2(5, 5)
 texture = SubResource("AtlasTexture_c8roa")
 expand_mode = 1
 
-[node name="Lbl" type="Label" parent="MainBackground/TextureRect"]
+[node name="Lbl" type="Label" parent="MainBackground/DriversLicense"]
 layout_mode = 1
 offset_left = 120.0
 offset_top = 10.0
@@ -70,12 +83,12 @@ theme_override_font_sizes/font_size = 70
 text = "DRIVER'S LICENSE
 "
 
-[node name="Label" type="Label" parent="MainBackground/TextureRect"]
+[node name="Label" type="Label" parent="MainBackground/DriversLicense"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="GC" type="GridContainer" parent="MainBackground/TextureRect"]
+[node name="GC" type="GridContainer" parent="MainBackground/DriversLicense"]
 layout_mode = 0
 offset_top = 3.0
 offset_right = 258.0
@@ -83,11 +96,11 @@ offset_bottom = 125.0
 theme_override_constants/h_separation = 0
 columns = 2
 
-[node name="Portrait" type="GridContainer" parent="MainBackground/TextureRect/GC"]
+[node name="Portrait" type="GridContainer" parent="MainBackground/DriversLicense/GC"]
 custom_minimum_size = Vector2(112, 126)
 layout_mode = 2
 
-[node name="PlayerIcon" type="TextureRect" parent="MainBackground/TextureRect/GC/Portrait"]
+[node name="PlayerIcon" type="TextureRect" parent="MainBackground/DriversLicense/GC/Portrait"]
 texture_filter = 1
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
@@ -97,14 +110,14 @@ texture = SubResource("AtlasTexture_ay0sg")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="InvSlots" type="GridContainer" parent="MainBackground/TextureRect/GC"]
+[node name="InvSlots" type="GridContainer" parent="MainBackground/DriversLicense/GC"]
 custom_minimum_size = Vector2(50, 58)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 columns = 3
 
-[node name="Modifier1" type="TextureButton" parent="MainBackground/TextureRect/GC/InvSlots"]
+[node name="Modifier1" type="TextureButton" parent="MainBackground/DriversLicense/GC/InvSlots"]
 unique_name_in_owner = true
 show_behind_parent = true
 custom_minimum_size = Vector2(48, 48)
@@ -116,7 +129,7 @@ texture_normal = ExtResource("3_ut23p")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="MC" type="MarginContainer" parent="MainBackground/TextureRect/GC/InvSlots/Modifier1"]
+[node name="MC" type="MarginContainer" parent="MainBackground/DriversLicense/GC/InvSlots/Modifier1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -128,7 +141,7 @@ theme_override_constants/margin_top = -10
 theme_override_constants/margin_right = -10
 theme_override_constants/margin_bottom = -10
 
-[node name="EquipedMod1" type="TextureRect" parent="MainBackground/TextureRect/GC/InvSlots/Modifier1/MC"]
+[node name="EquipedMod1" type="TextureRect" parent="MainBackground/DriversLicense/GC/InvSlots/Modifier1/MC"]
 unique_name_in_owner = true
 texture_filter = 1
 custom_minimum_size = Vector2(48, 48)
@@ -139,7 +152,7 @@ mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Modifier2" type="TextureButton" parent="MainBackground/TextureRect/GC/InvSlots"]
+[node name="Modifier2" type="TextureButton" parent="MainBackground/DriversLicense/GC/InvSlots"]
 unique_name_in_owner = true
 show_behind_parent = true
 custom_minimum_size = Vector2(48, 48)
@@ -151,7 +164,7 @@ texture_normal = ExtResource("3_ut23p")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="MC" type="MarginContainer" parent="MainBackground/TextureRect/GC/InvSlots/Modifier2"]
+[node name="MC" type="MarginContainer" parent="MainBackground/DriversLicense/GC/InvSlots/Modifier2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -163,7 +176,7 @@ theme_override_constants/margin_top = -5
 theme_override_constants/margin_right = -5
 theme_override_constants/margin_bottom = -5
 
-[node name="EquipedMod2" type="TextureRect" parent="MainBackground/TextureRect/GC/InvSlots/Modifier2/MC"]
+[node name="EquipedMod2" type="TextureRect" parent="MainBackground/DriversLicense/GC/InvSlots/Modifier2/MC"]
 unique_name_in_owner = true
 texture_filter = 1
 custom_minimum_size = Vector2(48, 48)
@@ -174,7 +187,7 @@ mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="WeaponSlot1" type="TextureButton" parent="MainBackground/TextureRect/GC/InvSlots"]
+[node name="WeaponSlot1" type="TextureButton" parent="MainBackground/DriversLicense/GC/InvSlots"]
 unique_name_in_owner = true
 show_behind_parent = true
 custom_minimum_size = Vector2(48, 48)
@@ -185,7 +198,7 @@ texture_normal = ExtResource("3_ut23p")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="MainBackground/TextureRect/GC/InvSlots/WeaponSlot1"]
+[node name="MarginContainer" type="MarginContainer" parent="MainBackground/DriversLicense/GC/InvSlots/WeaponSlot1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -197,7 +210,7 @@ theme_override_constants/margin_top = -6
 theme_override_constants/margin_right = -6
 theme_override_constants/margin_bottom = -6
 
-[node name="EquipedWeapon" type="TextureRect" parent="MainBackground/TextureRect/GC/InvSlots/WeaponSlot1/MarginContainer"]
+[node name="EquipedWeapon" type="TextureRect" parent="MainBackground/DriversLicense/GC/InvSlots/WeaponSlot1/MarginContainer"]
 unique_name_in_owner = true
 texture_filter = 1
 custom_minimum_size = Vector2(48, 48)
@@ -269,13 +282,14 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
+offset_left = 16.0
 offset_top = -150.0
-offset_right = 256.0
+offset_right = 272.0
 offset_bottom = -22.0
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = SubResource("AtlasTexture_1npu3")
+texture_normal = SubResource("AtlasTexture_sv7hn")
 texture_pressed = SubResource("AtlasTexture_1npu3")
 texture_hover = SubResource("AtlasTexture_1npu3")
 ignore_texture_size = true
@@ -290,19 +304,40 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -128.0
+offset_left = -272.0
+offset_top = -150.0
+offset_right = -16.0
+offset_bottom = -22.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = SubResource("AtlasTexture_5s3qg")
+texture_normal = SubResource("AtlasTexture_ne7aa")
 texture_pressed = SubResource("AtlasTexture_5s3qg")
 texture_hover = SubResource("AtlasTexture_5s3qg")
 stretch_mode = 0
 
-[connection signal="pressed" from="MainBackground/TextureRect/GC/InvSlots/Modifier1" to="." method="_on_modifier_1_pressed"]
-[connection signal="pressed" from="MainBackground/TextureRect/GC/InvSlots/Modifier2" to="." method="_on_modifier_2_pressed"]
-[connection signal="pressed" from="MainBackground/TextureRect/GC/InvSlots/WeaponSlot1" to="." method="_on_weapon_equiped_pressed"]
+[node name="ResearchBtn" type="TextureButton" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_e1m32")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="MainBackground/DriversLicense/GC/InvSlots/Modifier1" to="." method="_on_modifier_1_pressed"]
+[connection signal="pressed" from="MainBackground/DriversLicense/GC/InvSlots/Modifier2" to="." method="_on_modifier_2_pressed"]
+[connection signal="pressed" from="MainBackground/DriversLicense/GC/InvSlots/WeaponSlot1" to="." method="_on_weapon_equiped_pressed"]
 [connection signal="pressed" from="ExitBtn" to="." method="_on_exit_btn_pressed"]
 [connection signal="pressed" from="PlayBtn" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="ResearchBtn" to="." method="_on_research_btn_pressed"]

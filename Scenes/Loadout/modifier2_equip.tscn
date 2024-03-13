@@ -68,7 +68,7 @@ theme_override_constants/margin_bottom = 6
 [node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/Speed/MCMod"]
 show_behind_parent = true
 layout_mode = 2
-color = Color(0.713726, 0.713726, 0.713726, 1)
+color = Color(0.647059, 0.756863, 0.811765, 1)
 
 [node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Speed/MCMod"]
 layout_mode = 2
@@ -133,7 +133,7 @@ size_flags_horizontal = 4
 [node name="ModName" type="Label" parent="ScrollContainer/GCMain/Speed/MCMod/MCMod/GCMod/GC"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.67451, 0.345098, 0, 1)
+theme_override_colors/font_outline_color = Color(0.666667, 0.737255, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
 text = "SPEED MODIFCATION"
@@ -178,7 +178,7 @@ theme_override_constants/margin_bottom = 6
 [node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/Damage/MCMod"]
 show_behind_parent = true
 layout_mode = 2
-color = Color(0.713726, 0.713726, 0.713726, 1)
+color = Color(0.647059, 0.756863, 0.811765, 1)
 
 [node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/Damage/MCMod"]
 layout_mode = 2
@@ -242,7 +242,7 @@ size_flags_horizontal = 4
 [node name="ModName" type="Label" parent="ScrollContainer/GCMain/Damage/MCMod/MCMod/GCMod/GC"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.67451, 0.345098, 0, 1)
+theme_override_colors/font_outline_color = Color(0.733333, 0.282353, 0.121569, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
 text = "DAMAGE MODIFCATION"
@@ -287,7 +287,7 @@ theme_override_constants/margin_bottom = 6
 [node name="Background" type="ColorRect" parent="ScrollContainer/GCMain/AttackSpeed/MCMod"]
 show_behind_parent = true
 layout_mode = 2
-color = Color(0.713726, 0.713726, 0.713726, 1)
+color = Color(0.647059, 0.756863, 0.811765, 1)
 
 [node name="MCMod" type="MarginContainer" parent="ScrollContainer/GCMain/AttackSpeed/MCMod"]
 layout_mode = 2
@@ -351,7 +351,7 @@ size_flags_horizontal = 4
 [node name="ModName" type="Label" parent="ScrollContainer/GCMain/AttackSpeed/MCMod/MCMod/GCMod/GC"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.67451, 0.345098, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0.568627, 0.219608, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
 text = "ATTACK SPEED MODIFCATION"
