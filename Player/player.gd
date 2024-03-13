@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 var movement_speed = 100
+var hp = 100
+
 @onready var sprite_2d = $Sprite2D
 
 func _ready():
@@ -26,3 +28,10 @@ func movement():
 		sprite_2d.play("walk_left")
 	if Input.is_action_just_pressed("right"):
 		sprite_2d.play("walk_right")
+
+
+func _on_hurt_box_hurt(damage):
+	hp -= damage
+	print(hp)
+	if hp <= 0:
+		queue_free()

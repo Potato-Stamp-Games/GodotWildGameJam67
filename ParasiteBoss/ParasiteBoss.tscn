@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dl1a65o5s0fbf"]
 
-[ext_resource type="Script" path="res://enemy.gd" id="1_e3fml"]
+[ext_resource type="Script" path="res://ParasiteBoss/ParasiteBoss.gd" id="1_e3fml"]
 [ext_resource type="Texture2D" uid="uid://4hp8btacn2ds" path="res://Assets/Parasite Sprites/BossBasicParasite.png" id="3_ykrjf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_52ckc"]
@@ -43,7 +43,7 @@ animations = [{
 radius = 9.0
 height = 18.0
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Parasite Boss" type="CharacterBody2D"]
 scale = Vector2(5, 5)
 script = ExtResource("1_e3fml")
 
