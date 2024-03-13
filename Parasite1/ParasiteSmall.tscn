@@ -125,14 +125,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n71jj"]
-radius = 9.0
-height = 18.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_arph3"]
+radius = 6.2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qjvc"]
+size = Vector2(18, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uadra"]
-size = Vector2(15.4, 14.8)
+size = Vector2(16, 15.6)
 
 [node name="Parasite Small" type="CharacterBody2D"]
 scale = Vector2(5, 5)
@@ -145,13 +145,15 @@ sprite_frames = SubResource("SpriteFrames_mgd2a")
 animation = &"new_animation"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_n71jj")
+shape = SubResource("CircleShape2D_arph3")
 
 [node name="HurtBox" parent="." instance=ExtResource("3_xs2rr")]
 collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(-4.76837e-07, -4.76837e-07)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_3qjvc")
 
 [node name="HitBox" parent="." instance=ExtResource("4_6q3dn")]
@@ -159,8 +161,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
-visible = false
-position = Vector2(-0.300001, -0.4)
+position = Vector2(-0.200001, -0.2)
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_uadra")
 

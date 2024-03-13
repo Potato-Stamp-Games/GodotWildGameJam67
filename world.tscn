@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dniqxjqxuyaok"]
+[gd_scene load_steps=4 format=3 uid="uid://dniqxjqxuyaok"]
 
 [ext_resource type="Texture2D" uid="uid://c75op2lcw4r0w" path="res://Assets/icon.svg" id="1_dhvqp"]
 [ext_resource type="PackedScene" uid="uid://oh0r45b5v51f" path="res://Player/playerWithSuit.tscn" id="2_nkocm"]
 [ext_resource type="PackedScene" uid="uid://djymsywqdo47t" path="res://Parasite1/ParasiteSmall.tscn" id="3_2j8fq"]
-[ext_resource type="PackedScene" uid="uid://dl1a65o5s0fbf" path="res://ParasiteBoss/ParasiteBoss.tscn" id="4_4kh5x"]
 
 [node name="World" type="Node2D"]
 
@@ -19,6 +18,3 @@ position = Vector2(144, 157)
 
 [node name="Small Parasite" parent="." instance=ExtResource("3_2j8fq")]
 position = Vector2(517, 141)
-
-[node name="Boss Parasite" parent="." instance=ExtResource("4_4kh5x")]
-position = Vector2(413, -58)
