@@ -1,6 +1,6 @@
 extends Control
 var weaponPressed = false
-var atTexture: Texture = load("res://Assets/Pickup Sprites/Pickuptileset.png")
+var atTexture: Texture = load("res://Assets/Tiles/Pickuptileset.png")
 var weaponAtlas: AtlasTexture
 var modifier1Atlas: AtlasTexture
 var modifier2Atlas: AtlasTexture
@@ -76,47 +76,59 @@ func _on_play_btn_pressed():
 	get_tree().change_scene_to_file("res://world.tscn")
 func _on_research_btn_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Loadout/research.tscn")
+var rsHover = false
+func _on_research_btn_mouse_entered():
+	rsHover = true
+func _on_research_btn_mouse_exited():
+	%RsAnimate.stop()
+	rsHover = false
+
 
 func _process(_delta):
+	#Animation
+	if rsHover == true:
+		%RsAnimate.play("rotate-loop")
 	#WEAPONS
 	if Global.nailgunEquiped == true:
 		weaponAtlas.region = Rect2(0, 0, 32, 32)
 		%EquipedWeapon.texture = weaponAtlas
 	elif Global.crowbarEquiped == true:
-		weaponAtlas.region = Rect2(32, 64, 32, 32)
+		weaponAtlas.region = Rect2(32, 32, 32, 32)
 		%EquipedWeapon.texture = weaponAtlas
 	elif Global.tapeMeasureEquiped == true:
-		weaponAtlas.region = Rect2(32, 32, 32, 32)
+		weaponAtlas.region = Rect2(64, 32, 32, 32)
 		%EquipedWeapon.texture = weaponAtlas
 	elif Global.sixPackEquiped == true:
-		weaponAtlas.region = Rect2(32, 32, 32, 32)
+		weaponAtlas.region = Rect2(0, 64, 32, 32)
 		%EquipedWeapon.texture = weaponAtlas
 	else:
 		weaponAtlas.region = Rect2(0, 0, 0, 0)
 		%EquipedWeapon.texture = weaponAtlas
 		
 	if Global.poisonEquiped == true:
-		modifier1Atlas.region = Rect2(32, 32, 32, 32)
+		modifier1Atlas.region = Rect2(96, 96, 32, 32)
 		%EquipedMod1.texture = modifier1Atlas
 	elif Global.iceEquiped == true:
-		modifier1Atlas.region = Rect2(32, 32, 32, 32)
+		modifier1Atlas.region = Rect2(32, 96, 32, 32)
 		%EquipedMod1.texture = modifier1Atlas
 	elif Global.fireEquiped == true:
-		modifier1Atlas.region = Rect2(32, 32, 32, 32)
+		modifier1Atlas.region = Rect2(64, 96, 32, 32)
 		%EquipedMod1.texture = modifier1Atlas
 	if are_elements_unequiped() == true:
 		modifier1Atlas.region = Rect2(0, 0, 0, 0)
 		%EquipedMod1.texture = modifier1Atlas
 	
 	if Global.speedEquiped == true:
-		modifier2Atlas.region = Rect2(0, 64, 32, 32)
-		%EquipedMod2.texture = modifier2Atlas
-	elif Global.damageEquiped == true:
 		modifier2Atlas.region = Rect2(0, 32, 32, 32)
 		%EquipedMod2.texture = modifier2Atlas
+	elif Global.damageEquiped == true:
+		modifier2Atlas.region = Rect2(64, 0, 32, 32)
+		%EquipedMod2.texture = modifier2Atlas
 	elif Global.attackSEquiped == true:
-		modifier2Atlas.region = Rect2(32, 32, 32, 32)
+		modifier2Atlas.region = Rect2(96, 0, 32, 32)
 		%EquipedMod2.texture = modifier2Atlas
 	if are_modifiers2_unequiped() == true:
 		modifier2Atlas.region = Rect2(0, 0, 0, 0)
 		%EquipedMod2.texture = modifier2Atlas
+
+
