@@ -33,7 +33,7 @@ func _on_weapon_equiped_pressed():
 		%WeaponEquip.show()
 		%ModEquip2.hide()
 		%ModEquip1.hide()
-		%WeaponSlot1.self_modulate = "f8b400"
+		%WeaponSlot1.self_modulate = "001bc7"
 		weaponPressed = true
 	else :
 		%WeaponEquip.hide()
@@ -48,7 +48,7 @@ func _on_modifier_1_pressed():
 		%ModEquip1.show()
 		%ModEquip2.hide()
 		%WeaponEquip.hide()
-		%Modifier1.self_modulate = "f8b400"
+		%Modifier1.self_modulate = "001bc7"
 		Global.mod1Pressed = true
 	else:
 		%ModEquip2.hide()
@@ -61,7 +61,7 @@ func _on_modifier_2_pressed():
 		%ModEquip2.show()
 		%ModEquip1.hide()
 		%WeaponEquip.hide()
-		%Modifier2.self_modulate = "f8b400"
+		%Modifier2.self_modulate = "001bc7"
 		Global.mod2Pressed = true
 	else:
 		%ModEquip2.hide()
@@ -69,13 +69,13 @@ func _on_modifier_2_pressed():
 		%WeaponEquip.hide()
 		Global.mod2Pressed = false
 
-
+#SCENE BUTTONS
 func _on_exit_btn_pressed():
 	get_tree().quit()
-
-
 func _on_play_btn_pressed():
 	get_tree().change_scene_to_file("res://world.tscn")
+func _on_research_btn_pressed():
+	get_tree().change_scene_to_file("res://Scenes/Loadout/research.tscn")
 
 func _process(_delta):
 	#WEAPONS
@@ -120,4 +120,3 @@ func _process(_delta):
 	if are_modifiers2_unequiped() == true:
 		modifier2Atlas.region = Rect2(0, 0, 0, 0)
 		%EquipedMod2.texture = modifier2Atlas
-
