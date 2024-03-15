@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cs0bcmdwjjmdb"]
+[gd_scene load_steps=30 format=3 uid="uid://cs0bcmdwjjmdb"]
 
 [ext_resource type="Script" path="res://Scenes/Loadout/loadout.gd" id="1_svrqx"]
 [ext_resource type="PackedScene" uid="uid://dnephrsd5mmc6" path="res://Scenes/Loadout/weapon_equip.tscn" id="2_8nhnf"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://camujexa7mw5p" path="res://Assets/MenuAssets/MenuIcons.png" id="7_3qx1d"]
 [ext_resource type="Texture2D" uid="uid://bx5nj7i348k3p" path="res://Assets/Tiles/Pickuptileset.png" id="8_s5plg"]
 [ext_resource type="PackedScene" uid="uid://cmeq1lvudan1s" path="res://PlayerNoSuit/playerNoSuit.tscn" id="10_ire7r"]
+[ext_resource type="PackedScene" uid="uid://ddqf26n40s8ar" path="res://Scenes/OptionsMenu/options_menu.tscn" id="11_fus4k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c8roa"]
 atlas = ExtResource("7_3qx1d")
@@ -290,7 +291,7 @@ stretch_mode = 5
 position = Vector2(960, 540)
 
 [node name="Player" parent="StaticPerspective" instance=ExtResource("10_ire7r")]
-position = Vector2(226, 256)
+position = Vector2(376, 257)
 
 [node name="Workbench" type="StaticBody2D" parent="."]
 
@@ -469,10 +470,19 @@ offset_top = -150.0
 offset_right = 560.0
 offset_bottom = -22.0
 grow_vertical = 0
+toggle_mode = true
 texture_normal = SubResource("AtlasTexture_sjnig")
 texture_pressed = SubResource("AtlasTexture_2do6w")
 texture_hover = SubResource("AtlasTexture_2do6w")
 stretch_mode = 0
+
+[node name="OptionsMenu" parent="." instance=ExtResource("11_fus4k")]
+visible = false
+layout_mode = 0
+offset_left = 155.0
+offset_top = 422.0
+offset_right = 764.0
+offset_bottom = 879.0
 
 [connection signal="pressed" from="MainBackground/DriversLicense/GC/InvSlots/Modifier1" to="." method="_on_modifier_1_pressed"]
 [connection signal="pressed" from="MainBackground/DriversLicense/GC/InvSlots/Modifier2" to="." method="_on_modifier_2_pressed"]
@@ -484,4 +494,4 @@ stretch_mode = 0
 [connection signal="pressed" from="ExitBtn" to="." method="_on_exit_btn_pressed"]
 [connection signal="pressed" from="PlayBtn" to="." method="_on_play_btn_pressed"]
 [connection signal="pressed" from="ResearchBtn" to="." method="_on_research_btn_pressed"]
-[connection signal="pressed" from="SettingsBtn" to="." method="_on_settings_btn_pressed"]
+[connection signal="toggled" from="SettingsBtn" to="." method="_on_settings_btn_toggled"]
