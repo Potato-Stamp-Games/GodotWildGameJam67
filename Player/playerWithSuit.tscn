@@ -1,11 +1,105 @@
-[gd_scene load_steps=27 format=3 uid="uid://oh0r45b5v51f"]
+[gd_scene load_steps=28 format=3 uid="uid://oh0r45b5v51f"]
 
-[ext_resource type="Script" path="res://Player/player.gd" id="1_74pu6"]
 [ext_resource type="Texture2D" uid="uid://dnp6v66udp7u8" path="res://Assets/PlayerSpriteSheets/SuitedUp/PlayerForwardWalk.png" id="2_hjixo"]
 [ext_resource type="Texture2D" uid="uid://gg0e6xjqv4s1" path="res://Assets/PlayerSpriteSheets/SuitedUp/PlayerBackWalk.png" id="3_xyq4p"]
 [ext_resource type="Texture2D" uid="uid://bfnq7wwtsxf1o" path="res://Assets/PlayerSpriteSheets/SuitedUp/PlayerSideWalkL.png" id="4_t6ct7"]
 [ext_resource type="Texture2D" uid="uid://bsaqx4t3bsool" path="res://Assets/PlayerSpriteSheets/SuitedUp/PlayerSideWalkR.png" id="5_nc2ns"]
 [ext_resource type="PackedScene" uid="uid://c3k2xk7dpb4k4" path="res://Utility/hurt_box.tscn" id="6_ve0gq"]
+
+[sub_resource type="GDScript" id="GDScript_rvoww"]
+script/source = "extends CharacterBody2D
+
+var movement_speed = 100
+var hp = 100
+
+#Attacks
+var nailGun = preload(\"res://Attack/nail_shot.tscn\")
+
+#Attack Nodes
+@onready var nailGunTimer = get_node(\"%NailGunTimer\")
+@onready var nailGunAttackTimer = get_node(\"%NailGunAttackTimer\")
+
+#Nail Gun
+var nailgun_ammo = 0
+var nailgun_baseammo = 1
+var nailgun_attackspeed = 1.5
+var nailgun_level = 1
+
+#Enemy Related 
+var enemy_close = []
+
+@onready var sprite_2d = $Sprite2D
+
+func _ready():
+	attack()
+	sprite_2d.play(\"default\")
+
+func _physics_process(delta):
+	movement()
+	
+
+func attack():
+	if nailgun_level > 0:
+		nailGunTimer.wait_time = nailgun_attackspeed
+		if nailGunTimer.is_stopped():
+			nailGunTimer.start()
+
+func movement():
+	var x_mov = Input.get_action_strength(\"right\") - Input.get_action_strength(\"left\")
+	var y_mov = Input.get_action_raw_strength(\"down\") - Input.get_action_raw_strength(\"up\")
+	var mov = Vector2(x_mov, y_mov)
+	velocity = mov.normalized()*movement_speed
+	move_and_slide()
+	
+	if Input.is_action_just_pressed(\"up\"):
+		sprite_2d.play(\"walk_backward\")
+	if Input.is_action_just_pressed(\"down\"):
+		sprite_2d.play(\"walk_forward\")
+	if Input.is_action_just_pressed(\"left\"):
+		sprite_2d.play(\"walk_left\")
+	if Input.is_action_just_pressed(\"right\"):
+		sprite_2d.play(\"walk_right\")
+
+
+func _on_hurt_box_hurt(damage):
+	hp -= damage
+	print(hp)
+
+
+func _on_nail_gun_timer_timeout():
+	nailgun_ammo += nailgun_baseammo
+	nailGunAttackTimer.start()
+
+
+func _on_nail_gun_attack_timer_timeout():
+	if nailgun_ammo > 0:
+		var nailgun_attack = nailGun.instantiate()
+		nailgun_attack.position = position
+		nailgun_attack.target = get_random_target()
+		nailgun_attack.level = nailgun_level
+		add_child(nailgun_attack)
+		nailgun_ammo -= 1
+		if nailgun_ammo > 0:
+			nailGunAttackTimer.start()
+		else:
+			nailGunAttackTimer.stop
+
+func get_random_target():
+	if enemy_close.size() > 0:
+		return enemy_close.pick_random().global_position
+	else:
+		return Vector2.UP
+
+
+func _on_enemy_detection_area_body_entered(body):
+	if not enemy_close.has(body):
+		enemy_close.append(body)
+
+
+func _on_enemy_detection_area_body_exited(body):
+	if enemy_close.has(body):
+		enemy_close.erase(body)
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7kvnt"]
 atlas = ExtResource("2_hjixo")
@@ -161,9 +255,12 @@ height = 34.7294
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvhgm"]
 size = Vector2(12, 22.4)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0gsac"]
+radius = 225.328
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(5, 5)
-script = ExtResource("1_74pu6")
+script = SubResource("GDScript_rvoww")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -184,6 +281,29 @@ collision_mask = 2
 position = Vector2(-9.53674e-08, 5.2)
 shape = SubResource("RectangleShape2D_wvhgm")
 
+[node name="Attack" type="Node2D" parent="."]
+
+[node name="NailGunTimer" type="Timer" parent="Attack"]
+unique_name_in_owner = true
+wait_time = 1.5
+
+[node name="NailGunAttackTimer" type="Timer" parent="Attack/NailGunTimer"]
+unique_name_in_owner = true
+wait_time = 0.075
+
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+position = Vector2(0, 5.2)
+shape = SubResource("CircleShape2D_0gsac")
+
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+[connection signal="timeout" from="Attack/NailGunTimer" to="." method="_on_nail_gun_timer_timeout"]
+[connection signal="timeout" from="Attack/NailGunTimer/NailGunAttackTimer" to="." method="_on_nail_gun_attack_timer_timeout"]
+[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
+[connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
 
 [editable path="HurtBox"]
