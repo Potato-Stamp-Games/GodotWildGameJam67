@@ -7,3 +7,10 @@ func _on_play_btn_pressed():
 
 func _on_exit_btn_pressed():
 	get_tree().quit()
+
+
+func _on_option_s_btn_toggled(toggled_on):
+	if toggled_on == true:
+		$OptionsMenu.show()
+	elif toggled_on == false:
+		$OptionsMenu.hide()
