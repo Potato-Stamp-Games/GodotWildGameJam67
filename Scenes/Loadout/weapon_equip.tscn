@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://dy6705h5bwoor" path="res://Scenes/Loadout/icon_panel_theme.tres" id="1_rajqd"]
 [ext_resource type="Script" path="res://Scenes/Loadout/weapon_equip.gd" id="1_w2dgh"]
 [ext_resource type="Texture2D" uid="uid://camujexa7mw5p" path="res://Assets/MenuAssets/MenuIcons.png" id="2_08f02"]
-[ext_resource type="Texture2D" uid="uid://bx5nj7i348k3p" path="res://Assets/Tiles/Pickuptileset.png" id="4_odyl3"]
+[ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="4_odyl3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xij2h"]
 atlas = ExtResource("2_08f02")

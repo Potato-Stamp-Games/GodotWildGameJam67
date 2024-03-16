@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Loadout/modifier_equip.gd" id="1_gxuqv"]
 [ext_resource type="Theme" uid="uid://dy6705h5bwoor" path="res://Scenes/Loadout/icon_panel_theme.tres" id="1_ppd80"]
-[ext_resource type="Texture2D" uid="uid://bx5nj7i348k3p" path="res://Assets/Tiles/Pickuptileset.png" id="3_lupaq"]
+[ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="3_lupaq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g7l26"]
 atlas = ExtResource("3_lupaq")
