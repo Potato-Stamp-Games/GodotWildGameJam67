@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjuirkar8r2xj"]
+
+[ext_resource type="Script" path="res://BeerCan.gd" id="1_3ua3r"]
+[ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="2_nxdu4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqwx8"]
+atlas = ExtResource("2_nxdu4")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6154d"]
+size = Vector2(9, 11)
+
+[node name="BeerCan" type="Area2D" groups=["attack"]]
+top_level = true
+scale = Vector2(5, 5)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_3ua3r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("AtlasTexture_tqwx8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 2.5)
+shape = SubResource("RectangleShape2D_6154d")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

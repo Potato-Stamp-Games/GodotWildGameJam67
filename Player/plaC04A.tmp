@@ -10,45 +10,29 @@
 script/source = "extends CharacterBody2D
 
 var movement_speed = 100
-var last_movement = Vector2.UP
 var hp = 100
 
 #Attacks
 var nailGun = preload(\"res://Attack/nail_shot.tscn\")
 var SixPack = preload(\"res://Attack/beer_can.tscn\")
-var measuringTape = preload(\"res://Attack/measuring_tape.tscn\")
 
 #Attack Nodes
 @onready var nailGunTimer = get_node(\"%NailGunTimer\")
 @onready var nailGunAttackTimer = get_node(\"%NailGunAttackTimer\")
 @onready var SixPackTimer = get_node(\"%SixPackTimer\")
 @onready var SixPackAttackTimer = get_node(\"%SixPackAttackTimer\")
-@onready var measuringTapeBase = get_node(\"%MeasuringTapeBase\")
 
-#UPGRADES
-var collected_upgrades = []
-var upgrade_options = []
-var armor = 0
-var speed = 0
-var spell_cooldown = 0
-var spell_size = 0
-var additional_attacks = 0
+#Six Pack
+var sixpack_ammo = 0
+var sixpack_baseammo = 1
+var sixpack_attackspeed = 1.5
+var sixpack_level = 1
 
 #Nail Gun
 var nailgun_ammo = 0
 var nailgun_baseammo = 1
 var nailgun_attackspeed = 1.5
 var nailgun_level = 0
-
-#Six Pack
-var sixpack_ammo = 0
-var sixpack_baseammo = 1
-var sixpack_attackspeed = 1.5
-var sixpack_level = 0
-
-#Measuring Tape
-var measuringtape_ammo = 1
-var measuringtape_level = 1
 
 #Enemy Related 
 var enemy_close = []
@@ -72,18 +56,14 @@ func attack():
 		SixPackTimer.wait_time = sixpack_attackspeed
 		if SixPackTimer.is_stopped():
 			SixPackTimer.start()
-	if measuringtape_level > 0:
-		spawn_measuringTape()
 
 func movement():
 	var x_mov = Input.get_action_strength(\"right\") - Input.get_action_strength(\"left\")
 	var y_mov = Input.get_action_raw_strength(\"down\") - Input.get_action_raw_strength(\"up\")
 	var mov = Vector2(x_mov, y_mov)
+	velocity = mov.normalized()*movement_speed
+	move_and_slide()
 	
-	
-	if mov != Vector2.ZERO:
-		last_movement = mov
-
 	if Input.is_action_just_pressed(\"up\"):
 		sprite_2d.play(\"walk_backward\")
 	if Input.is_action_just_pressed(\"down\"):
@@ -92,23 +72,7 @@ func movement():
 		sprite_2d.play(\"walk_left\")
 	if Input.is_action_just_pressed(\"right\"):
 		sprite_2d.play(\"walk_right\")
-	
-	velocity = mov.normalized()*movement_speed
-	move_and_slide()
 
-func spawn_measuringTape():
-	var get_measuringTape_total = measuringTapeBase.get_child_count()
-	var calc_spawns = (measuringtape_ammo + additional_attacks) - get_measuringTape_total
-	while calc_spawns > 0:
-		var measuringTape_spawn = measuringTape.instantiate()
-		measuringTape_spawn.global_position = global_position
-		measuringTapeBase.add_child(measuringTape_spawn)
-		calc_spawns -= 1
-	#Upgrade Measuring Tape
-	var get_measuringTapes = measuringTapeBase.get_children()
-	for i in get_measuringTapes:
-		if i.has_method(\"update_measuringTape\"):
-			i.update_measuringTape()
 
 func _on_hurt_box_hurt(damage):
 	hp -= damage
@@ -142,7 +106,7 @@ func _on_pack_attack_timer_timeout():
 	if sixpack_ammo > 0:
 		var sixpack_attack = SixPack.instantiate()
 		sixpack_attack.position = position
-		sixpack_attack.last_movement = last_movement
+		sixpack_attack.target = get_random_target()
 		sixpack_attack.level = sixpack_level
 		add_child(sixpack_attack)
 		sixpack_ammo -= 1
@@ -161,6 +125,7 @@ func get_random_target():
 func _on_enemy_detection_area_body_entered(body):
 	if not enemy_close.has(body):
 		enemy_close.append(body)
+
 
 func _on_enemy_detection_area_body_exited(body):
 	if enemy_close.has(body):
@@ -362,9 +327,6 @@ unique_name_in_owner = true
 wait_time = 3.0
 
 [node name="SixPackAttackTimer" type="Timer" parent="Attack/SixPackTimer"]
-unique_name_in_owner = true
-
-[node name="MeasuringTapeBase" type="Node2D" parent="Attack"]
 unique_name_in_owner = true
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
