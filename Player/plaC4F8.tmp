@@ -62,11 +62,9 @@ func movement():
 	var x_mov = Input.get_action_strength(\"right\") - Input.get_action_strength(\"left\")
 	var y_mov = Input.get_action_raw_strength(\"down\") - Input.get_action_raw_strength(\"up\")
 	var mov = Vector2(x_mov, y_mov)
+	velocity = mov.normalized()*movement_speed
+	move_and_slide()
 	
-	
-	if mov != Vector2.ZERO:
-		last_movement = mov
-
 	if Input.is_action_just_pressed(\"up\"):
 		sprite_2d.play(\"walk_backward\")
 	if Input.is_action_just_pressed(\"down\"):
@@ -75,9 +73,7 @@ func movement():
 		sprite_2d.play(\"walk_left\")
 	if Input.is_action_just_pressed(\"right\"):
 		sprite_2d.play(\"walk_right\")
-	
-	velocity = mov.normalized()*movement_speed
-	move_and_slide()
+
 
 func _on_hurt_box_hurt(damage):
 	hp -= damage
