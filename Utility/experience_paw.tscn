@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c08xr7i7iqk85"]
+
+[ext_resource type="Script" path="res://Utility/experience_paw.gd" id="1_hd87b"]
+[ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="1_s8wxb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_320pu"]
+atlas = ExtResource("1_s8wxb")
+region = Rect2(160, 0, 32, 32)
+
+[node name="ExperiencePaw" type="Area2D" groups=["loot"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_hd87b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(5, 5)
+texture = SubResource("AtlasTexture_320pu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
