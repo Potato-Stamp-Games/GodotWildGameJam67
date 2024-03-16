@@ -42,7 +42,7 @@ var additional_attacks = 0
 var nailgun_ammo = 0
 var nailgun_baseammo = 1
 var nailgun_attackspeed = 1.5
-var nailgun_level = 0
+var nailgun_level = 1
 
 #Six Pack
 var sixpack_ammo = 0
@@ -52,7 +52,7 @@ var sixpack_level = 0
 
 #Measuring Tape
 var measuringtape_ammo = 1
-var measuringtape_level = 1
+var measuringtape_level = 0
 
 #Enemy Related 
 var enemy_close = []

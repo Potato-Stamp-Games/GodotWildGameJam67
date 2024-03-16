@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bccr4q46k41d3" path="res://Scenes/Loadout/modifier_equip.tscn" id="5_fmppv"]
 [ext_resource type="PackedScene" uid="uid://bml0u73hmsfx2" path="res://Scenes/Loadout/modifier2_equip.tscn" id="6_qmv3n"]
 [ext_resource type="Texture2D" uid="uid://camujexa7mw5p" path="res://Assets/MenuAssets/MenuIcons.png" id="7_3qx1d"]
-[ext_resource type="Texture2D" uid="uid://bx5nj7i348k3p" path="res://Assets/Tiles/Pickuptileset.png" id="8_s5plg"]
+[ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="8_s5plg"]
 [ext_resource type="PackedScene" uid="uid://cmeq1lvudan1s" path="res://PlayerNoSuit/playerNoSuit.tscn" id="10_ire7r"]
 [ext_resource type="PackedScene" uid="uid://ddqf26n40s8ar" path="res://Scenes/OptionsMenu/options_menu.tscn" id="11_fus4k"]
 
