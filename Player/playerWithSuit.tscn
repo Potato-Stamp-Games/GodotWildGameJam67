@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://oh0r45b5v51f"]
+[gd_scene load_steps=29 format=3 uid="uid://oh0r45b5v51f"]
 
 [ext_resource type="Texture2D" uid="uid://dnp6v66udp7u8" path="res://Assets/PlayerSpriteSheets/SuitedUp/PlayerForwardWalk.png" id="2_hjixo"]
 [ext_resource type="Texture2D" uid="uid://gg0e6xjqv4s1" path="res://Assets/PlayerSpriteSheets/SuitedUp/PlayerBackWalk.png" id="3_xyq4p"]
@@ -12,6 +12,10 @@ script/source = "extends CharacterBody2D
 var movement_speed = 100
 var last_movement = Vector2.UP
 var hp = 100
+
+var experience = 0
+var experience_level = 1
+var collected_experience = 0
 
 #Attacks
 var nailGun = preload(\"res://Attack/nail_shot.tscn\")
@@ -165,6 +169,39 @@ func _on_enemy_detection_area_body_entered(body):
 func _on_enemy_detection_area_body_exited(body):
 	if enemy_close.has(body):
 		enemy_close.erase(body)
+
+func _on_grab_area_area_entered(area):
+	if area.is_in_group(\"loot\"):
+		area.target = self
+
+func _on_collect_area_area_entered(area):
+	if area.is_in_group(\"loot\"):
+		var gem_exp = area.collect()
+		calculate_experience(gem_exp)
+
+func calculate_experience(gem_exp):
+	var exp_required = calculate_experiencecap()
+	collected_experience += gem_exp
+	if experience + collected_experience >= exp_required: #level up
+		collected_experience -= exp_required-experience
+		experience_level += 1
+		experience = 0
+		exp_required = calculate_experiencecap()
+	else:
+		experience += collected_experience
+		collected_experience = 0
+
+func calculate_experiencecap():
+	var exp_cap = experience_level
+	if experience_level < 20:
+		exp_cap = experience_level*5
+	elif experience_level < 40:
+		exp_cap + 95 * (experience_level-19)*8
+	else:
+		exp_cap = 255 + (experience_level-39)*12
+		
+	return exp_cap
+		
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7kvnt"]
@@ -324,6 +361,9 @@ size = Vector2(12, 22.4)
 [sub_resource type="CircleShape2D" id="CircleShape2D_0gsac"]
 radius = 225.328
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ktkhn"]
+radius = 3.82099
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(5, 5)
 script = SubResource("GDScript_rvoww")
@@ -368,6 +408,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 4
 monitorable = false
@@ -376,6 +417,23 @@ monitorable = false
 position = Vector2(0, 5.2)
 shape = SubResource("CircleShape2D_0gsac")
 
+[node name="GrabArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+visible = false
+position = Vector2(0.2, 6.2)
+shape = SubResource("CircleShape2D_ktkhn")
+
+[node name="CollectArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
+position = Vector2(0.2, 6.2)
+shape = SubResource("CircleShape2D_ktkhn")
+
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="Attack/NailGunTimer" to="." method="_on_nail_gun_timer_timeout"]
 [connection signal="timeout" from="Attack/NailGunTimer/NailGunAttackTimer" to="." method="_on_nail_gun_attack_timer_timeout"]
@@ -383,5 +441,7 @@ shape = SubResource("CircleShape2D_0gsac")
 [connection signal="timeout" from="Attack/SixPackTimer/SixPackAttackTimer" to="." method="_on_pack_attack_timer_timeout"]
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
 [connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
+[connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
+[connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
 
 [editable path="HurtBox"]

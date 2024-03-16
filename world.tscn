@@ -28,3 +28,5 @@ position = Vector2(144, 157)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_l5dft")]
 spawns = Array[ExtResource("5_mpwjk")]([SubResource("Resource_jtsox")])
+
+[node name="Loot" type="Node2D" parent="." groups=["loot"]]
