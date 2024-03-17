@@ -859,6 +859,7 @@ theme = SubResource("Theme_m1jd2")
 
 [node name="LoadoutButton" type="TextureButton" parent="CanvasLayer/GUI/VictoryPanel"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 96.0
 offset_top = 416.0
 offset_right = 144.0
@@ -871,6 +872,7 @@ texture_hover = SubResource("AtlasTexture_yg7my")
 
 [node name="QuitButton" type="TextureButton" parent="CanvasLayer/GUI/VictoryPanel"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 352.0
 offset_top = 416.0
 offset_right = 400.0
