@@ -16,3 +16,6 @@ var attackSEquiped = false
 #Modifier slot
 var mod1Pressed = false
 var mod2Pressed = false
+#Research Dictonary
+var rsPoints = 999
+var rsDict = {"rsSpeed": 0, "rsDamage": 0, "rsAtkSpeed": 0, "rsPoison": false, "rsIce": false, "rsFire": false}
