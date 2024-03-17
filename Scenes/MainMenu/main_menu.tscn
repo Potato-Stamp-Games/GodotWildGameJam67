@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://bh812ic52oj0a"]
+[gd_scene load_steps=14 format=3 uid="uid://bh812ic52oj0a"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu/main_menu.gd" id="1_74j5r"]
 [ext_resource type="Texture2D" uid="uid://2umjv7csq7np" path="res://Scenes/MainMenu/PAWISITELOGOLARGE.png" id="2_xubuu"]
-[ext_resource type="Texture2D" uid="uid://ujuyk7vdsagi" path="res://Assets/Parasite Sprites/LittleParasite.png" id="3_ohn7r"]
 [ext_resource type="Texture2D" uid="uid://camujexa7mw5p" path="res://Assets/MenuAssets/MenuIcons.png" id="3_tsnvq"]
 [ext_resource type="PackedScene" uid="uid://ddqf26n40s8ar" path="res://Scenes/OptionsMenu/options_menu.tscn" id="5_dqwp2"]
 
@@ -85,11 +84,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_aoyvw")
 position = Vector2(705, 287)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("2_xubuu")
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/BackgroundGradient"]
-texture = ExtResource("3_ohn7r")
-hframes = 16
-frame = 1
 
 [node name="Padding" type="VBoxContainer" parent="Background/BackgroundGradient"]
 layout_mode = 1
