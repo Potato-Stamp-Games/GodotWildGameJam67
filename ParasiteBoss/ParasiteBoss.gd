@@ -37,3 +37,7 @@ func _on_hurt_box_hurt(damage, angle, knockback_amount):
 	if hp <= 0:
 		emit_signal("remove_from_array", self)
 		death()
+
+
+func _on_hurt_box_area_entered(area):
+	pass # Replace with function body.
