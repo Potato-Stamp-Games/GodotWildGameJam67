@@ -160,6 +160,9 @@ offset_top = 609.0
 offset_right = 1029.0
 offset_bottom = 1074.0
 
+[node name="MenuMusic" type="AudioStreamPlayer2D" parent="."]
+bus = &"Music"
+
 [connection signal="pressed" from="Background/BackgroundGradient/Padding/GC/PlayBtn" to="." method="_on_play_btn_pressed"]
 [connection signal="pressed" from="Background/BackgroundGradient/Padding/GC/ExitBtn" to="." method="_on_exit_btn_pressed"]
 [connection signal="toggled" from="Background/BackgroundGradient/Padding/GC/OptionSBtn" to="." method="_on_option_s_btn_toggled"]
