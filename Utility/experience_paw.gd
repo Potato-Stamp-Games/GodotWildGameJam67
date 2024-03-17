@@ -13,7 +13,7 @@ func _physics_process(delta):
 		global_position = global_position.move_toward(target.global_position, speed)
 		speed += 2*delta
 
-func collect():
+func Collect():
 	collision.call_deferred("set","disabled",true)
 	sprite.visible = false
 	return experience

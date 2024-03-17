@@ -9,7 +9,6 @@ var knockback = Vector2.ZERO
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var loot_base = get_tree().get_first_node_in_group("loot")
 
-var exp_paw = preload("res://Utility/experience_paw.tscn")
 var EXPERIENCE_PAW = preload("res://Utility/experience_paw.tscn")
 signal remove_from_array(object)
 

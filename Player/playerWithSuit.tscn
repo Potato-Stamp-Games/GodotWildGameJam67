@@ -1,10 +1,12 @@
-[gd_scene load_steps=29 format=3 uid="uid://oh0r45b5v51f"]
+[gd_scene load_steps=37 format=3 uid="uid://oh0r45b5v51f"]
 
 [ext_resource type="Texture2D" uid="uid://dnp6v66udp7u8" path="res://Assets/PlayerSpriteSheets/SuitedUp/PlayerForwardWalk.png" id="2_hjixo"]
 [ext_resource type="Texture2D" uid="uid://gg0e6xjqv4s1" path="res://Assets/PlayerSpriteSheets/SuitedUp/PlayerBackWalk.png" id="3_xyq4p"]
 [ext_resource type="Texture2D" uid="uid://bfnq7wwtsxf1o" path="res://Assets/PlayerSpriteSheets/SuitedUp/PlayerSideWalkL.png" id="4_t6ct7"]
 [ext_resource type="Texture2D" uid="uid://bsaqx4t3bsool" path="res://Assets/PlayerSpriteSheets/SuitedUp/PlayerSideWalkR.png" id="5_nc2ns"]
+[ext_resource type="Texture2D" uid="uid://camujexa7mw5p" path="res://Assets/MenuAssets/MenuIcons.png" id="6_3h8ln"]
 [ext_resource type="PackedScene" uid="uid://c3k2xk7dpb4k4" path="res://Utility/hurt_box.tscn" id="6_ve0gq"]
+[ext_resource type="FontFile" uid="uid://cyw4xutj5b7ta" path="res://Assets/Fonts/Sixtyfour-Regular.ttf" id="7_tkmx2"]
 
 [sub_resource type="GDScript" id="GDScript_rvoww"]
 script/source = "extends CharacterBody2D
@@ -12,6 +14,7 @@ script/source = "extends CharacterBody2D
 var movement_speed = 100
 var last_movement = Vector2.UP
 var hp = 100
+var maxHp = 100
 
 var experience = 0
 var experience_level = 1
@@ -57,10 +60,16 @@ var measuringtape_level = 0
 #Enemy Related 
 var enemy_close = []
 
+#GUI
+@onready var expBar = get_node(\"%ExperienceBar\")
+@onready var lblLevel = get_node(\"%LevelLabel\")
+@onready var healthBar = get_node(\"%HealthBar\")
+
 @onready var sprite_2d = $Sprite2D
 
 func _ready():
 	attack()
+	set_expbar(experience, calculate_experiencecap())
 	sprite_2d.play(\"default\")
 
 func _physics_process(delta):
@@ -83,7 +92,6 @@ func movement():
 	var x_mov = Input.get_action_strength(\"right\") - Input.get_action_strength(\"left\")
 	var y_mov = Input.get_action_raw_strength(\"down\") - Input.get_action_raw_strength(\"up\")
 	var mov = Vector2(x_mov, y_mov)
-	
 	
 	if mov != Vector2.ZERO:
 		last_movement = mov
@@ -114,15 +122,15 @@ func spawn_measuringTape():
 		if i.has_method(\"update_measuringTape\"):
 			i.update_measuringTape()
 
-func _on_hurt_box_hurt(damage):
+func _on_hurt_box_hurt(damage, _angle, _knockback):
 	hp -= damage
+	healthBar.max_value = maxHp
+	healthBar.value = hp
 	print(hp)
-
 
 func _on_nail_gun_timer_timeout():
 	nailgun_ammo += nailgun_baseammo
 	nailGunAttackTimer.start()
-
 
 func _on_nail_gun_attack_timer_timeout():
 	if nailgun_ammo > 0:
@@ -140,7 +148,6 @@ func _on_nail_gun_attack_timer_timeout():
 func _on_pack_timer_timeout():
 	sixpack_ammo += sixpack_baseammo
 	SixPackAttackTimer.start()
-
 
 func _on_pack_attack_timer_timeout():
 	if sixpack_ammo > 0:
@@ -161,7 +168,6 @@ func get_random_target():
 	else:
 		return Vector2.UP
 
-
 func _on_enemy_detection_area_body_entered(body):
 	if not enemy_close.has(body):
 		enemy_close.append(body)
@@ -176,7 +182,7 @@ func _on_grab_area_area_entered(area):
 
 func _on_collect_area_area_entered(area):
 	if area.is_in_group(\"loot\"):
-		var gem_exp = area.collect()
+		var gem_exp = area.Collect()
 		calculate_experience(gem_exp)
 
 func calculate_experience(gem_exp):
@@ -187,9 +193,12 @@ func calculate_experience(gem_exp):
 		experience_level += 1
 		experience = 0
 		exp_required = calculate_experiencecap()
+		levelup()
 	else:
 		experience += collected_experience
 		collected_experience = 0
+		
+		set_expbar(experience, exp_required)
 
 func calculate_experiencecap():
 	var exp_cap = experience_level
@@ -199,9 +208,14 @@ func calculate_experiencecap():
 		exp_cap + 95 * (experience_level-19)*8
 	else:
 		exp_cap = 255 + (experience_level-39)*12
-		
 	return exp_cap
 		
+func set_expbar(set_value = 1, set_max_value = 100):
+	expBar.value = set_value
+	expBar.max_value = set_max_value
+
+func levelup():
+	lblLevel.text = str(\"Level: \",experience_level)
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7kvnt"]
@@ -361,8 +375,32 @@ size = Vector2(12, 22.4)
 [sub_resource type="CircleShape2D" id="CircleShape2D_0gsac"]
 radius = 225.328
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6n0xu"]
+radius = 50.2004
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ktkhn"]
-radius = 3.82099
+radius = 6.41249
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nitkl"]
+atlas = ExtResource("6_3h8ln")
+region = Rect2(16, 16, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1megd"]
+atlas = ExtResource("6_3h8ln")
+region = Rect2(20, 0, 39, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm5yp"]
+atlas = ExtResource("6_3h8ln")
+region = Rect2(0, 64, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2e4c7"]
+atlas = ExtResource("6_3h8ln")
+region = Rect2(0, 16, 16, 48)
+
+[sub_resource type="LabelSettings" id="LabelSettings_83nsn"]
+line_spacing = 5.0
+font = ExtResource("7_tkmx2")
+font_size = 12
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(5, 5)
@@ -414,6 +452,7 @@ collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+visible = false
 position = Vector2(0, 5.2)
 shape = SubResource("CircleShape2D_0gsac")
 
@@ -424,15 +463,63 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
 visible = false
 position = Vector2(0.2, 6.2)
-shape = SubResource("CircleShape2D_ktkhn")
+shape = SubResource("CircleShape2D_6n0xu")
 
 [node name="CollectArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
-position = Vector2(0.2, 6.2)
+visible = false
+position = Vector2(0.2, 6.4)
 shape = SubResource("CircleShape2D_ktkhn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_right = 1921.0
+offset_bottom = 1080.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer/GUI"]
+unique_name_in_owner = true
+top_level = true
+texture_filter = 1
+layout_mode = 0
+offset_left = 1608.0
+offset_top = 17.0
+offset_right = 1672.0
+offset_bottom = 33.0
+scale = Vector2(5, 5)
+value = 100.0
+texture_under = SubResource("AtlasTexture_nitkl")
+texture_progress = SubResource("AtlasTexture_1megd")
+texture_progress_offset = Vector2(4, 0)
+
+[node name="ExperienceBar" type="TextureProgressBar" parent="CanvasLayer/GUI"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 0
+offset_left = 12.0
+offset_top = 15.0
+offset_right = 28.0
+offset_bottom = 63.0
+scale = Vector2(5, 5)
+fill_mode = 3
+texture_under = SubResource("AtlasTexture_dm5yp")
+texture_progress = SubResource("AtlasTexture_2e4c7")
+
+[node name="LevelLabel" type="Label" parent="CanvasLayer/GUI/ExperienceBar"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 17.0
+offset_top = 4.0
+offset_right = 145.0
+offset_bottom = 17.0
+text = "Level: 0"
+label_settings = SubResource("LabelSettings_83nsn")
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="Attack/NailGunTimer" to="." method="_on_nail_gun_timer_timeout"]
