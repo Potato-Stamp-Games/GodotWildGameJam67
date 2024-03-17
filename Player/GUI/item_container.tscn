@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3bepmf3kqd5d"]
+
+[ext_resource type="Texture2D" uid="uid://camujexa7mw5p" path="res://Assets/MenuAssets/MenuIcons.png" id="1_3xydd"]
+[ext_resource type="Script" path="res://Player/GUI/item_container.gd" id="1_mk04j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxfdt"]
+atlas = ExtResource("1_3xydd")
+region = Rect2(80, 0, 32, 32)
+
+[node name="ItemContainer" type="TextureRect"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+texture = SubResource("AtlasTexture_cxfdt")
+expand_mode = 2
+script = ExtResource("1_mk04j")
+
+[node name="ItemTexture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjuirkar8r2xj"]
 
-[ext_resource type="Script" path="res://BeerCan.gd" id="1_3ua3r"]
+[ext_resource type="Script" path="res://Attack/BeerCan.gd" id="1_rvv3y"]
 [ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="2_nxdu4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tqwx8"]
@@ -15,7 +15,7 @@ top_level = true
 scale = Vector2(5, 5)
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_3ua3r")
+script = ExtResource("1_rvv3y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
