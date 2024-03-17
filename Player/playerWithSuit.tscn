@@ -664,6 +664,7 @@ shape = SubResource("CircleShape2D_ktkhn")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GUI" type="Control" parent="CanvasLayer"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
