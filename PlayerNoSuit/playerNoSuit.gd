@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var movement_speed = 100
+var movement_speed = 200
 @onready var sprite_2d = $Sprite2D
 
 func _ready():
