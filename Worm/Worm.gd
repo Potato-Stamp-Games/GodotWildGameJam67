@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
-@export var movement_speed = 25
-@export var hp = 300
+@export var movement_speed = 65.0
+@export var hp = 40
 @export var knockback_recovery = 3.5
-@export var experience = 50
+@export var experience = 5
 var knockback = Vector2.ZERO
 
 @onready var player = get_tree().get_first_node_in_group("player")

@@ -1,0 +1,107 @@
+[gd_scene load_steps=15 format=3 uid="uid://c31rxvfspm0j1"]
+
+[ext_resource type="Script" path="res://Worm/Worm.gd" id="1_kvcfe"]
+[ext_resource type="Texture2D" uid="uid://dhsol1rdin0p5" path="res://Assets/Parasite Sprites/wormparasite.png" id="2_tcyug"]
+[ext_resource type="PackedScene" uid="uid://c3k2xk7dpb4k4" path="res://Utility/hurt_box.tscn" id="3_n8g3q"]
+[ext_resource type="PackedScene" uid="uid://dqwocph3dxjjr" path="res://Utility/hit_box.tscn" id="4_yosxa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hdlb"]
+atlas = ExtResource("2_tcyug")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sjqy"]
+atlas = ExtResource("2_tcyug")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5cel"]
+atlas = ExtResource("2_tcyug")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hskdp"]
+atlas = ExtResource("2_tcyug")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0kjh"]
+atlas = ExtResource("2_tcyug")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4u6r"]
+atlas = ExtResource("2_tcyug")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lg8sc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hdlb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1sjqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5cel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hskdp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0kjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4u6r")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27is2"]
+size = Vector2(21.8, 5.6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qjvc"]
+size = Vector2(22.6, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uadra"]
+size = Vector2(22.6, 6.4)
+
+[node name="Worm" type="CharacterBody2D"]
+scale = Vector2(5, 5)
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_kvcfe")
+hp = 20
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_lg8sc")
+animation = &"new_animation"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.3, 0.4)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_27is2")
+
+[node name="HurtBox" parent="." instance=ExtResource("3_n8g3q")]
+collision_layer = 4
+collision_mask = 4
+HurtBoxType = 1
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(-0.300001, 0.1)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_3qjvc")
+
+[node name="HitBox" parent="." instance=ExtResource("4_yosxa")]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(-0.0999994, 0.2)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uadra")
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+
+[editable path="HurtBox"]
+[editable path="HitBox"]

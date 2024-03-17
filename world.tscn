@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dniqxjqxuyaok"]
+[gd_scene load_steps=13 format=3 uid="uid://dniqxjqxuyaok"]
 
 [ext_resource type="Texture2D" uid="uid://0odbikdoifgh" path="res://Assets/Tiles/BasicLevel.png" id="1_01i8q"]
 [ext_resource type="PackedScene" uid="uid://oh0r45b5v51f" path="res://Player/playerWithSuit.tscn" id="2_nkocm"]
-[ext_resource type="PackedScene" uid="uid://djymsywqdo47t" path="res://Parasite1/ParasiteSmall.tscn" id="3_2j8fq"]
+[ext_resource type="PackedScene" uid="uid://djymsywqdo47t" path="res://ParasiteSmall/ParasiteSmall.tscn" id="3_2j8fq"]
 [ext_resource type="PackedScene" uid="uid://bd34a3bxs7eb2" path="res://enemy_spawner.tscn" id="3_l5dft"]
 [ext_resource type="Script" path="res://Utility/spawn_info.gd" id="5_mpwjk"]
+[ext_resource type="PackedScene" uid="uid://dl1a65o5s0fbf" path="res://ParasiteBoss/ParasiteBoss.tscn" id="6_hq57u"]
+[ext_resource type="PackedScene" uid="uid://c31rxvfspm0j1" path="res://Worm/Worm.tscn" id="7_asu01"]
 
 [sub_resource type="Resource" id="Resource_jtsox"]
 script = ExtResource("5_mpwjk")
@@ -22,6 +24,30 @@ enemy = ExtResource("3_2j8fq")
 enemy_num = 1
 enemy_spawn_delay = 1
 
+[sub_resource type="Resource" id="Resource_6lab8"]
+script = ExtResource("5_mpwjk")
+time_start = 240
+time_end = 240
+enemy = ExtResource("6_hq57u")
+enemy_num = 1
+enemy_spawn_delay = 0
+
+[sub_resource type="Resource" id="Resource_nenc2"]
+script = ExtResource("5_mpwjk")
+time_start = 400
+time_end = 800
+enemy = ExtResource("3_2j8fq")
+enemy_num = 1
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_fuiuh"]
+script = ExtResource("5_mpwjk")
+time_start = 400
+time_end = 800
+enemy = ExtResource("7_asu01")
+enemy_num = 1
+enemy_spawn_delay = 4
+
 [node name="World" type="Node2D"]
 process_mode = 1
 
@@ -38,6 +64,6 @@ region_rect = Rect2(48, 32, 424, 368)
 position = Vector2(144, 157)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_l5dft")]
-spawns = Array[ExtResource("5_mpwjk")]([SubResource("Resource_jtsox"), SubResource("Resource_d3lbr")])
+spawns = Array[ExtResource("5_mpwjk")]([SubResource("Resource_jtsox"), SubResource("Resource_d3lbr"), SubResource("Resource_6lab8"), SubResource("Resource_nenc2"), SubResource("Resource_fuiuh")])
 
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]

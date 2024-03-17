@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://djymsywqdo47t"]
 
-[ext_resource type="Script" path="res://Parasite1/ParasiteSmall.gd" id="1_l88tc"]
+[ext_resource type="Script" path="res://ParasiteSmall/ParasiteSmall.gd" id="1_l88tc"]
 [ext_resource type="Texture2D" uid="uid://ujuyk7vdsagi" path="res://Assets/Parasite Sprites/LittleParasite.png" id="2_w38h7"]
 [ext_resource type="PackedScene" uid="uid://c3k2xk7dpb4k4" path="res://Utility/hurt_box.tscn" id="3_xs2rr"]
 [ext_resource type="PackedScene" uid="uid://dqwocph3dxjjr" path="res://Utility/hit_box.tscn" id="4_6q3dn"]

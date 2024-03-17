@@ -53,6 +53,7 @@ atlas = ExtResource("3_tsnvq")
 region = Rect2(80, 96, 48, 16)
 
 [node name="MainMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
