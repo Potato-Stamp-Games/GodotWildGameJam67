@@ -299,6 +299,7 @@ func upgrade_character(upgrade):
 			hp += 20
 			hp = clamp(hp,0,maxHp)
 	adjust_gui_collection(upgrade)
+	attack()
 	var option_children = upgradeOptions.get_children()
 	for i in option_children:
 		i.queue_free()
