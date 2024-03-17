@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://oh0r45b5v51f"]
+[gd_scene load_steps=55 format=3 uid="uid://oh0r45b5v51f"]
 
 [ext_resource type="Texture2D" uid="uid://dnp6v66udp7u8" path="res://Assets/PlayerSpriteSheets/SuitedUp/PlayerForwardWalk.png" id="2_hjixo"]
 [ext_resource type="Texture2D" uid="uid://gg0e6xjqv4s1" path="res://Assets/PlayerSpriteSheets/SuitedUp/PlayerBackWalk.png" id="3_xyq4p"]
@@ -9,6 +9,8 @@
 [ext_resource type="LabelSettings" uid="uid://bmsi2qp22dr30" path="res://Player/LabelSetting.tres" id="7_hubis"]
 [ext_resource type="FontFile" uid="uid://cyw4xutj5b7ta" path="res://Assets/Fonts/Sixtyfour-Regular.ttf" id="7_tkmx2"]
 [ext_resource type="Texture2D" uid="uid://bgxs17dup30pl" path="res://Assets/MenuAssets/Failscreen.png" id="8_nah3x"]
+[ext_resource type="Texture2D" uid="uid://57ugovws1u0v" path="res://Assets/MenuAssets/Victoryscreen.png" id="10_88f8b"]
+[ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="10_u3ibj"]
 
 [sub_resource type="GDScript" id="GDScript_rvoww"]
 script/source = "extends CharacterBody2D
@@ -43,6 +45,7 @@ var speed = 0
 var spell_cooldown = 0
 var spell_size = 0
 var additional_attacks = 0
+var collectedResearchPoints = 0
 
 #Nail Gun
 var nailgun_ammo = 0
@@ -71,17 +74,29 @@ var enemy_close = []
 @onready var upgradeOptions = get_node(\"%UpgradeOptions\")
 @onready var itemOptions = preload(\"res://Utility/item_option.tscn\")
 @onready var levelUpPanel = get_node(\"%LevelUpPanel\")
+@onready var victoryPanel = get_node(\"%VictoryPanel\")
 @onready var collectedWeapons = get_node(\"%CollectedWeapons\")
 @onready var collectedUpgrades = get_node(\"%CollectedUpgrades\")
 @onready var itemContainer = preload(\"res://Player/GUI/item_container.tscn\")
 @onready var lblTimer = get_node(\"%lblTimer\")
 @onready var sprite_2d = $Sprite2D
+@onready var rp_label = get_node(\"%RPLabel\")
 
 func _ready():
-	upgrade_character(\"nailgun1\")
+	determineStartingWeapon()
+	rp_label.text = \"0\"
 	attack()
 	set_expbar(experience, calculate_experiencecap())
 	sprite_2d.play(\"default\")
+
+func determineStartingWeapon():
+	if Global.nailgunEquiped == true:
+		upgrade_character(\"nailgun1\")
+	if Global.tapeMeasureEquiped == true:
+		upgrade_character(\"measuringtape1\")
+	if Global.sixPackEquiped == true:
+		upgrade_character(\"sixpack1\")
+		
 
 func _physics_process(delta):
 	movement()
@@ -194,18 +209,27 @@ func _on_grab_area_area_entered(area):
 
 func _on_collect_area_area_entered(area):
 	if area.is_in_group(\"loot\"):
-		var gem_exp = area.Collect()
-		calculate_experience(gem_exp)
+		if area.is_in_group(\"xp\"):
+			var gem_exp = area.Collect()
+			calculate_experience(gem_exp)
+		if area.is_in_group(\"rp\"):
+			var research_point = area.CollectRP()
+			collectedResearchPoints += research_point
+			rp_label.text = str(collectedResearchPoints)
 
 func change_time(argtime = 0):
 	time = argtime
 	var get_m = int(time/60.0)
 	var get_s = time % 60
+	if get_m >= 10:
+		victoryPanel.visible = true
+		get_tree().paused = true
 	if get_m < 10:
 		get_m = str(0,get_m)
 	if get_s < 10:
 		get_s = str(0,get_s)
 	lblTimer.text = str(get_m,\":\",get_s)
+	
 
 func calculate_experience(gem_exp):
 	var exp_required = calculate_experiencecap()
@@ -353,7 +377,6 @@ func get_random_item():
 func _on_restart_button_pressed():
 	get_tree().change_scene_to_file(\"res://world.tscn\")
 
-
 func _on_loadout_button_pressed():
 	get_tree().change_scene_to_file(\"res://Scenes/Loadout/loadout.tscn\")
 
@@ -362,6 +385,7 @@ func _on_quit_button_pressed():
 	get_tree().change_scene_to_file(\"res://Scenes/MainMenu/main_menu.tscn\")
 	
 func death():
+	Global.rsPoints = collectedResearchPoints
 	%GameOverPanel.visible = true
 	get_tree().paused = true
 "
@@ -590,6 +614,16 @@ region = Rect2(16, 96, 48, 16)
 font = ExtResource("7_tkmx2")
 font_size = 32
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4pjrs"]
+texture = ExtResource("10_88f8b")
+
+[sub_resource type="Theme" id="Theme_m1jd2"]
+Panel/styles/panel = SubResource("StyleBoxTexture_4pjrs")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6877i"]
+atlas = ExtResource("10_u3ibj")
+region = Rect2(32, 0, 32, 32)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(5, 5)
 script = SubResource("GDScript_rvoww")
@@ -790,25 +824,80 @@ mouse_filter = 2
 
 [node name="CollectedWeapons" type="GridContainer" parent="CanvasLayer/GUI"]
 unique_name_in_owner = true
+layout_direction = 2
 layout_mode = 0
-offset_left = 96.0
-offset_top = 104.0
-offset_right = 608.0
-offset_bottom = 144.0
+offset_left = 24.0
+offset_top = 264.0
+offset_right = 536.0
+offset_bottom = 304.0
 
 [node name="CollectedUpgrades" type="GridContainer" parent="CanvasLayer/GUI"]
 unique_name_in_owner = true
+layout_direction = 2
 layout_mode = 0
-offset_left = 96.0
-offset_top = 208.0
-offset_right = 608.0
-offset_bottom = 248.0
+offset_left = 94.0
+offset_top = 264.0
+offset_right = 606.0
+offset_bottom = 304.0
 
 [node name="lblTimer" type="Label" parent="CanvasLayer/GUI"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="VictoryPanel" type="Panel" parent="CanvasLayer/GUI"]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+layout_mode = 0
+offset_left = 640.0
+offset_top = 256.0
+offset_right = 1280.0
+offset_bottom = 768.0
+theme = SubResource("Theme_m1jd2")
+
+[node name="LoadoutButton" type="TextureButton" parent="CanvasLayer/GUI/VictoryPanel"]
+texture_filter = 1
+offset_left = 96.0
+offset_top = 416.0
+offset_right = 144.0
+offset_bottom = 456.0
+scale = Vector2(4, 4)
+mouse_filter = 1
+texture_normal = SubResource("AtlasTexture_5hecf")
+texture_pressed = SubResource("AtlasTexture_0rjnn")
+texture_hover = SubResource("AtlasTexture_yg7my")
+
+[node name="QuitButton" type="TextureButton" parent="CanvasLayer/GUI/VictoryPanel"]
+texture_filter = 1
+offset_left = 352.0
+offset_top = 416.0
+offset_right = 400.0
+offset_bottom = 456.0
+scale = Vector2(4, 4)
+mouse_filter = 1
+texture_normal = SubResource("AtlasTexture_228np")
+texture_pressed = SubResource("AtlasTexture_r6kmy")
+texture_hover = SubResource("AtlasTexture_mx27c")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
+top_level = true
+texture_filter = 1
+offset_left = 1728.0
+offset_top = 96.0
+offset_right = 1792.0
+offset_bottom = 160.0
+texture = SubResource("AtlasTexture_6877i")
+
+[node name="RPLabel" type="Label" parent="CanvasLayer/TextureRect"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 64.0
+offset_right = 192.0
+offset_bottom = 63.0
+vertical_alignment = 1
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="Attack/NailGunTimer" to="." method="_on_nail_gun_timer_timeout"]
@@ -822,5 +911,7 @@ offset_bottom = 23.0
 [connection signal="pressed" from="CanvasLayer/GUI/GameOverPanel/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/GUI/GameOverPanel/LoadoutButton" to="." method="_on_loadout_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/GUI/GameOverPanel/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GUI/VictoryPanel/LoadoutButton" to="." method="_on_loadout_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GUI/VictoryPanel/QuitButton" to="." method="_on_quit_button_pressed"]
 
 [editable path="HurtBox"]

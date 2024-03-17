@@ -6,6 +6,7 @@ var modifier1Atlas: AtlasTexture
 var modifier2Atlas: AtlasTexture
 
 func _ready():
+	get_tree().paused = false
 	weaponAtlas = AtlasTexture.new()
 	modifier1Atlas = AtlasTexture.new()
 	modifier2Atlas = AtlasTexture.new()
