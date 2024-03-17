@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bml0u73hmsfx2"]
+[gd_scene load_steps=7 format=3 uid="uid://cqh8b16y0fcqv"]
 
 [ext_resource type="Script" path="res://Scenes/Loadout/modifier2_equip.gd" id="1_afsre"]
 [ext_resource type="Theme" uid="uid://dy6705h5bwoor" path="res://Scenes/Loadout/icon_panel_theme.tres" id="2_o4nq1"]
@@ -157,9 +157,10 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 21
-text = "15% increased movement speed"
+text = "50% increased movement speed"
 
 [node name="Damage" type="MarginContainer" parent="ScrollContainer/GCMain"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -375,7 +376,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 21
-text = "-0.25 seconds per atack"
+text = "10% faster attack speed"
 
 [connection signal="pressed" from="ScrollContainer/GCMain/Speed/MCMod/MCMod/GCMod/GC/SpeedEquipedBtn" to="." method="_on_speed_btn_pressed"]
 [connection signal="pressed" from="ScrollContainer/GCMain/Damage/MCMod/MCMod/GCMod/GC/DamageEquipedBtn" to="." method="_on_damage_btn_pressed"]

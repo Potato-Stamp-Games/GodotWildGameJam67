@@ -79,7 +79,6 @@ animation = &"new_animation"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.3, 0.4)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_27is2")
 
 [node name="HurtBox" parent="." instance=ExtResource("3_n8g3q")]
@@ -89,7 +88,6 @@ HurtBoxType = 1
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2(-0.300001, 0.1)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_3qjvc")
 
 [node name="HitBox" parent="." instance=ExtResource("4_yosxa")]
@@ -98,7 +96,6 @@ collision_mask = 2
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 position = Vector2(-0.0999994, 0.2)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_uadra")
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]

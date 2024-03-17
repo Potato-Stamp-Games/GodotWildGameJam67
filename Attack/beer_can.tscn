@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjuirkar8r2xj"]
+[gd_scene load_steps=9 format=3 uid="uid://cvr18vmcjf3do"]
 
 [ext_resource type="Script" path="res://Attack/BeerCan.gd" id="1_rvv3y"]
 [ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="2_nxdu4"]
@@ -60,5 +60,7 @@ shape = SubResource("RectangleShape2D_6154d")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="ChuckCanSFX" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

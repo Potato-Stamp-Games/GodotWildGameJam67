@@ -98,7 +98,6 @@ func _on_settings_btn_toggled(toggled_on):
 	elif toggled_on == false:
 		$OptionsMenu.hide()
 
-
 func _process(_delta):
 	#Animation
 	if rsHover == true:

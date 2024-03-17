@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Attack/nail_shot.gd" id="1_4wgnp"]
 [ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="1_5i7hu"]
-[ext_resource type="AudioStream" uid="uid://s521h8th4t36" path="res://Assets/Sound Design/NailShot.ogg" id="3_3bg3k"]
+[ext_resource type="AudioStream" uid="uid://s521h8th4t36" path="res://Assets/SoundDesign/NailShot.ogg" id="3_3bg3k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wnegf"]
 size = Vector2(61, 25)

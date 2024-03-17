@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cmeq1lvudan1s"]
+[gd_scene load_steps=25 format=3 uid="uid://gh12yrrpmyds"]
 
 [ext_resource type="Script" path="res://PlayerNoSuit/playerNoSuit.gd" id="1_jp61o"]
 [ext_resource type="Texture2D" uid="uid://b02d6ywrnvb63" path="res://Assets/PlayerSpriteSheets/NoSuit/PlayerNoSuitForwardWalk.png" id="2_iwsgl"]
