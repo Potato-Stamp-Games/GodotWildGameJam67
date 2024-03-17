@@ -10,6 +10,7 @@ var knockback = Vector2.ZERO
 @onready var loot_base = get_tree().get_first_node_in_group("loot")
 
 var EXPERIENCE_PAW = preload("res://Utility/experience_paw.tscn")
+var RESEARCH_POINT = preload("res://Utility/research_point.tscn")
 signal remove_from_array(object)
 
 func _ready():
@@ -26,9 +27,13 @@ func _physics_process(_delta):
 func death():
 	emit_signal("remove_from_array", self)
 	var new_expPaw = EXPERIENCE_PAW.instantiate()
+	var new_rpDrop = RESEARCH_POINT.instantiate()
 	new_expPaw.global_position = global_position
+	new_rpDrop.global_position = global_position
 	new_expPaw.experience = experience
+	new_rpDrop.researchPoints = 1
 	loot_base.call_deferred("add_child", new_expPaw)
+	loot_base.call_deferred("add_child", new_rpDrop)
 	queue_free()
 
 func _on_hurt_box_hurt(damage, angle, knockback_amount):
@@ -37,7 +42,3 @@ func _on_hurt_box_hurt(damage, angle, knockback_amount):
 	if hp <= 0:
 		emit_signal("remove_from_array", self)
 		death()
-
-
-func _on_hurt_box_area_entered(area):
-	pass # Replace with function body.

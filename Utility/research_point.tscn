@@ -1,19 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://c08xr7i7iqk85"]
+[gd_scene load_steps=5 format=3 uid="uid://1ucfd1kcisy1"]
 
-[ext_resource type="Script" path="res://Utility/experience_paw.gd" id="1_hd87b"]
-[ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="1_s8wxb"]
+[ext_resource type="Script" path="res://Utility/research_point.gd" id="1_gqhqr"]
+[ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="2_gv2wg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_320pu"]
-atlas = ExtResource("1_s8wxb")
-region = Rect2(160, 0, 32, 32)
+atlas = ExtResource("2_gv2wg")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkuq8"]
 size = Vector2(80, 65)
 
-[node name="ExperiencePaw" type="Area2D" groups=["loot", "xp"]]
+[node name="ResearchPoint" type="Area2D" groups=["loot", "rp"]]
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("1_hd87b")
+script = ExtResource("1_gqhqr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
