@@ -1,11 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjuirkar8r2xj"]
+[gd_scene load_steps=9 format=3 uid="uid://bjuirkar8r2xj"]
 
 [ext_resource type="Script" path="res://Attack/BeerCan.gd" id="1_rvv3y"]
 [ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="2_nxdu4"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tqwx8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmdsw"]
 atlas = ExtResource("2_nxdu4")
-region = Rect2(32, 64, 32, 32)
+region = Rect2(128, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmuw8"]
+atlas = ExtResource("2_nxdu4")
+region = Rect2(160, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1lqw"]
+atlas = ExtResource("2_nxdu4")
+region = Rect2(192, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm8s4"]
+atlas = ExtResource("2_nxdu4")
+region = Rect2(224, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bu03f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmdsw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmuw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1lqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm8s4")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6154d"]
 size = Vector2(9, 11)
@@ -17,9 +49,10 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_rvv3y")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-texture = SubResource("AtlasTexture_tqwx8")
+sprite_frames = SubResource("SpriteFrames_bu03f")
+animation = &"spin"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 2.5)

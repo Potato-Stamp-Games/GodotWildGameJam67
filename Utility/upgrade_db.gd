@@ -165,7 +165,7 @@ const UPGRADES = {
 	},
 	"damage1": {
 		"icon": ICON_PATH + "DamageUpgrade.png",
-		"displayname": "Speed Boots",
+		"displayname": "Damage Upgrade",
 		"details": "Increases the damage of all weapons by 10%",
 		"level": "Level: 1",
 		"prerequisite": [],
@@ -173,7 +173,7 @@ const UPGRADES = {
 	},
 	"damage2": {
 		"icon": ICON_PATH + "DamageUpgrade.png",
-		"displayname": "Speed Boots",
+		"displayname": "Damage Upgrade",
 		"details": "Increases the damage of all weapons by an additional 10%",
 		"level": "Level: 2",
 		"prerequisite": ["damage1"],
@@ -181,7 +181,7 @@ const UPGRADES = {
 	},
 	"damage3": {
 		"icon": ICON_PATH + "DamageUpgrade.png",
-		"displayname": "Speed Boots",
+		"displayname": "Damage Upgrade",
 		"details": "Increases the damage of all weapons by an additional 10%",
 		"level": "Level: 3",
 		"prerequisite": ["damage2"],
@@ -189,7 +189,7 @@ const UPGRADES = {
 	},
 	"damage4": {
 		"icon": ICON_PATH + "DamageUpgrade.png",
-		"displayname": "Speed Boots",
+		"displayname": "Damage Upgrade",
 		"details": "Increases the damage of all weapons by an additional 10%",
 		"level": "Level: 4",
 		"prerequisite": ["damage3"],

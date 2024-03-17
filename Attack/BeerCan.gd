@@ -43,6 +43,7 @@ func _ready():
 			knockback_amount = 125
 			attack_size = 1.0 * (1 + player.spell_size)
 	
+	$Sprite2D.play("spin")
 	var move_to_less = Vector2.ZERO
 	var move_to_more = Vector2.ZERO
 	match last_movement:

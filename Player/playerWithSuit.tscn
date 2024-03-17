@@ -285,7 +285,7 @@ func upgrade_character(upgrade):
 		\"speed1\",\"speed2\",\"speed3\",\"speed4\":
 			movement_speed += 50.0
 		\"attackspeed1\",\"attackspeed2\",\"attackspeed3\",\"attackspeed4\":
-			if nailGun.level >= 1:
+			if nailgun_level >= 1:
 				nailgun_attackspeed = nailgun_attackspeed * 1.1
 			if sixpack_level >= 1:
 				sixpack_attackspeed = sixpack_attackspeed * 1.1
@@ -799,9 +799,9 @@ offset_bottom = 144.0
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 96.0
-offset_top = 152.0
+offset_top = 208.0
 offset_right = 608.0
-offset_bottom = 192.0
+offset_bottom = 248.0
 
 [node name="lblTimer" type="Label" parent="CanvasLayer/GUI"]
 unique_name_in_owner = true
