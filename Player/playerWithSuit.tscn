@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bsaqx4t3bsool" path="res://Assets/PlayerSpriteSheets/SuitedUp/PlayerSideWalkR.png" id="5_nc2ns"]
 [ext_resource type="Texture2D" uid="uid://camujexa7mw5p" path="res://Assets/MenuAssets/MenuIcons.png" id="6_3h8ln"]
 [ext_resource type="PackedScene" uid="uid://c3k2xk7dpb4k4" path="res://Utility/hurt_box.tscn" id="6_ve0gq"]
-[ext_resource type="LabelSettings" uid="uid://bmsi2qp22dr30" path="res://Player/LabelSetting.tres" id="7_hubis"]
+[ext_resource type="LabelSettings" path="res://Player/LabelSetting.tres" id="7_hubis"]
 [ext_resource type="FontFile" uid="uid://cyw4xutj5b7ta" path="res://Assets/Fonts/Sixtyfour-Regular.ttf" id="7_tkmx2"]
 [ext_resource type="Texture2D" uid="uid://bgxs17dup30pl" path="res://Assets/MenuAssets/Failscreen.png" id="8_nah3x"]
 
