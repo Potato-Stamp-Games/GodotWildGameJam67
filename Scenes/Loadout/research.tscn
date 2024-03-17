@@ -1,8 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bi03j0nny0tpa"]
+[gd_scene load_steps=16 format=3 uid="uid://bi03j0nny0tpa"]
 
 [ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="1_fbfer"]
 [ext_resource type="Script" path="res://Scenes/Loadout/research.gd" id="1_o0blv"]
 [ext_resource type="Texture2D" uid="uid://camujexa7mw5p" path="res://Assets/MenuAssets/MenuIcons.png" id="2_t4fq4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cryod"]
+atlas = ExtResource("2_t4fq4")
+region = Rect2(144, 145, 80, 47)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qguox"]
 atlas = ExtResource("1_fbfer")
@@ -14,19 +18,39 @@ region = Rect2(144, 16, 80, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x4bod"]
 atlas = ExtResource("1_fbfer")
-region = Rect2(0, 32, 32, 32)
+region = Rect2(-3, 34, 34, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n6tem"]
 atlas = ExtResource("1_fbfer")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(36, 6, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mw5wd"]
+atlas = ExtResource("1_fbfer")
+region = Rect2(65, 6, 33, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvkep"]
+atlas = ExtResource("1_fbfer")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsjrf"]
+atlas = ExtResource("1_fbfer")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14vnm"]
+atlas = ExtResource("1_fbfer")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nwni"]
+atlas = ExtResource("1_fbfer")
+region = Rect2(64, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y0loq"]
 atlas = ExtResource("2_t4fq4")
-region = Rect2(80, 48, 48, 16)
+region = Rect2(16, 128, 48, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyr3p"]
 atlas = ExtResource("2_t4fq4")
-region = Rect2(16, 96, 48, 16)
+region = Rect2(16, 112, 48, 16)
 
 [node name="Research" type="Control"]
 layout_mode = 3
@@ -37,23 +61,25 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_o0blv")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0470588, 0.286275, 0.270588, 1)
+texture = SubResource("AtlasTexture_cryod")
 
 [node name="Header" type="GridContainer" parent="Background"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
+offset_left = -211.5
+offset_top = 20.0
+offset_right = 211.5
+offset_bottom = 293.0
 grow_horizontal = 2
 
 [node name="Label" type="Label" parent="Background/Header"]
@@ -62,12 +88,14 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 35
 theme_override_font_sizes/font_size = 200
-text = "R&D"
+text = "RESEARCH"
 
 [node name="RSPoints" type="GridContainer" parent="Background"]
 layout_mode = 1
-offset_right = 21.0
-offset_bottom = 23.0
+offset_left = 75.0
+offset_top = 45.0
+offset_right = 238.0
+offset_bottom = 173.0
 columns = 2
 
 [node name="RSPTexture" type="TextureRect" parent="Background/RSPoints"]
@@ -78,6 +106,7 @@ texture = SubResource("AtlasTexture_qguox")
 expand_mode = 1
 
 [node name="rsPointsLbl" type="Label" parent="Background/RSPoints"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -92,13 +121,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -920.0
-offset_top = -300.0
-offset_right = 922.0
-offset_bottom = 300.0
+offset_left = -877.0
+offset_top = -207.0
+offset_right = 899.0
+offset_bottom = 342.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/h_separation = 152
+theme_override_constants/h_separation = 120
+theme_override_constants/v_separation = 100
 columns = 3
 
 [node name="SpeedRS" type="NinePatchRect" parent="Background/Research"]
@@ -152,11 +182,12 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 21
-text = "UNLOCK  SPEED  MODIFER"
+text = "SPEED INCREASE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RsBtn" type="Button" parent="Background/Research/SpeedRS/VB/GC/GCLabels"]
+[node name="SpeedRsBtn" type="Button" parent="Background/Research/SpeedRS/VB/GC/GCLabels"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -166,7 +197,6 @@ theme_override_colors/font_hover_color = Color(0.784314, 0.760784, 0.278431, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 25
-toggle_mode = true
 text = "RESEARCH"
 
 [node name="Desc" type="Label" parent="Background/Research/SpeedRS/VB/GC/GCLabels"]
@@ -180,7 +210,24 @@ text = "Get 15% more movement speed"
 [node name="Cost" type="GridContainer" parent="Background/Research/SpeedRS/VB/GC/GCLabels"]
 layout_mode = 2
 theme_override_constants/h_separation = -1
-columns = 2
+columns = 4
+
+[node name="SpAmtLbl" type="Label" parent="Background/Research/SpeedRS/VB/GC/GCLabels/Cost"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.760784, 0.545098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 29
+text = "10"
+
+[node name="Lbl" type="Label" parent="Background/Research/SpeedRS/VB/GC/GCLabels/Cost"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.760784, 0.545098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 29
+text = "/10 "
 
 [node name="Cost" type="Label" parent="Background/Research/SpeedRS/VB/GC/GCLabels/Cost"]
 layout_mode = 2
@@ -202,7 +249,7 @@ expand_mode = 1
 custom_minimum_size = Vector2(13, 0)
 layout_mode = 2
 
-[node name="RSTEMP" type="NinePatchRect" parent="Background/Research"]
+[node name="DamageRS" type="NinePatchRect" parent="Background/Research"]
 texture_filter = 1
 custom_minimum_size = Vector2(512, 192)
 layout_mode = 2
@@ -211,7 +258,7 @@ size_flags_vertical = 4
 texture = SubResource("AtlasTexture_ga23i")
 region_rect = Rect2(0, 1, 80, 47)
 
-[node name="VB" type="VBoxContainer" parent="Background/Research/RSTEMP"]
+[node name="VB" type="VBoxContainer" parent="Background/Research/DamageRS"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -219,45 +266,46 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopPadding" type="VBoxContainer" parent="Background/Research/RSTEMP/VB"]
+[node name="TopPadding" type="VBoxContainer" parent="Background/Research/DamageRS/VB"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="GC" type="GridContainer" parent="Background/Research/RSTEMP/VB"]
+[node name="GC" type="GridContainer" parent="Background/Research/DamageRS/VB"]
 layout_mode = 2
 columns = 5
 
-[node name="LeftPadding" type="VBoxContainer" parent="Background/Research/RSTEMP/VB/GC"]
+[node name="LeftPadding" type="VBoxContainer" parent="Background/Research/DamageRS/VB/GC"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Background/Research/RSTEMP/VB/GC"]
+[node name="TextureRect" type="TextureRect" parent="Background/Research/DamageRS/VB/GC"]
 custom_minimum_size = Vector2(144, 144)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture = SubResource("AtlasTexture_x4bod")
+texture = SubResource("AtlasTexture_mw5wd")
 
-[node name="RightPadding" type="VBoxContainer" parent="Background/Research/RSTEMP/VB/GC"]
+[node name="RightPadding" type="VBoxContainer" parent="Background/Research/DamageRS/VB/GC"]
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 
-[node name="GCLabels" type="GridContainer" parent="Background/Research/RSTEMP/VB/GC"]
+[node name="GCLabels" type="GridContainer" parent="Background/Research/DamageRS/VB/GC"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Title" type="Label" parent="Background/Research/RSTEMP/VB/GC/GCLabels"]
+[node name="Title" type="Label" parent="Background/Research/DamageRS/VB/GC/GCLabels"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 21
-text = "UNLOCK  SPEED  MODIFER"
+text = "DAMAGE INCREASE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RsBtn" type="Button" parent="Background/Research/RSTEMP/VB/GC/GCLabels"]
+[node name="DamageRsBtn" type="Button" parent="Background/Research/DamageRS/VB/GC/GCLabels"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -267,23 +315,39 @@ theme_override_colors/font_hover_color = Color(0.784314, 0.760784, 0.278431, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 25
-toggle_mode = true
 text = "RESEARCH"
 
-[node name="Desc" type="Label" parent="Background/Research/RSTEMP/VB/GC/GCLabels"]
+[node name="Desc" type="Label" parent="Background/Research/DamageRS/VB/GC/GCLabels"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 18
-text = "Get 15% more movement speed"
+text = "Gain +1 Damage on all weapons"
 
-[node name="Cost" type="GridContainer" parent="Background/Research/RSTEMP/VB/GC/GCLabels"]
+[node name="Cost" type="GridContainer" parent="Background/Research/DamageRS/VB/GC/GCLabels"]
 layout_mode = 2
 theme_override_constants/h_separation = -1
-columns = 2
+columns = 4
 
-[node name="Cost" type="Label" parent="Background/Research/RSTEMP/VB/GC/GCLabels/Cost"]
+[node name="DmgAmtLbl" type="Label" parent="Background/Research/DamageRS/VB/GC/GCLabels/Cost"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.760784, 0.545098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 29
+text = "10"
+
+[node name="Lbl" type="Label" parent="Background/Research/DamageRS/VB/GC/GCLabels/Cost"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.760784, 0.545098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 29
+text = "/10 "
+
+[node name="Cost" type="Label" parent="Background/Research/DamageRS/VB/GC/GCLabels/Cost"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -293,17 +357,17 @@ text = "COST:  30"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Background/Research/RSTEMP/VB/GC/GCLabels/Cost"]
+[node name="TextureRect" type="TextureRect" parent="Background/Research/DamageRS/VB/GC/GCLabels/Cost"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = SubResource("AtlasTexture_n6tem")
 expand_mode = 1
 
-[node name="RightPadding2" type="VBoxContainer" parent="Background/Research/RSTEMP/VB/GC"]
+[node name="RightPadding2" type="VBoxContainer" parent="Background/Research/DamageRS/VB/GC"]
 custom_minimum_size = Vector2(13, 0)
 layout_mode = 2
 
-[node name="RSTEMP2" type="NinePatchRect" parent="Background/Research"]
+[node name="AttackSpeedRS" type="NinePatchRect" parent="Background/Research"]
 texture_filter = 1
 custom_minimum_size = Vector2(512, 192)
 layout_mode = 2
@@ -312,7 +376,7 @@ size_flags_vertical = 4
 texture = SubResource("AtlasTexture_ga23i")
 region_rect = Rect2(0, 1, 80, 47)
 
-[node name="VB" type="VBoxContainer" parent="Background/Research/RSTEMP2"]
+[node name="VB" type="VBoxContainer" parent="Background/Research/AttackSpeedRS"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -320,45 +384,46 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopPadding" type="VBoxContainer" parent="Background/Research/RSTEMP2/VB"]
+[node name="TopPadding" type="VBoxContainer" parent="Background/Research/AttackSpeedRS/VB"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="GC" type="GridContainer" parent="Background/Research/RSTEMP2/VB"]
+[node name="GC" type="GridContainer" parent="Background/Research/AttackSpeedRS/VB"]
 layout_mode = 2
 columns = 5
 
-[node name="LeftPadding" type="VBoxContainer" parent="Background/Research/RSTEMP2/VB/GC"]
+[node name="LeftPadding" type="VBoxContainer" parent="Background/Research/AttackSpeedRS/VB/GC"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Background/Research/RSTEMP2/VB/GC"]
+[node name="TextureRect" type="TextureRect" parent="Background/Research/AttackSpeedRS/VB/GC"]
 custom_minimum_size = Vector2(144, 144)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture = SubResource("AtlasTexture_x4bod")
+texture = SubResource("AtlasTexture_kvkep")
 
-[node name="RightPadding" type="VBoxContainer" parent="Background/Research/RSTEMP2/VB/GC"]
+[node name="RightPadding" type="VBoxContainer" parent="Background/Research/AttackSpeedRS/VB/GC"]
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 
-[node name="GCLabels" type="GridContainer" parent="Background/Research/RSTEMP2/VB/GC"]
+[node name="GCLabels" type="GridContainer" parent="Background/Research/AttackSpeedRS/VB/GC"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Title" type="Label" parent="Background/Research/RSTEMP2/VB/GC/GCLabels"]
+[node name="Title" type="Label" parent="Background/Research/AttackSpeedRS/VB/GC/GCLabels"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 21
-text = "UNLOCK  SPEED  MODIFER"
+text = "ATTACK SPEED INCREASE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RsBtn" type="Button" parent="Background/Research/RSTEMP2/VB/GC/GCLabels"]
+[node name="AtkSpeedRsBtn" type="Button" parent="Background/Research/AttackSpeedRS/VB/GC/GCLabels"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -368,23 +433,39 @@ theme_override_colors/font_hover_color = Color(0.784314, 0.760784, 0.278431, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 25
-toggle_mode = true
 text = "RESEARCH"
 
-[node name="Desc" type="Label" parent="Background/Research/RSTEMP2/VB/GC/GCLabels"]
+[node name="Desc" type="Label" parent="Background/Research/AttackSpeedRS/VB/GC/GCLabels"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 18
-text = "Get 15% more movement speed"
+text = "-0.1 Seconds Reload Time"
 
-[node name="Cost" type="GridContainer" parent="Background/Research/RSTEMP2/VB/GC/GCLabels"]
+[node name="Cost" type="GridContainer" parent="Background/Research/AttackSpeedRS/VB/GC/GCLabels"]
 layout_mode = 2
 theme_override_constants/h_separation = -1
-columns = 2
+columns = 4
 
-[node name="Cost" type="Label" parent="Background/Research/RSTEMP2/VB/GC/GCLabels/Cost"]
+[node name="ASAmtLbl" type="Label" parent="Background/Research/AttackSpeedRS/VB/GC/GCLabels/Cost"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.760784, 0.545098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 29
+text = "10"
+
+[node name="Lbl" type="Label" parent="Background/Research/AttackSpeedRS/VB/GC/GCLabels/Cost"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.760784, 0.545098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 29
+text = "/10 "
+
+[node name="Cost" type="Label" parent="Background/Research/AttackSpeedRS/VB/GC/GCLabels/Cost"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -394,24 +475,24 @@ text = "COST:  30"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Background/Research/RSTEMP2/VB/GC/GCLabels/Cost"]
+[node name="TextureRect" type="TextureRect" parent="Background/Research/AttackSpeedRS/VB/GC/GCLabels/Cost"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = SubResource("AtlasTexture_n6tem")
 expand_mode = 1
 
-[node name="RightPadding2" type="VBoxContainer" parent="Background/Research/RSTEMP2/VB/GC"]
+[node name="RightPadding2" type="VBoxContainer" parent="Background/Research/AttackSpeedRS/VB/GC"]
 custom_minimum_size = Vector2(13, 0)
 layout_mode = 2
 
-[node name="RSTEMP3" type="NinePatchRect" parent="Background/Research"]
+[node name="PoisonUL" type="NinePatchRect" parent="Background/Research"]
 texture_filter = 1
 custom_minimum_size = Vector2(512, 192)
 layout_mode = 2
 texture = SubResource("AtlasTexture_ga23i")
 region_rect = Rect2(0, 1, 80, 47)
 
-[node name="VB" type="VBoxContainer" parent="Background/Research/RSTEMP3"]
+[node name="VB" type="VBoxContainer" parent="Background/Research/PoisonUL"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -419,45 +500,46 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopPadding" type="VBoxContainer" parent="Background/Research/RSTEMP3/VB"]
+[node name="TopPadding" type="VBoxContainer" parent="Background/Research/PoisonUL/VB"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="GC" type="GridContainer" parent="Background/Research/RSTEMP3/VB"]
+[node name="GC" type="GridContainer" parent="Background/Research/PoisonUL/VB"]
 layout_mode = 2
 columns = 5
 
-[node name="LeftPadding" type="VBoxContainer" parent="Background/Research/RSTEMP3/VB/GC"]
+[node name="LeftPadding" type="VBoxContainer" parent="Background/Research/PoisonUL/VB/GC"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Background/Research/RSTEMP3/VB/GC"]
+[node name="TextureRect" type="TextureRect" parent="Background/Research/PoisonUL/VB/GC"]
 custom_minimum_size = Vector2(144, 144)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture = SubResource("AtlasTexture_x4bod")
+texture = SubResource("AtlasTexture_nsjrf")
 
-[node name="RightPadding" type="VBoxContainer" parent="Background/Research/RSTEMP3/VB/GC"]
+[node name="RightPadding" type="VBoxContainer" parent="Background/Research/PoisonUL/VB/GC"]
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 
-[node name="GCLabels" type="GridContainer" parent="Background/Research/RSTEMP3/VB/GC"]
+[node name="GCLabels" type="GridContainer" parent="Background/Research/PoisonUL/VB/GC"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Title" type="Label" parent="Background/Research/RSTEMP3/VB/GC/GCLabels"]
+[node name="Title" type="Label" parent="Background/Research/PoisonUL/VB/GC/GCLabels"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 21
-text = "UNLOCK  SPEED  MODIFER"
+text = "UNLOCK  POISON  MODIFER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RsBtn" type="Button" parent="Background/Research/RSTEMP3/VB/GC/GCLabels"]
+[node name="PoisonRsBtn" type="Button" parent="Background/Research/PoisonUL/VB/GC/GCLabels"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -467,39 +549,236 @@ theme_override_colors/font_hover_color = Color(0.784314, 0.760784, 0.278431, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 25
-toggle_mode = true
 text = "RESEARCH"
 
-[node name="Desc" type="Label" parent="Background/Research/RSTEMP3/VB/GC/GCLabels"]
+[node name="Desc" type="Label" parent="Background/Research/PoisonUL/VB/GC/GCLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 16
+text = "Unlock the ability to use the 
+poison modifier"
+
+[node name="Cost" type="GridContainer" parent="Background/Research/PoisonUL/VB/GC/GCLabels"]
+layout_mode = 2
+theme_override_constants/h_separation = -1
+columns = 2
+
+[node name="Cost" type="Label" parent="Background/Research/PoisonUL/VB/GC/GCLabels/Cost"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 18
-text = "Get 15% more movement speed"
-
-[node name="Cost" type="GridContainer" parent="Background/Research/RSTEMP3/VB/GC/GCLabels"]
-layout_mode = 2
-theme_override_constants/h_separation = -1
-columns = 2
-
-[node name="Cost" type="Label" parent="Background/Research/RSTEMP3/VB/GC/GCLabels/Cost"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 24
 text = "COST:  30"
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Background/Research/RSTEMP3/VB/GC/GCLabels/Cost"]
-custom_minimum_size = Vector2(48, 48)
+[node name="TextureRect" type="TextureRect" parent="Background/Research/PoisonUL/VB/GC/GCLabels/Cost"]
+custom_minimum_size = Vector2(32, 16)
 layout_mode = 2
 texture = SubResource("AtlasTexture_n6tem")
 expand_mode = 1
 
-[node name="RightPadding2" type="VBoxContainer" parent="Background/Research/RSTEMP3/VB/GC"]
+[node name="RightPadding2" type="VBoxContainer" parent="Background/Research/PoisonUL/VB/GC"]
+custom_minimum_size = Vector2(13, 0)
+layout_mode = 2
+
+[node name="IceUL" type="NinePatchRect" parent="Background/Research"]
+texture_filter = 1
+custom_minimum_size = Vector2(512, 192)
+layout_mode = 2
+texture = SubResource("AtlasTexture_ga23i")
+region_rect = Rect2(0, 1, 80, 47)
+
+[node name="VB" type="VBoxContainer" parent="Background/Research/IceUL"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopPadding" type="VBoxContainer" parent="Background/Research/IceUL/VB"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="GC" type="GridContainer" parent="Background/Research/IceUL/VB"]
+layout_mode = 2
+columns = 5
+
+[node name="LeftPadding" type="VBoxContainer" parent="Background/Research/IceUL/VB/GC"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/Research/IceUL/VB/GC"]
+custom_minimum_size = Vector2(144, 144)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = SubResource("AtlasTexture_14vnm")
+
+[node name="RightPadding" type="VBoxContainer" parent="Background/Research/IceUL/VB/GC"]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+
+[node name="GCLabels" type="GridContainer" parent="Background/Research/IceUL/VB/GC"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Background/Research/IceUL/VB/GC/GCLabels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 21
+text = "UNLOCK  ICE  MODIFER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IceRsBtn" type="Button" parent="Background/Research/IceUL/VB/GC/GCLabels"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.352941, 0.164706, 0, 1)
+theme_override_colors/font_hover_color = Color(0.784314, 0.760784, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 25
+text = "RESEARCH"
+
+[node name="Desc" type="Label" parent="Background/Research/IceUL/VB/GC/GCLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 16
+text = "Unlock the ability to use the 
+ice modifier"
+
+[node name="Cost" type="GridContainer" parent="Background/Research/IceUL/VB/GC/GCLabels"]
+layout_mode = 2
+theme_override_constants/h_separation = -1
+columns = 2
+
+[node name="Cost" type="Label" parent="Background/Research/IceUL/VB/GC/GCLabels/Cost"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 18
+text = "COST:  30"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Background/Research/IceUL/VB/GC/GCLabels/Cost"]
+custom_minimum_size = Vector2(32, 16)
+layout_mode = 2
+texture = SubResource("AtlasTexture_n6tem")
+expand_mode = 1
+
+[node name="RightPadding2" type="VBoxContainer" parent="Background/Research/IceUL/VB/GC"]
+custom_minimum_size = Vector2(13, 0)
+layout_mode = 2
+
+[node name="FireUL" type="NinePatchRect" parent="Background/Research"]
+texture_filter = 1
+custom_minimum_size = Vector2(512, 192)
+layout_mode = 2
+texture = SubResource("AtlasTexture_ga23i")
+region_rect = Rect2(0, 1, 80, 47)
+
+[node name="VB" type="VBoxContainer" parent="Background/Research/FireUL"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopPadding" type="VBoxContainer" parent="Background/Research/FireUL/VB"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="GC" type="GridContainer" parent="Background/Research/FireUL/VB"]
+layout_mode = 2
+columns = 5
+
+[node name="LeftPadding" type="VBoxContainer" parent="Background/Research/FireUL/VB/GC"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/Research/FireUL/VB/GC"]
+custom_minimum_size = Vector2(144, 144)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = SubResource("AtlasTexture_8nwni")
+
+[node name="RightPadding" type="VBoxContainer" parent="Background/Research/FireUL/VB/GC"]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+
+[node name="GCLabels" type="GridContainer" parent="Background/Research/FireUL/VB/GC"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Background/Research/FireUL/VB/GC/GCLabels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 21
+text = "UNLOCK  FIRE  MODIFER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FireRsBtn" type="Button" parent="Background/Research/FireUL/VB/GC/GCLabels"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.352941, 0.164706, 0, 1)
+theme_override_colors/font_hover_color = Color(0.784314, 0.760784, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 25
+text = "RESEARCH"
+
+[node name="Desc" type="Label" parent="Background/Research/FireUL/VB/GC/GCLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 16
+text = "Unlock the ability to use the 
+fire modifier"
+
+[node name="Cost" type="GridContainer" parent="Background/Research/FireUL/VB/GC/GCLabels"]
+layout_mode = 2
+theme_override_constants/h_separation = -1
+columns = 2
+
+[node name="Cost" type="Label" parent="Background/Research/FireUL/VB/GC/GCLabels/Cost"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 18
+text = "COST:  30"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Background/Research/FireUL/VB/GC/GCLabels/Cost"]
+custom_minimum_size = Vector2(32, 16)
+layout_mode = 2
+texture = SubResource("AtlasTexture_n6tem")
+expand_mode = 1
+
+[node name="RightPadding2" type="VBoxContainer" parent="Background/Research/FireUL/VB/GC"]
 custom_minimum_size = Vector2(13, 0)
 layout_mode = 2
 
@@ -518,4 +797,10 @@ texture_pressed = SubResource("AtlasTexture_kyr3p")
 texture_hover = SubResource("AtlasTexture_kyr3p")
 stretch_mode = 0
 
+[connection signal="pressed" from="Background/Research/SpeedRS/VB/GC/GCLabels/SpeedRsBtn" to="." method="_on_speed_rs_btn_pressed"]
+[connection signal="pressed" from="Background/Research/DamageRS/VB/GC/GCLabels/DamageRsBtn" to="." method="_on_damage_rs_btn_pressed"]
+[connection signal="pressed" from="Background/Research/AttackSpeedRS/VB/GC/GCLabels/AtkSpeedRsBtn" to="." method="_on_atk_speed_rs_btn_pressed"]
+[connection signal="pressed" from="Background/Research/PoisonUL/VB/GC/GCLabels/PoisonRsBtn" to="." method="_on_poison_rs_btn_pressed"]
+[connection signal="pressed" from="Background/Research/IceUL/VB/GC/GCLabels/IceRsBtn" to="." method="_on_ice_rs_btn_pressed"]
+[connection signal="pressed" from="Background/Research/FireUL/VB/GC/GCLabels/FireRsBtn" to="." method="_on_fire_rs_btn_pressed"]
 [connection signal="pressed" from="Background/BackBtn" to="." method="_on_back_btn_pressed"]
