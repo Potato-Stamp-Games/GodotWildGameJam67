@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://oh0r45b5v51f"]
+[gd_scene load_steps=49 format=3 uid="uid://oh0r45b5v51f"]
 
 [ext_resource type="Texture2D" uid="uid://dnp6v66udp7u8" path="res://Assets/PlayerSpriteSheets/SuitedUp/PlayerForwardWalk.png" id="2_hjixo"]
 [ext_resource type="Texture2D" uid="uid://gg0e6xjqv4s1" path="res://Assets/PlayerSpriteSheets/SuitedUp/PlayerBackWalk.png" id="3_xyq4p"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://camujexa7mw5p" path="res://Assets/MenuAssets/MenuIcons.png" id="6_3h8ln"]
 [ext_resource type="PackedScene" uid="uid://c3k2xk7dpb4k4" path="res://Utility/hurt_box.tscn" id="6_ve0gq"]
 [ext_resource type="FontFile" uid="uid://cyw4xutj5b7ta" path="res://Assets/Fonts/Sixtyfour-Regular.ttf" id="7_tkmx2"]
+[ext_resource type="Texture2D" uid="uid://bgxs17dup30pl" path="res://Assets/MenuAssets/Failscreen.png" id="8_nah3x"]
 
 [sub_resource type="GDScript" id="GDScript_rvoww"]
 script/source = "extends CharacterBody2D
@@ -45,7 +46,7 @@ var additional_attacks = 0
 var nailgun_ammo = 0
 var nailgun_baseammo = 1
 var nailgun_attackspeed = 1.5
-var nailgun_level = 1
+var nailgun_level = 0
 
 #Six Pack
 var sixpack_ammo = 0
@@ -64,7 +65,7 @@ var enemy_close = []
 @onready var expBar = get_node(\"%ExperienceBar\")
 @onready var lblLevel = get_node(\"%LevelLabel\")
 @onready var healthBar = get_node(\"%HealthBar\")
-
+@onready var deathPanel = get_node(\"%$GameOverPanel\")
 @onready var sprite_2d = $Sprite2D
 
 func _ready():
@@ -126,7 +127,8 @@ func _on_hurt_box_hurt(damage, _angle, _knockback):
 	hp -= damage
 	healthBar.max_value = maxHp
 	healthBar.value = hp
-	print(hp)
+	if hp <= 0:
+		death()
 
 func _on_nail_gun_timer_timeout():
 	nailgun_ammo += nailgun_baseammo
@@ -216,6 +218,21 @@ func set_expbar(set_value = 1, set_max_value = 100):
 
 func levelup():
 	lblLevel.text = str(\"Level: \",experience_level)
+
+
+func _on_restart_button_pressed():
+	get_tree().change_scene_to_file(\"res://world.tscn\")
+
+
+func _on_loadout_button_pressed():
+	get_tree().change_scene_to_file(\"res://Scenes/Loadout/loadout.tscn\")
+
+
+func _on_quit_button_pressed():
+	get_tree().change_scene_to_file(\"res://Scenes/MainMenu/main_menu.tscn\")
+	
+func death():
+	%GameOverPanel.visible = true
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7kvnt"]
@@ -402,6 +419,47 @@ line_spacing = 5.0
 font = ExtResource("7_tkmx2")
 font_size = 12
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3pwp"]
+atlas = ExtResource("8_nah3x")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_db7xo"]
+texture = SubResource("AtlasTexture_j3pwp")
+
+[sub_resource type="Theme" id="Theme_wd6wc"]
+Panel/styles/panel = SubResource("StyleBoxTexture_db7xo")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7l3o"]
+atlas = ExtResource("6_3h8ln")
+region = Rect2(80, 48, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7f35a"]
+atlas = ExtResource("6_3h8ln")
+region = Rect2(80, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hecf"]
+atlas = ExtResource("6_3h8ln")
+region = Rect2(80, 128, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rjnn"]
+atlas = ExtResource("6_3h8ln")
+region = Rect2(80, 112, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yg7my"]
+atlas = ExtResource("6_3h8ln")
+region = Rect2(80, 112, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_228np"]
+atlas = ExtResource("6_3h8ln")
+region = Rect2(16, 80, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6kmy"]
+atlas = ExtResource("6_3h8ln")
+region = Rect2(16, 96, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mx27c"]
+atlas = ExtResource("6_3h8ln")
+region = Rect2(16, 96, 48, 16)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(5, 5)
 script = SubResource("GDScript_rvoww")
@@ -479,8 +537,7 @@ shape = SubResource("CircleShape2D_ktkhn")
 [node name="GUI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 1.0
-offset_right = 1921.0
+offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer/GUI"]
@@ -521,6 +578,52 @@ offset_bottom = 17.0
 text = "Level: 0"
 label_settings = SubResource("LabelSettings_83nsn")
 
+[node name="GameOverPanel" type="Panel" parent="CanvasLayer/GUI"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 480.0
+offset_top = 168.0
+offset_right = 800.0
+offset_bottom = 428.0
+scale = Vector2(3, 2.906)
+theme = SubResource("Theme_wd6wc")
+
+[node name="RestartButton" type="TextureButton" parent="CanvasLayer/GUI/GameOverPanel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 209.222
+offset_right = 56.0
+offset_bottom = 249.222
+scale = Vector2(2, 2)
+texture_normal = SubResource("AtlasTexture_n7l3o")
+texture_hover = SubResource("AtlasTexture_7f35a")
+
+[node name="LoadoutButton" type="TextureButton" parent="CanvasLayer/GUI/GameOverPanel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 112.0
+offset_top = 209.222
+offset_right = 160.0
+offset_bottom = 249.222
+scale = Vector2(2, 2)
+texture_normal = SubResource("AtlasTexture_5hecf")
+texture_pressed = SubResource("AtlasTexture_0rjnn")
+texture_hover = SubResource("AtlasTexture_yg7my")
+
+[node name="QuitButton" type="TextureButton" parent="CanvasLayer/GUI/GameOverPanel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 216.0
+offset_top = 209.222
+offset_right = 264.0
+offset_bottom = 249.222
+scale = Vector2(2, 2)
+texture_normal = SubResource("AtlasTexture_228np")
+texture_pressed = SubResource("AtlasTexture_r6kmy")
+texture_hover = SubResource("AtlasTexture_mx27c")
+
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="Attack/NailGunTimer" to="." method="_on_nail_gun_timer_timeout"]
 [connection signal="timeout" from="Attack/NailGunTimer/NailGunAttackTimer" to="." method="_on_nail_gun_attack_timer_timeout"]
@@ -530,5 +633,8 @@ label_settings = SubResource("LabelSettings_83nsn")
 [connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
 [connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
+[connection signal="pressed" from="CanvasLayer/GUI/GameOverPanel/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GUI/GameOverPanel/LoadoutButton" to="." method="_on_loadout_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GUI/GameOverPanel/QuitButton" to="." method="_on_quit_button_pressed"]
 
 [editable path="HurtBox"]
