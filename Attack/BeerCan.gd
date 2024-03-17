@@ -20,11 +20,30 @@ func _ready():
 	match level:
 		1:
 			hp = 9999
-			speed = 100
+			speed = 100.0
 			damage = 5
 			knockback_amount = 100
-			attack_size = 1.0
+			attack_size = 1.0 * (1 + player.spell_size)
+		2:
+			hp = 9999
+			speed = 100.0
+			damage = 5
+			knockback_amount = 100
+			attack_size = 1.0 * (1 + player.spell_size)
+		3:
+			hp = 9999
+			speed = 100.0
+			damage = 5
+			knockback_amount = 100
+			attack_size = 1.0 * (1 + player.spell_size)
+		4:
+			hp = 9999
+			speed = 100.0
+			damage = 5
+			knockback_amount = 125
+			attack_size = 1.0 * (1 + player.spell_size)
 	
+	$Sprite2D.play("spin")
 	var move_to_less = Vector2.ZERO
 	var move_to_more = Vector2.ZERO
 	match last_movement:
@@ -33,10 +52,10 @@ func _ready():
 			move_to_more = global_position + Vector2(randf_range(0.25,1), last_movement.y)*500
 		Vector2.RIGHT, Vector2.LEFT:
 			move_to_less = global_position + Vector2(last_movement.x, randf_range(-1,-0.25))*500
-			move_to_more = global_position + Vector2(last_movement.y, randf_range(0.25,1))*500
+			move_to_more = global_position + Vector2(last_movement.x, randf_range(0.25,1))*500
 		Vector2(1,1), Vector2(-1,-1), Vector2(1,-1), Vector2(-1,1):
-			move_to_less = global_position + Vector2(last_movement.x, last_movement.y * randf_range(0, 0.75))*500
-			move_to_more = global_position + Vector2(last_movement.x * randf_range(0, 0.75), last_movement.y)*500
+			move_to_less = global_position + Vector2(last_movement.x, last_movement.y * randf_range(0,0.75))*500
+			move_to_more = global_position + Vector2(last_movement.x * randf_range(0,0.75), last_movement.y)*500
 			
 	angle_less = global_position.direction_to(move_to_less)
 	angle_more = global_position.direction_to(move_to_more)

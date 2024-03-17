@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bmsi2qp22dr30"]
+
+[ext_resource type="FontFile" uid="uid://cyw4xutj5b7ta" path="res://Assets/Fonts/Sixtyfour-Regular.ttf" id="1_ll5mp"]
+
+[resource]
+line_spacing = 5.0
+font = ExtResource("1_ll5mp")
+font_size = 12

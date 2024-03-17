@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
-@export var movement_speed = 25
-@export var hp = 300
+@export var movement_speed = 65.0
+@export var hp = 40
 @export var knockback_recovery = 3.5
-@export var experience = 50
+@export var experience = 5
 var knockback = Vector2.ZERO
 
 @onready var player = get_tree().get_first_node_in_group("player")
@@ -37,7 +37,3 @@ func _on_hurt_box_hurt(damage, angle, knockback_amount):
 	if hp <= 0:
 		emit_signal("remove_from_array", self)
 		death()
-
-
-func _on_hurt_box_area_entered(area):
-	pass # Replace with function body.
