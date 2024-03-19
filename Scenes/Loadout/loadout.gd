@@ -144,3 +144,5 @@ func _process(_delta):
 	if are_modifiers2_unequiped() == true:
 		modifier2Atlas.region = Rect2(0, 0, 0, 0)
 		%EquipedMod2.texture = modifier2Atlas
+
+

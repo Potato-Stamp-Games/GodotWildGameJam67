@@ -199,7 +199,6 @@ columns = 3
 
 [node name="Modifier1" type="TextureButton" parent="MainBackground/DriversLicense/GC/InvSlots"]
 unique_name_in_owner = true
-visible = false
 show_behind_parent = true
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -355,7 +354,6 @@ offset_right = 1918.0
 offset_bottom = 840.0
 
 [node name="ModifierEquip" parent="ModEquip1" instance=ExtResource("5_fmppv")]
-visible = false
 layout_mode = 1
 offset_left = -316.0
 offset_top = -420.0
@@ -452,12 +450,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -0.0174533
+rotation = 0.0174533
 mouse_filter = 2
 texture = SubResource("AtlasTexture_vfdgf")
 
 [node name="RsAnimate" type="AnimationPlayer" parent="ResearchBtn/RSIcon"]
 unique_name_in_owner = true
+process_mode = 3
 reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_sf2bl")
@@ -493,10 +492,13 @@ offset_bottom = 879.0
 stream = ExtResource("12_xx6w0")
 autoplay = true
 
+[connection signal="pressed" from="MainBackground/DriversLicense/GC/InvSlots/Modifier1" to="." method="_on_modifier_1_pressed"]
 [connection signal="pressed" from="MainBackground/DriversLicense/GC/InvSlots/Modifier2" to="." method="_on_modifier_2_pressed"]
 [connection signal="pressed" from="MainBackground/DriversLicense/GC/InvSlots/WeaponSlot1" to="." method="_on_weapon_equiped_pressed"]
 [connection signal="body_shape_entered" from="Workbench/WorkToolbench" to="." method="_on_work_toolbench_body_shape_entered"]
 [connection signal="body_shape_exited" from="Workbench/WorkToolbench" to="." method="_on_work_toolbench_body_shape_exited"]
+[connection signal="body_shape_entered" from="ResearchTable/WorkResearchTable" to="." method="_on_work_research_table_body_shape_entered"]
+[connection signal="body_shape_exited" from="ResearchTable/WorkResearchTable" to="." method="_on_work_research_table_body_shape_exited"]
 [connection signal="pressed" from="ExitBtn" to="." method="_on_exit_btn_pressed"]
 [connection signal="pressed" from="PlayBtn" to="." method="_on_play_btn_pressed"]
 [connection signal="pressed" from="ResearchBtn" to="." method="_on_research_btn_pressed"]
