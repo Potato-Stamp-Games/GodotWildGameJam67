@@ -4,7 +4,6 @@ var movement_speed = 200
 @onready var sprite_2d = $Sprite2D
 
 func _ready():
-	var move_direction = get
 	sprite_2d.play("default")
 
 func _physics_process(delta):

@@ -1,0 +1,115 @@
+[gd_scene load_steps=16 format=3 uid="uid://y6ivkgr3oc30"]
+
+[ext_resource type="Texture2D" uid="uid://camujexa7mw5p" path="res://Assets/MenuAssets/MenuIcons.png" id="1_e5lxg"]
+[ext_resource type="Script" path="res://pause_menu.gd" id="1_tmy8y"]
+[ext_resource type="PackedScene" uid="uid://ddqf26n40s8ar" path="res://Scenes/OptionsMenu/options_menu.tscn" id="3_jwp6e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h881"]
+atlas = ExtResource("1_e5lxg")
+region = Rect2(80, 48, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0pl4"]
+atlas = ExtResource("1_e5lxg")
+region = Rect2(80, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxwqw"]
+atlas = ExtResource("1_e5lxg")
+region = Rect2(80, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fag5"]
+atlas = ExtResource("1_e5lxg")
+region = Rect2(80, 128, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvblj"]
+atlas = ExtResource("1_e5lxg")
+region = Rect2(80, 112, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqd7a"]
+atlas = ExtResource("1_e5lxg")
+region = Rect2(80, 112, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30mc6"]
+atlas = ExtResource("1_e5lxg")
+region = Rect2(80, 80, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkkt6"]
+atlas = ExtResource("1_e5lxg")
+region = Rect2(80, 96, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eru6x"]
+atlas = ExtResource("1_e5lxg")
+region = Rect2(80, 96, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ttv4"]
+atlas = ExtResource("1_e5lxg")
+region = Rect2(16, 80, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itajp"]
+atlas = ExtResource("1_e5lxg")
+region = Rect2(16, 96, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knpac"]
+atlas = ExtResource("1_e5lxg")
+region = Rect2(16, 96, 48, 16)
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tmy8y")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 75.0
+scale = Vector2(5, 5)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="RestartButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_8h881")
+texture_pressed = SubResource("AtlasTexture_t0pl4")
+texture_hover = SubResource("AtlasTexture_gxwqw")
+
+[node name="LoadoutButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_2fag5")
+texture_pressed = SubResource("AtlasTexture_gvblj")
+texture_hover = SubResource("AtlasTexture_pqd7a")
+
+[node name="OptionsButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_30mc6")
+texture_pressed = SubResource("AtlasTexture_pkkt6")
+texture_hover = SubResource("AtlasTexture_eru6x")
+
+[node name="Quit Button" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_8ttv4")
+texture_pressed = SubResource("AtlasTexture_itajp")
+texture_hover = SubResource("AtlasTexture_knpac")
+
+[node name="OptionsMenu" parent="." instance=ExtResource("3_jwp6e")]
+process_mode = 3
+top_level = true
+layout_mode = 2
+offset_left = 268.0
+offset_top = 3.0
+offset_right = 877.0
+offset_bottom = 468.0
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/LoadoutButton" to="." method="_on_loadout_button_pressed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]
