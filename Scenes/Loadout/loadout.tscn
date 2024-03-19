@@ -423,7 +423,7 @@ texture_hover = SubResource("AtlasTexture_5s3qg")
 stretch_mode = 0
 
 [node name="ResearchBtn" type="TextureButton" parent="."]
-process_mode = 4
+process_mode = 3
 visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(128, 128)

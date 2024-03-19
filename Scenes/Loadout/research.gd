@@ -6,6 +6,7 @@ var rsPoison: bool = false
 var rsIce: bool = false
 var rsFire: bool = false
 var save_file: SaveFile
+var rsPoints = Global.rsPoints
 
 func _ready():
 	save_file = SaveFile.load_or_create()
