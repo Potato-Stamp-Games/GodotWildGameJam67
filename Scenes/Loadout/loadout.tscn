@@ -490,6 +490,7 @@ offset_bottom = 879.0
 
 [node name="GarageMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_xx6w0")
+volume_db = -20.05
 autoplay = true
 
 [connection signal="pressed" from="MainBackground/DriversLicense/GC/InvSlots/Modifier1" to="." method="_on_modifier_1_pressed"]

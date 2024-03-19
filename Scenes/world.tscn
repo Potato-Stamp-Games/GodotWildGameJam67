@@ -1,11 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://boes578rjaq3s"]
 
-[ext_resource type="Texture2D" uid="uid://dlan7rb5jaia2" path="res://PlaceholderSprite.png" id="1_8l8dq"]
-[ext_resource type="Texture2D" uid="uid://b324o1kpjcxge" path="res://PlaceholderSprite2.png" id="2_b84vp"]
-[ext_resource type="Texture2D" uid="uid://yoe5tftdrgn4" path="res://placeholderSprite3.png" id="3_ef10u"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o26q1"]
+load_path = "res://.godot/imported/PlaceholderSprite.png-2989e593c25319ee3b82d0df00a4260e.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a26xl"]
-texture = ExtResource("1_8l8dq")
+texture = SubResource("CompressedTexture2D_o26q1")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -13,8 +12,11 @@ texture = ExtResource("1_8l8dq")
 0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_1/angular_velocity = 0.0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uqce6"]
+load_path = "res://.godot/imported/PlaceholderSprite2.png-2a5f165b4759b97259f9724caa915ed1.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hquhp"]
-texture = ExtResource("2_b84vp")
+texture = SubResource("CompressedTexture2D_uqce6")
 0:0/size_in_atlas = Vector2i(16, 16)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -22,8 +24,11 @@ texture = ExtResource("2_b84vp")
 0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_1/angular_velocity = 0.0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xldew"]
+load_path = "res://.godot/imported/placeholderSprite3.png-e6fa7496f401206dcff0afa623434a42.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0a3h1"]
-texture = ExtResource("3_ef10u")
+texture = SubResource("CompressedTexture2D_xldew")
 0:0/size_in_atlas = Vector2i(16, 16)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)

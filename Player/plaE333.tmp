@@ -108,8 +108,7 @@ func determineStartingWeapon():
 func pauseMenu():
 	if paused:
 		pause_menu.hide()
-		$CanvasLayer/PauseMenu/OptionsMenu.hide()
-		$CanvasLayer/PauseMenu/MarginContainer/VBoxContainer/OptionsButton.set_pressed(false)
+		$CanvasLayer/PauseMenu/MarginContainer/OptionsMenu.hide()
 		Engine.time_scale = 1
 	else:
 		pause_menu.show()
@@ -920,14 +919,12 @@ offset_bottom = 63.0
 vertical_alignment = 1
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("12_tvoyk")]
-visible = false
 offset_left = 840.0
 offset_top = 320.0
 offset_right = 840.0
 offset_bottom = 320.0
 
 [node name="OptionsMenu" parent="CanvasLayer/PauseMenu" index="1"]
-visible = false
 offset_left = 1088.0
 offset_top = 320.0
 offset_right = 1697.0
