@@ -160,7 +160,6 @@ theme_override_font_sizes/font_size = 21
 text = "50% increased movement speed"
 
 [node name="Damage" type="MarginContainer" parent="ScrollContainer/GCMain"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 

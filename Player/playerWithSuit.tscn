@@ -884,7 +884,6 @@ texture_pressed = SubResource("AtlasTexture_r6kmy")
 texture_hover = SubResource("AtlasTexture_mx27c")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-visible = false
 top_level = true
 texture_filter = 1
 offset_left = 1728.0

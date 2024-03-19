@@ -175,7 +175,6 @@ Accuracy: 80 degrees
 Speed: 4 shots a second"
 
 [node name="Crowbar" type="MarginContainer" parent="ScrollContainer/GCMain"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
