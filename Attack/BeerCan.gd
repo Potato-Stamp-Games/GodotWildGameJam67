@@ -6,6 +6,8 @@ var speed = 100
 var damage = 5
 var attack_size = 1.0
 var knockback_amount = 100
+var researchDamage = Global.rsBonusDict["rsDamage"]
+var bonusDamageModifier = 0
 
 var last_movement = Vector2.ZERO
 var angle = Vector2.ZERO
@@ -17,29 +19,32 @@ signal remove_from_array(object)
 @onready var player = get_tree().get_first_node_in_group("player")
 
 func _ready():
+	if Global.damageEquiped == true:
+		bonusDamageModifier = 3
+	
 	match level:
 		1:
 			hp = 9999
 			speed = 100.0
-			damage = 5
+			damage = (5 + researchDamage + bonusDamageModifier)
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + player.spell_size)
 		2:
 			hp = 9999
 			speed = 100.0
-			damage = 5
+			damage = (5 + researchDamage + bonusDamageModifier)
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + player.spell_size)
 		3:
 			hp = 9999
 			speed = 100.0
-			damage = 5
+			damage = (5 + researchDamage + bonusDamageModifier)
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + player.spell_size)
 		4:
 			hp = 9999
 			speed = 100.0
-			damage = 5
+			damage = (5 + researchDamage + bonusDamageModifier)
 			knockback_amount = 125
 			attack_size = 1.0 * (1 + player.spell_size)
 	

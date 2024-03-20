@@ -8,6 +8,10 @@ var knockback_amount = 100
 var paths = 1
 var attack_size = 1.0
 var attack_speed = 5.0
+var researchDamage = Global.rsBonusDict["rsDamage"]
+var researchSpeed = Global.rsBonusDict["rsSpeed"]
+var researchAttackSpeed = Global.rsBonusDict["rsAtkSpeed"]
+var bonusDamageModifier = 0
 
 var target = Vector2.ZERO
 var target_array = []
@@ -29,40 +33,42 @@ func _ready():
 	_on_reset_pos_timer_timeout()
 	
 func update_measuringTape():
+	if Global.damageEquiped == true:
+		bonusDamageModifier = 3
 	level = player.measuringtape_level
 	match level:
 		1:
 			hp = 9999
 			speed = 200.0
-			damage = 10
+			damage = (10 + researchDamage + bonusDamageModifier)
 			knockback_amount = 100
 			paths = 1
 			attack_size = 1.0 * (1 + player.spell_size)
-			attack_speed = 5.0 * (1-player.spell_cooldown)
+			attack_speed = 5.0 * (1-(player.spell_cooldown + researchAttackSpeed))
 		2:
 			hp = 9999
 			speed = 200.0
-			damage = 10
+			damage = (10 + researchDamage + bonusDamageModifier)
 			knockback_amount = 100
 			paths = 2
 			attack_size = 1.0 * (1 + player.spell_size)
-			attack_speed = 5.0 * (1-player.spell_cooldown)
+			attack_speed = 5.0 * (1-(player.spell_cooldown + researchAttackSpeed))
 		3:
 			hp = 9999
 			speed = 200.0
-			damage = 10
+			damage = (10 + researchDamage + bonusDamageModifier)
 			knockback_amount = 100
 			paths = 3
 			attack_size = 1.0 * (1 + player.spell_size)
-			attack_speed = 5.0 * (1-player.spell_cooldown)
+			attack_speed = 5.0 * (1-(player.spell_cooldown + researchAttackSpeed))
 		4:
 			hp = 9999
 			speed = 200.0
-			damage = 15
+			damage = (15 + researchDamage + bonusDamageModifier)
 			knockback_amount = 120
 			paths = 3
 			attack_size = 1.0 * (1 + player.spell_size)
-			attack_speed = 5.0 * (1-player.spell_cooldown)
+			attack_speed = 5.0 * (1-(player.spell_cooldown + researchAttackSpeed))
 			
 func _physics_process(delta):
 	if target_array.size() > 0:

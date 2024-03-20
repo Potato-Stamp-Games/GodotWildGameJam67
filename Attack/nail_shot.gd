@@ -6,6 +6,9 @@ var speed = 100
 var damage = 5
 var knockback_amount = 100
 var attack_size = 1.0
+var researchDamage = Global.rsBonusDict["rsDamage"]
+var researchAttackSpeed = Global.rsBonusDict["rsAtkSpeed"]
+var bonusDamageModifier = 0
 
 var target = Vector2.ZERO
 var angle = Vector2.ZERO
@@ -14,31 +17,33 @@ var angle = Vector2.ZERO
 signal remove_from_array(object)
 
 func _ready():
+	if Global.damageEquiped == true:
+		bonusDamageModifier = 3
 	angle = global_position.direction_to(target)
 	rotation = angle.angle() + deg_to_rad(180)
 	match level:
 		1:
 			hp = 1
 			speed = 100
-			damage = 5
+			damage = (5 + researchDamage + bonusDamageModifier)
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + player.spell_size)
 		2:
 			hp = 1
 			speed = 100
-			damage = 5
+			damage = (5 + researchDamage + bonusDamageModifier)
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + player.spell_size)
 		3:
 			hp = 2
 			speed = 100
-			damage = 8
+			damage = (8 + researchDamage + bonusDamageModifier)
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + player.spell_size)
 		4:
 			hp = 2
 			speed = 100
-			damage = 8
+			damage = (8 + researchDamage + bonusDamageModifier)
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + player.spell_size)
 

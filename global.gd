@@ -19,3 +19,4 @@ var mod2Pressed = false
 #Research Dictonary
 var rsPoints = 0
 var rsDict = {"rsSpeed": 0, "rsDamage": 0, "rsAtkSpeed": 0, "rsPoison": false, "rsIce": false, "rsFire": false}
+var rsBonusDict = {"rsSpeed": 0, "rsDamage": 0, "rsAtkSpeed": 0}
