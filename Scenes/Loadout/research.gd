@@ -40,6 +40,7 @@ func _on_speed_rs_btn_pressed():
 	if Global.rsPoints >= 30 and rsSpeed <= 9:
 		Global.rsPoints -= 30
 		rsSpeed += 1
+		Global.rsBonusDict["rsSpeed"] += .15
 		research_dict_set()
 		if rsSpeed == 10:
 			%SpeedRsBtn.disabled = true
@@ -49,6 +50,7 @@ func _on_damage_rs_btn_pressed():
 	if Global.rsPoints >= 30 and rsDamage <= 9:
 		Global.rsPoints -= 30
 		rsDamage += 1
+		Global.rsBonusDict["rsDamage"] += 1
 		research_dict_set()
 		if rsDamage == 10:
 			%DamageRsBtn.disabled = true
@@ -58,6 +60,7 @@ func _on_atk_speed_rs_btn_pressed():
 	if Global.rsPoints >= 30 and rsAtkSpeed <= 9:
 		Global.rsPoints -= 30
 		rsAtkSpeed += 1
+		Global.rsBonusDict["rsAtkSpeed"] += .05
 		research_dict_set()
 		if rsAtkSpeed == 10:
 			%AtkSpeedRsBtn.disabled = true
