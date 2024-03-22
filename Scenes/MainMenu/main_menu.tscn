@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bh812ic52oj0a"]
+[gd_scene load_steps=15 format=3 uid="uid://bh812ic52oj0a"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu/main_menu.gd" id="1_74j5r"]
 [ext_resource type="Texture2D" uid="uid://2umjv7csq7np" path="res://Scenes/MainMenu/PAWISITELOGOLARGE.png" id="2_xubuu"]
 [ext_resource type="Texture2D" uid="uid://camujexa7mw5p" path="res://Assets/MenuAssets/MenuIcons.png" id="3_tsnvq"]
 [ext_resource type="PackedScene" uid="uid://ddqf26n40s8ar" path="res://Scenes/OptionsMenu/options_menu.tscn" id="5_dqwp2"]
+[ext_resource type="AudioStream" uid="uid://27434ix7pcox" path="res://Assets/SoundDesign/MainMenuMusic.ogg" id="5_q8kad"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4pqvl"]
 bg_color = Color(0.631373, 0.760784, 0.988235, 1)
@@ -154,8 +155,14 @@ offset_top = 609.0
 offset_right = 1029.0
 offset_bottom = 1074.0
 
-[node name="MenuMusic" type="AudioStreamPlayer2D" parent="."]
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_q8kad")
+volume_db = -10.604
+autoplay = true
 bus = &"Music"
+
+[node name="MainMenuSfx" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [connection signal="pressed" from="Background/BackgroundGradient/Padding/GC/PlayBtn" to="." method="_on_play_btn_pressed"]
 [connection signal="pressed" from="Background/BackgroundGradient/Padding/GC/ExitBtn" to="." method="_on_exit_btn_pressed"]

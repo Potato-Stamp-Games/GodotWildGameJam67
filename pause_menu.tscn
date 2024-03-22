@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://y6ivkgr3oc30"]
+[gd_scene load_steps=17 format=3 uid="uid://y6ivkgr3oc30"]
 
 [ext_resource type="Texture2D" uid="uid://camujexa7mw5p" path="res://Assets/MenuAssets/MenuIcons.png" id="1_e5lxg"]
 [ext_resource type="Script" path="res://pause_menu.gd" id="1_tmy8y"]
 [ext_resource type="PackedScene" uid="uid://ddqf26n40s8ar" path="res://Scenes/OptionsMenu/options_menu.tscn" id="3_jwp6e"]
+[ext_resource type="AudioStream" uid="uid://kevpg0tyfwy3" path="res://Assets/SoundDesign/MenuConfirm.wav" id="4_tynkj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8h881"]
 atlas = ExtResource("1_e5lxg")
@@ -108,6 +109,11 @@ offset_left = 268.0
 offset_top = 3.0
 offset_right = 877.0
 offset_bottom = 468.0
+
+[node name="PauseMenuSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_tynkj")
+volume_db = -20.28
+bus = &"SFX"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/LoadoutButton" to="." method="_on_loadout_button_pressed"]

@@ -11,6 +11,6 @@ As an aspiring inventor shrink down to the size of an ant and enter the body of 
 
 
 Credits -
-Ian Stamper - Developer
+Ian Stamper - Developer Lead
 Ethan Crites - Developer
 Burke Maurer - Art Lead
