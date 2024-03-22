@@ -1,72 +1,72 @@
 [gd_scene load_steps=25 format=3 uid="uid://djymsywqdo47t"]
 
-[ext_resource type="Script" path="res://ParasiteSmall/ParasiteSmall.gd" id="1_l88tc"]
-[ext_resource type="Texture2D" uid="uid://ujuyk7vdsagi" path="res://Assets/Parasite Sprites/LittleParasite.png" id="2_w38h7"]
-[ext_resource type="PackedScene" uid="uid://c3k2xk7dpb4k4" path="res://Utility/hurt_box.tscn" id="3_xs2rr"]
-[ext_resource type="PackedScene" uid="uid://dqwocph3dxjjr" path="res://Utility/hit_box.tscn" id="4_6q3dn"]
+[ext_resource type="Script" path="res://Parasites/Enemy.gd" id="1_w1ppm"]
+[ext_resource type="Texture2D" uid="uid://ujuyk7vdsagi" path="res://Assets/Parasite Sprites/LittleParasite.png" id="2_1ydxh"]
+[ext_resource type="PackedScene" uid="uid://c3k2xk7dpb4k4" path="res://Utility/hurt_box.tscn" id="3_4mwkh"]
+[ext_resource type="PackedScene" uid="uid://dqwocph3dxjjr" path="res://Utility/hit_box.tscn" id="4_3kvkh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_erpgb"]
-atlas = ExtResource("2_w38h7")
+atlas = ExtResource("2_1ydxh")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gm7ho"]
-atlas = ExtResource("2_w38h7")
+atlas = ExtResource("2_1ydxh")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tv366"]
-atlas = ExtResource("2_w38h7")
+atlas = ExtResource("2_1ydxh")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r215s"]
-atlas = ExtResource("2_w38h7")
+atlas = ExtResource("2_1ydxh")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uqlpl"]
-atlas = ExtResource("2_w38h7")
+atlas = ExtResource("2_1ydxh")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cbrlw"]
-atlas = ExtResource("2_w38h7")
+atlas = ExtResource("2_1ydxh")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gywfq"]
-atlas = ExtResource("2_w38h7")
+atlas = ExtResource("2_1ydxh")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_40lt3"]
-atlas = ExtResource("2_w38h7")
+atlas = ExtResource("2_1ydxh")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xewi3"]
-atlas = ExtResource("2_w38h7")
+atlas = ExtResource("2_1ydxh")
 region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h58ra"]
-atlas = ExtResource("2_w38h7")
+atlas = ExtResource("2_1ydxh")
 region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_quure"]
-atlas = ExtResource("2_w38h7")
+atlas = ExtResource("2_1ydxh")
 region = Rect2(320, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nj665"]
-atlas = ExtResource("2_w38h7")
+atlas = ExtResource("2_1ydxh")
 region = Rect2(352, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q13ww"]
-atlas = ExtResource("2_w38h7")
+atlas = ExtResource("2_1ydxh")
 region = Rect2(384, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w18lg"]
-atlas = ExtResource("2_w38h7")
+atlas = ExtResource("2_1ydxh")
 region = Rect2(416, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ciskm"]
-atlas = ExtResource("2_w38h7")
+atlas = ExtResource("2_1ydxh")
 region = Rect2(448, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7qb4i"]
-atlas = ExtResource("2_w38h7")
+atlas = ExtResource("2_1ydxh")
 region = Rect2(480, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mgd2a"]
@@ -138,7 +138,7 @@ size = Vector2(16, 15.6)
 scale = Vector2(5, 5)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("1_l88tc")
+script = ExtResource("1_w1ppm")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -149,7 +149,7 @@ animation = &"new_animation"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_arph3")
 
-[node name="HurtBox" parent="." instance=ExtResource("3_xs2rr")]
+[node name="HurtBox" parent="." instance=ExtResource("3_4mwkh")]
 collision_layer = 4
 collision_mask = 4
 HurtBoxType = 1
@@ -158,7 +158,7 @@ HurtBoxType = 1
 position = Vector2(-4.76837e-07, -4.76837e-07)
 shape = SubResource("RectangleShape2D_3qjvc")
 
-[node name="HitBox" parent="." instance=ExtResource("4_6q3dn")]
+[node name="HitBox" parent="." instance=ExtResource("4_3kvkh")]
 collision_layer = 2
 collision_mask = 2
 

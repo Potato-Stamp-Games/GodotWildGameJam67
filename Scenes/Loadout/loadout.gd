@@ -71,7 +71,7 @@ func _on_modifier_2_pressed():
 func _on_exit_btn_pressed():
 	get_tree().quit()
 func _on_play_btn_pressed():
-	get_tree().change_scene_to_file("res://world.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Levels/baseLevel.tscn")
 func _on_research_btn_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Loadout/research.tscn")
 
