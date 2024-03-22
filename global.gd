@@ -20,3 +20,5 @@ var mod2Pressed = false
 var rsPoints = 0
 var rsDict = {"rsSpeed": 0, "rsDamage": 0, "rsAtkSpeed": 0, "rsPoison": false, "rsIce": false, "rsFire": false}
 var rsBonusDict = {"rsSpeed": 0, "rsDamage": 0, "rsAtkSpeed": 0}
+#CurrentLevel
+var currentLevel = "res://Scenes/Levels/baseLevel.tscn"
