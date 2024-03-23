@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://c11pw268hp3as" path="res://Assets/Tiles/Frostlevel.png" id="2_61yag"]
 [ext_resource type="PackedScene" uid="uid://oh0r45b5v51f" path="res://Player/playerWithSuit.tscn" id="3_b11dj"]
 [ext_resource type="PackedScene" uid="uid://bd34a3bxs7eb2" path="res://enemy_spawner.tscn" id="4_spig2"]
-[ext_resource type="PackedScene" uid="uid://djymsywqdo47t" path="res://Parasites/ParasiteSmall.tscn" id="5_1uxam"]
+[ext_resource type="PackedScene" uid="uid://djymsywqdo47t" path="res://Parasites/BaseLevel/ParasiteSmall.tscn" id="5_1uxam"]
 [ext_resource type="Script" path="res://Utility/spawn_info.gd" id="6_8d5jj"]
-[ext_resource type="PackedScene" uid="uid://dl1a65o5s0fbf" path="res://Parasites/ParasiteBoss.tscn" id="7_4qix4"]
-[ext_resource type="PackedScene" uid="uid://c31rxvfspm0j1" path="res://Worm/Worm.tscn" id="8_k4cua"]
+[ext_resource type="PackedScene" uid="uid://dl1a65o5s0fbf" path="res://Parasites/BaseLevel/ParasiteBoss.tscn" id="7_4qix4"]
+[ext_resource type="PackedScene" uid="uid://c31rxvfspm0j1" path="res://Parasites/BaseLevel/Worm.tscn" id="8_k4cua"]
 [ext_resource type="AudioStream" uid="uid://b873iamt3t5hc" path="res://Assets/SoundDesign/ice80bpm.mp3" id="9_njdl3"]
 
 [sub_resource type="Resource" id="Resource_jtsox"]

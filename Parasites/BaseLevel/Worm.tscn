@@ -1,32 +1,32 @@
 [gd_scene load_steps=15 format=3 uid="uid://c31rxvfspm0j1"]
 
-[ext_resource type="Script" path="res://Worm/Worm.gd" id="1_kvcfe"]
-[ext_resource type="Texture2D" uid="uid://dhsol1rdin0p5" path="res://Assets/Parasite Sprites/wormparasite.png" id="2_tcyug"]
-[ext_resource type="PackedScene" uid="uid://c3k2xk7dpb4k4" path="res://Utility/hurt_box.tscn" id="3_n8g3q"]
-[ext_resource type="PackedScene" uid="uid://dqwocph3dxjjr" path="res://Utility/hit_box.tscn" id="4_yosxa"]
+[ext_resource type="Script" path="res://Parasites/Enemy.gd" id="1_bksq5"]
+[ext_resource type="Texture2D" uid="uid://dhsol1rdin0p5" path="res://Assets/Parasite Sprites/wormparasite.png" id="2_yn73g"]
+[ext_resource type="PackedScene" uid="uid://c3k2xk7dpb4k4" path="res://Utility/hurt_box.tscn" id="3_n6m05"]
+[ext_resource type="PackedScene" uid="uid://dqwocph3dxjjr" path="res://Utility/hit_box.tscn" id="4_6u1xq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1hdlb"]
-atlas = ExtResource("2_tcyug")
+atlas = ExtResource("2_yn73g")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1sjqy"]
-atlas = ExtResource("2_tcyug")
+atlas = ExtResource("2_yn73g")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h5cel"]
-atlas = ExtResource("2_tcyug")
+atlas = ExtResource("2_yn73g")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hskdp"]
-atlas = ExtResource("2_tcyug")
+atlas = ExtResource("2_yn73g")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l0kjh"]
-atlas = ExtResource("2_tcyug")
+atlas = ExtResource("2_yn73g")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n4u6r"]
-atlas = ExtResource("2_tcyug")
+atlas = ExtResource("2_yn73g")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lg8sc"]
@@ -68,8 +68,10 @@ size = Vector2(22.6, 6.4)
 scale = Vector2(5, 5)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("1_kvcfe")
+script = ExtResource("1_bksq5")
+movement_speed = 65.0
 hp = 20
+experience = 5
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -81,7 +83,7 @@ animation = &"new_animation"
 position = Vector2(-0.3, 0.4)
 shape = SubResource("RectangleShape2D_27is2")
 
-[node name="HurtBox" parent="." instance=ExtResource("3_n8g3q")]
+[node name="HurtBox" parent="." instance=ExtResource("3_n6m05")]
 collision_layer = 4
 collision_mask = 4
 HurtBoxType = 1
@@ -90,7 +92,7 @@ HurtBoxType = 1
 position = Vector2(-0.300001, 0.1)
 shape = SubResource("RectangleShape2D_3qjvc")
 
-[node name="HitBox" parent="." instance=ExtResource("4_yosxa")]
+[node name="HitBox" parent="." instance=ExtResource("4_6u1xq")]
 collision_layer = 2
 collision_mask = 2
 
