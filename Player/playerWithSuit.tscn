@@ -88,6 +88,12 @@ var enemy_close = []
 @onready var rp_label = get_node(\"%RPLabel\")
 @onready var pause_menu = $CanvasLayer/PauseMenu
 
+#Sound
+@onready var gui_sfx = $CanvasLayer/GuiSFX
+
+const LEVEL_UP = preload(\"res://Assets/SoundDesign/LevelUp.wav\")
+const MENU_CONFIRM = preload(\"res://Assets/SoundDesign/MenuConfirm.wav\")
+
 func _ready():
 	determineStartingWeapon()
 	rp_label.text = str(Global.rsPoints)
@@ -291,6 +297,8 @@ func set_expbar(set_value = 1, set_max_value = 100):
 func levelup():
 	lblLevel.text = str(\"Level: \",experience_level)
 	levelUpPanel.visible = true
+	gui_sfx.stream = LEVEL_UP
+	gui_sfx.play()
 	var options = 0
 	var optionsmax = 3
 	while options < optionsmax:
@@ -403,13 +411,22 @@ func get_random_item():
 		return null
 		
 func _on_restart_button_pressed():
+	gui_sfx.stream = MENU_CONFIRM
+	gui_sfx.play()
+	await get_tree().create_timer(0.15)
 	get_tree().change_scene_to_file(\"res://world.tscn\")
 
 func _on_loadout_button_pressed():
+	gui_sfx.stream = MENU_CONFIRM
+	gui_sfx.play()
+	await get_tree().create_timer(0.15)
 	get_tree().change_scene_to_file(\"res://Scenes/Loadout/loadout.tscn\")
 
 
 func _on_quit_button_pressed():
+	gui_sfx.stream = MENU_CONFIRM
+	gui_sfx.play()
+	await get_tree().create_timer(0.15)
 	get_tree().change_scene_to_file(\"res://Scenes/MainMenu/main_menu.tscn\")
 	
 func death():
@@ -941,6 +958,10 @@ offset_left = 1088.0
 offset_top = 320.0
 offset_right = 1697.0
 offset_bottom = 785.0
+
+[node name="GuiSFX" type="AudioStreamPlayer2D" parent="CanvasLayer"]
+scale = Vector2(5, 5)
+bus = &"SFX"
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="Attack/NailGunTimer" to="." method="_on_nail_gun_timer_timeout"]

@@ -5,6 +5,12 @@ var weaponAtlas: AtlasTexture
 var modifier1Atlas: AtlasTexture
 var modifier2Atlas: AtlasTexture
 
+#Sound
+@onready var gui_sfx = $GuiSfx
+const MENU_CONFIRM = preload("res://Assets/SoundDesign/MenuConfirm.wav")
+const MENU_DENY = preload("res://Assets/SoundDesign/MenuDeny.wav")
+
+
 func _ready():
 	get_tree().paused = false
 	weaponAtlas = AtlasTexture.new()
@@ -69,10 +75,19 @@ func _on_modifier_2_pressed():
 		Global.mod2Pressed = false
 #SCENE BUTTONS
 func _on_exit_btn_pressed():
+	gui_sfx.stream = MENU_CONFIRM
+	gui_sfx.play()
+	await get_tree().create_timer(0.15)
 	get_tree().quit()
 func _on_play_btn_pressed():
+	gui_sfx.stream = MENU_CONFIRM
+	gui_sfx.play()
+	await get_tree().create_timer(0.15)
 	get_tree().change_scene_to_file("res://Scenes/Levels/baseLevel.tscn")
 func _on_research_btn_pressed():
+	gui_sfx.stream = MENU_CONFIRM
+	gui_sfx.play()
+	await get_tree().create_timer(0.15)
 	get_tree().change_scene_to_file("res://Scenes/Loadout/research.tscn")
 
 func _on_work_toolbench_body_shape_entered(_body_rid, _body, _body_shape_index, _local_shape_index):
@@ -94,8 +109,14 @@ func _on_work_research_table_body_shape_exited(_body_rid, _body, _body_shape_ind
 
 func _on_settings_btn_toggled(toggled_on):
 	if toggled_on == true:
+		gui_sfx.stream = MENU_CONFIRM
+		gui_sfx.play()
+		await get_tree().create_timer(0.15)
 		$OptionsMenu.show()
 	elif toggled_on == false:
+		gui_sfx.stream = MENU_DENY
+		gui_sfx.play()
+		await get_tree().create_timer(0.13)
 		$OptionsMenu.hide()
 
 func _process(_delta):

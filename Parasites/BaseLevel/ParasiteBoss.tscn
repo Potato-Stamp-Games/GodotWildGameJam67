@@ -1,24 +1,24 @@
 [gd_scene load_steps=13 format=3 uid="uid://dl1a65o5s0fbf"]
 
-[ext_resource type="Script" path="res://Parasites/Enemy.gd" id="1_78p61"]
-[ext_resource type="Texture2D" uid="uid://4hp8btacn2ds" path="res://Assets/Parasite Sprites/BossBasicParasite.png" id="2_2bh77"]
-[ext_resource type="PackedScene" uid="uid://c3k2xk7dpb4k4" path="res://Utility/hurt_box.tscn" id="3_31ia7"]
-[ext_resource type="PackedScene" uid="uid://dqwocph3dxjjr" path="res://Utility/hit_box.tscn" id="4_rprag"]
+[ext_resource type="Script" path="res://Parasites/Enemy.gd" id="1_75wji"]
+[ext_resource type="Texture2D" uid="uid://4hp8btacn2ds" path="res://Assets/Parasite Sprites/BossBasicParasite.png" id="2_vmp5t"]
+[ext_resource type="PackedScene" uid="uid://c3k2xk7dpb4k4" path="res://Utility/hurt_box.tscn" id="3_jd1wf"]
+[ext_resource type="PackedScene" uid="uid://dqwocph3dxjjr" path="res://Utility/hit_box.tscn" id="4_eapwu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_52ckc"]
-atlas = ExtResource("2_2bh77")
+atlas = ExtResource("2_vmp5t")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ee8e0"]
-atlas = ExtResource("2_2bh77")
+atlas = ExtResource("2_vmp5t")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hpuwq"]
-atlas = ExtResource("2_2bh77")
+atlas = ExtResource("2_vmp5t")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h0mf7"]
-atlas = ExtResource("2_2bh77")
+atlas = ExtResource("2_vmp5t")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mgd2a"]
@@ -55,7 +55,7 @@ size = Vector2(16, 15.6)
 scale = Vector2(15, 15)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("1_78p61")
+script = ExtResource("1_75wji")
 dropsResearch = true
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
@@ -67,7 +67,7 @@ animation = &"new_animation"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_n71jj")
 
-[node name="HurtBox" parent="." instance=ExtResource("3_31ia7")]
+[node name="HurtBox" parent="." instance=ExtResource("3_jd1wf")]
 collision_layer = 4
 collision_mask = 4
 HurtBoxType = 1
@@ -76,7 +76,7 @@ HurtBoxType = 1
 position = Vector2(-4.76837e-07, -4.76837e-07)
 shape = SubResource("RectangleShape2D_1nna6")
 
-[node name="HitBox" parent="." instance=ExtResource("4_rprag")]
+[node name="HitBox" parent="." instance=ExtResource("4_eapwu")]
 collision_layer = 2
 collision_mask = 2
 
