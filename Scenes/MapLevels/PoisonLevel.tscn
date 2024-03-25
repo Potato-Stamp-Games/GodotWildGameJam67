@@ -1,78 +1,78 @@
 [gd_scene load_steps=15 format=3 uid="uid://bu8tr46tpberu"]
 
-[ext_resource type="Script" path="res://world.gd" id="1_rhfyc"]
-[ext_resource type="Texture2D" uid="uid://donb3s1gvfa8p" path="res://Assets/Tiles/PoisonLevelV1.png" id="2_s7pbs"]
-[ext_resource type="PackedScene" uid="uid://oh0r45b5v51f" path="res://Player/playerWithSuit.tscn" id="3_p3bcc"]
-[ext_resource type="PackedScene" uid="uid://bd34a3bxs7eb2" path="res://enemy_spawner.tscn" id="4_5vbvd"]
-[ext_resource type="PackedScene" uid="uid://svvm5csguqd3" path="res://Parasites/PoisonLevel/PoisonParasiteSmall.tscn" id="5_lby6p"]
-[ext_resource type="Script" path="res://Utility/spawn_info.gd" id="6_puspw"]
-[ext_resource type="PackedScene" uid="uid://br7w7kj4vlcr2" path="res://Parasites/PoisonLevel/PoisonWorm.tscn" id="7_djfa7"]
-[ext_resource type="PackedScene" uid="uid://byij3wxmga47j" path="res://Parasites/PoisonLevel/PoisonParasiteBoss.tscn" id="8_cndyk"]
-[ext_resource type="AudioStream" uid="uid://b873iamt3t5hc" path="res://Assets/SoundDesign/ice80bpm.mp3" id="9_kvgm7"]
+[ext_resource type="Script" path="res://world.gd" id="1_6ixrm"]
+[ext_resource type="Texture2D" uid="uid://donb3s1gvfa8p" path="res://Assets/Tiles/PoisonLevelV1.png" id="2_2eifq"]
+[ext_resource type="PackedScene" uid="uid://oh0r45b5v51f" path="res://Player/playerWithSuit.tscn" id="3_tnaoj"]
+[ext_resource type="PackedScene" uid="uid://bd34a3bxs7eb2" path="res://enemy_spawner.tscn" id="4_a5ioq"]
+[ext_resource type="PackedScene" uid="uid://svvm5csguqd3" path="res://Parasites/PoisonLevel/PoisonParasiteSmall.tscn" id="5_o844i"]
+[ext_resource type="Script" path="res://Utility/spawn_info.gd" id="6_aeav4"]
+[ext_resource type="PackedScene" uid="uid://br7w7kj4vlcr2" path="res://Parasites/PoisonLevel/PoisonWorm.tscn" id="7_a72e0"]
+[ext_resource type="PackedScene" uid="uid://byij3wxmga47j" path="res://Parasites/PoisonLevel/PoisonParasiteBoss.tscn" id="8_l3h4m"]
+[ext_resource type="AudioStream" uid="uid://b873iamt3t5hc" path="res://Assets/SoundDesign/ice80bpm.mp3" id="9_o8omr"]
 
 [sub_resource type="Resource" id="Resource_o6xvy"]
-script = ExtResource("6_puspw")
+script = ExtResource("6_aeav4")
 time_start = 0
 time_end = 240
-enemy = ExtResource("5_lby6p")
+enemy = ExtResource("5_o844i")
 enemy_num = 1
 enemy_spawn_delay = 2
 
 [sub_resource type="Resource" id="Resource_37aon"]
-script = ExtResource("6_puspw")
+script = ExtResource("6_aeav4")
 time_start = 240
 time_end = 360
-enemy = ExtResource("5_lby6p")
+enemy = ExtResource("5_o844i")
 enemy_num = 1
 enemy_spawn_delay = 1
 
 [sub_resource type="Resource" id="Resource_l22nm"]
-script = ExtResource("6_puspw")
+script = ExtResource("6_aeav4")
 time_start = 360
 time_end = 400
-enemy = ExtResource("7_djfa7")
+enemy = ExtResource("7_a72e0")
 enemy_num = 1
 enemy_spawn_delay = 2
 
 [sub_resource type="Resource" id="Resource_tfea4"]
-script = ExtResource("6_puspw")
+script = ExtResource("6_aeav4")
 time_start = 400
 time_end = 400
-enemy = ExtResource("8_cndyk")
+enemy = ExtResource("8_l3h4m")
 enemy_num = 1
 enemy_spawn_delay = 0
 
 [sub_resource type="Resource" id="Resource_tspqf"]
-script = ExtResource("6_puspw")
+script = ExtResource("6_aeav4")
 time_start = 400
 time_end = 600
-enemy = ExtResource("5_lby6p")
+enemy = ExtResource("5_o844i")
 enemy_num = 2
 enemy_spawn_delay = 1
 
-[node name="World" type="Node2D"]
+[node name="World2" type="Node2D"]
 process_mode = 1
-script = ExtResource("1_rhfyc")
+script = ExtResource("1_6ixrm")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(224, 360)
 scale = Vector2(5, 5)
-texture = ExtResource("2_s7pbs")
+texture = ExtResource("2_2eifq")
 region_enabled = true
 region_rect = Rect2(0, 0, 1024, 896)
 
-[node name="Player" parent="." instance=ExtResource("3_p3bcc")]
+[node name="Player" parent="." instance=ExtResource("3_tnaoj")]
 position = Vector2(648, 336)
 
-[node name="EnemySpawner" parent="." instance=ExtResource("4_5vbvd")]
-spawns = Array[ExtResource("6_puspw")]([SubResource("Resource_o6xvy"), SubResource("Resource_37aon"), SubResource("Resource_l22nm"), SubResource("Resource_tfea4"), SubResource("Resource_tspqf")])
+[node name="EnemySpawner" parent="." instance=ExtResource("4_a5ioq")]
+spawns = Array[ExtResource("6_aeav4")]([SubResource("Resource_o6xvy"), SubResource("Resource_37aon"), SubResource("Resource_l22nm"), SubResource("Resource_tfea4"), SubResource("Resource_tspqf")])
 
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_kvgm7")
+stream = ExtResource("9_o8omr")
 volume_db = -20.332
 autoplay = true
 bus = &"Music"

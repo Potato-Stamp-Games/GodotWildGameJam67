@@ -1,0 +1,78 @@
+[gd_scene load_steps=15 format=3 uid="uid://dniqxjqxuyaok"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_xo63v"]
+[ext_resource type="Texture2D" uid="uid://uhhgmv1ptnml" path="res://Assets/Tiles/BasicLevelV1.png" id="2_3rkor"]
+[ext_resource type="PackedScene" uid="uid://oh0r45b5v51f" path="res://Player/playerWithSuit.tscn" id="3_76qpe"]
+[ext_resource type="PackedScene" uid="uid://bd34a3bxs7eb2" path="res://enemy_spawner.tscn" id="4_4s73b"]
+[ext_resource type="PackedScene" uid="uid://djymsywqdo47t" path="res://Parasites/BaseLevel/ParasiteSmall.tscn" id="5_7ppdo"]
+[ext_resource type="Script" path="res://Utility/spawn_info.gd" id="6_ea0pl"]
+[ext_resource type="PackedScene" uid="uid://dl1a65o5s0fbf" path="res://Parasites/BaseLevel/ParasiteBoss.tscn" id="7_vwjfk"]
+[ext_resource type="PackedScene" uid="uid://c31rxvfspm0j1" path="res://Parasites/BaseLevel/Worm.tscn" id="8_e88s1"]
+[ext_resource type="AudioStream" uid="uid://dkhxhaq22awf1" path="res://Assets/SoundDesign/levelMusic.ogg" id="9_idw7i"]
+
+[sub_resource type="Resource" id="Resource_jtsox"]
+script = ExtResource("6_ea0pl")
+time_start = 0
+time_end = 120
+enemy = ExtResource("5_7ppdo")
+enemy_num = 1
+enemy_spawn_delay = 2
+
+[sub_resource type="Resource" id="Resource_d3lbr"]
+script = ExtResource("6_ea0pl")
+time_start = 120
+time_end = 240
+enemy = ExtResource("5_7ppdo")
+enemy_num = 1
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_6lab8"]
+script = ExtResource("6_ea0pl")
+time_start = 240
+time_end = 240
+enemy = ExtResource("7_vwjfk")
+enemy_num = 1
+enemy_spawn_delay = 0
+
+[sub_resource type="Resource" id="Resource_nenc2"]
+script = ExtResource("6_ea0pl")
+time_start = 400
+time_end = 800
+enemy = ExtResource("5_7ppdo")
+enemy_num = 1
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_fuiuh"]
+script = ExtResource("6_ea0pl")
+time_start = 400
+time_end = 800
+enemy = ExtResource("8_e88s1")
+enemy_num = 1
+enemy_spawn_delay = 4
+
+[node name="World" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_xo63v")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(224, 360)
+scale = Vector2(5, 5.26766)
+texture = ExtResource("2_3rkor")
+region_enabled = true
+region_rect = Rect2(0, 0, 1024, 896)
+
+[node name="Player" parent="." instance=ExtResource("3_76qpe")]
+position = Vector2(144, 157)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("4_4s73b")]
+spawns = Array[ExtResource("6_ea0pl")]([SubResource("Resource_jtsox"), SubResource("Resource_d3lbr"), SubResource("Resource_6lab8"), SubResource("Resource_nenc2"), SubResource("Resource_fuiuh")])
+
+[node name="Loot" type="Node2D" parent="." groups=["loot"]]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_idw7i")
+volume_db = 3.909
+autoplay = true
+bus = &"Music"
