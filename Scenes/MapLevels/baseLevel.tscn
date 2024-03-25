@@ -50,7 +50,7 @@ enemy = ExtResource("8_e88s1")
 enemy_num = 1
 enemy_spawn_delay = 4
 
-[node name="World" type="Node2D"]
+[node name="World2" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_xo63v")
 
