@@ -48,7 +48,7 @@ time_start = 400
 time_end = 600
 enemy = ExtResource("5_lby6p")
 enemy_num = 2
-enemy_spawn_delay = 0
+enemy_spawn_delay = 1
 
 [node name="World" type="Node2D"]
 process_mode = 1
