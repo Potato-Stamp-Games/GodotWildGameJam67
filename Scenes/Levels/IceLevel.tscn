@@ -64,7 +64,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 1024, 896)
 
 [node name="Player" parent="." instance=ExtResource("3_b11dj")]
-position = Vector2(648, 336)
+position = Vector2(184, 296)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("4_spig2")]
 spawns = Array[ExtResource("6_8d5jj")]([SubResource("Resource_a0ceu"), SubResource("Resource_jmxpo"), SubResource("Resource_6n04l"), SubResource("Resource_ntncf"), SubResource("Resource_fyw3t")])
@@ -77,11 +77,25 @@ volume_db = -20.332
 autoplay = true
 bus = &"Music"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Collision Walls" type="StaticBody2D" parent="."]
 
-[node name="InnerWall" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(0, 8)
-polygon = PackedVector2Array(288, 720, 448, 720, 448, 488, 296, 496, 296, 376, 448, 376, 456, 168, 152, 168, 152, 336, -8, 328, -8, 496, -160, 488, -168, 672, -160, 696, 0, 696, 0, 856, 296, 856)
+[node name="InnerWall1" type="CollisionPolygon2D" parent="Collision Walls"]
+polygon = PackedVector2Array(-808, 896, -672, 896, -672, 1104, -808, 1104)
 
-[node name="Polygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-1056, 1624, 1504, 1624, 1504, -904, -1056, -904, -512, -256, -504, -424, 792, -424, 792, -256, 1112, -256, 1112, 976, 640, 976, 632, 1136, 480, 1136, 480, 1304, -24, 1296, -32, 1136, -184, 1144, -192, 976, -664, 984, -664, -264, -512, -256, -1056, -904)
+[node name="InnerWall2" type="CollisionPolygon2D" parent="Collision Walls"]
+polygon = PackedVector2Array(-1120, 1056, -984, 1056, -992, 1264, -1128, 1264)
+
+[node name="InnerWall3" type="CollisionPolygon2D" parent="Collision Walls"]
+polygon = PackedVector2Array(-320, 576, -24, 576, -32, 784, -328, 784)
+
+[node name="InnerWall4" type="CollisionPolygon2D" parent="Collision Walls"]
+polygon = PackedVector2Array(-320, -224, -32, -224, -24, 144, -328, 144)
+
+[node name="InnerWall5" type="CollisionPolygon2D" parent="Collision Walls"]
+polygon = PackedVector2Array(160, -384, 160, -176, 312, -184, 312, -16, 480, -24, 480, 144, 768, 144, 768, -24, 928, -16, 928, -224, 768, -216, 768, -384)
+
+[node name="InnerWall6" type="CollisionPolygon2D" parent="Collision Walls"]
+polygon = PackedVector2Array(320, 576, 320, 784, 632, 776, 640, 944, 768, 944, 768, 776, 936, 784, 928, 576, 776, 576, 768, 416, 480, 416, 480, 584)
+
+[node name="OuterWall" type="CollisionPolygon2D" parent="Collision Walls"]
+polygon = PackedVector2Array(1752, 1544, 1760, -64, 1920, -64, 1920, -704, 2080, -704, 2080, -1304, 1576, -1304, 1568, -1136, 1416, -1144, 1408, -976, -344, -976, -352, -816, -1120, -816, -1120, -984, -1312, -984, -1312, -816, -1472, -824, -1464, 624, -1624, 616, -1624, 768, -1640, 784, -1784, 784, -1784, 1704, -1632, 1696, -1632, 1864, 0, 1864, 0, 1696, 1408, 1696, 1408, 1864, 1600, 1864, 1600, 1536, 2784, 2600, -2336, 2600, -2336, -1888, 2784, -1880, 2784, 2592, 1600, 1536)
