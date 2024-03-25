@@ -1,54 +1,54 @@
 [gd_scene load_steps=15 format=3 uid="uid://d0yijcsbctpkx"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_5x7ws"]
-[ext_resource type="Texture2D" uid="uid://c11pw268hp3as" path="res://Assets/Tiles/Frostlevel.png" id="2_61yag"]
+[ext_resource type="Texture2D" uid="uid://c168vbdfckfru" path="res://Assets/Tiles/FrostLevelV1.png" id="2_cia24"]
 [ext_resource type="PackedScene" uid="uid://oh0r45b5v51f" path="res://Player/playerWithSuit.tscn" id="3_b11dj"]
 [ext_resource type="PackedScene" uid="uid://bd34a3bxs7eb2" path="res://enemy_spawner.tscn" id="4_spig2"]
-[ext_resource type="PackedScene" uid="uid://djymsywqdo47t" path="res://Parasites/BaseLevel/ParasiteSmall.tscn" id="5_1uxam"]
+[ext_resource type="PackedScene" uid="uid://b4gl3caj45jng" path="res://Parasites/IceLevel/IceParasiteSmall.tscn" id="5_2fsxm"]
 [ext_resource type="Script" path="res://Utility/spawn_info.gd" id="6_8d5jj"]
-[ext_resource type="PackedScene" uid="uid://dl1a65o5s0fbf" path="res://Parasites/BaseLevel/ParasiteBoss.tscn" id="7_4qix4"]
-[ext_resource type="PackedScene" uid="uid://c31rxvfspm0j1" path="res://Parasites/BaseLevel/Worm.tscn" id="8_k4cua"]
+[ext_resource type="PackedScene" uid="uid://b7mq1pb5lfqif" path="res://Parasites/IceLevel/IceWorm.tscn" id="7_llr3e"]
+[ext_resource type="PackedScene" uid="uid://d4knj26tb5nyb" path="res://Parasites/IceLevel/IceParasiteBoss.tscn" id="8_howwm"]
 [ext_resource type="AudioStream" uid="uid://b873iamt3t5hc" path="res://Assets/SoundDesign/ice80bpm.mp3" id="9_njdl3"]
 
-[sub_resource type="Resource" id="Resource_jtsox"]
+[sub_resource type="Resource" id="Resource_a0ceu"]
 script = ExtResource("6_8d5jj")
 time_start = 0
-time_end = 120
-enemy = ExtResource("5_1uxam")
+time_end = 240
+enemy = ExtResource("5_2fsxm")
 enemy_num = 1
 enemy_spawn_delay = 2
 
-[sub_resource type="Resource" id="Resource_d3lbr"]
+[sub_resource type="Resource" id="Resource_jmxpo"]
 script = ExtResource("6_8d5jj")
-time_start = 120
-time_end = 240
-enemy = ExtResource("5_1uxam")
+time_start = 240
+time_end = 270
+enemy = ExtResource("5_2fsxm")
 enemy_num = 1
 enemy_spawn_delay = 1
 
-[sub_resource type="Resource" id="Resource_6lab8"]
+[sub_resource type="Resource" id="Resource_6n04l"]
 script = ExtResource("6_8d5jj")
-time_start = 240
-time_end = 240
-enemy = ExtResource("7_4qix4")
+time_start = 270
+time_end = 400
+enemy = ExtResource("7_llr3e")
+enemy_num = 1
+enemy_spawn_delay = 4
+
+[sub_resource type="Resource" id="Resource_ntncf"]
+script = ExtResource("6_8d5jj")
+time_start = 400
+time_end = 400
+enemy = ExtResource("8_howwm")
 enemy_num = 1
 enemy_spawn_delay = 0
 
-[sub_resource type="Resource" id="Resource_nenc2"]
+[sub_resource type="Resource" id="Resource_fyw3t"]
 script = ExtResource("6_8d5jj")
-time_start = 400
-time_end = 800
-enemy = ExtResource("5_1uxam")
+time_start = 430
+time_end = 600
+enemy = ExtResource("5_2fsxm")
 enemy_num = 1
 enemy_spawn_delay = 1
-
-[sub_resource type="Resource" id="Resource_fuiuh"]
-script = ExtResource("6_8d5jj")
-time_start = 400
-time_end = 800
-enemy = ExtResource("8_k4cua")
-enemy_num = 1
-enemy_spawn_delay = 4
 
 [node name="World" type="Node2D"]
 process_mode = 1
@@ -59,15 +59,15 @@ texture_filter = 1
 texture_repeat = 2
 position = Vector2(224, 360)
 scale = Vector2(5, 5)
-texture = ExtResource("2_61yag")
+texture = ExtResource("2_cia24")
 region_enabled = true
-region_rect = Rect2(0, 0, 512, 480)
+region_rect = Rect2(0, 0, 1024, 896)
 
 [node name="Player" parent="." instance=ExtResource("3_b11dj")]
 position = Vector2(648, 336)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("4_spig2")]
-spawns = Array[ExtResource("6_8d5jj")]([SubResource("Resource_jtsox"), SubResource("Resource_d3lbr"), SubResource("Resource_6lab8"), SubResource("Resource_nenc2"), SubResource("Resource_fuiuh")])
+spawns = Array[ExtResource("6_8d5jj")]([SubResource("Resource_a0ceu"), SubResource("Resource_jmxpo"), SubResource("Resource_6n04l"), SubResource("Resource_ntncf"), SubResource("Resource_fyw3t")])
 
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
 
