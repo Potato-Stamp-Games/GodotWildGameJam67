@@ -1,40 +1,40 @@
-[gd_scene load_steps=13 format=3 uid="uid://byij3wxmga47j"]
+[gd_scene load_steps=13 format=3 uid="uid://dbwhp2w6w40mm"]
 
-[ext_resource type="Script" path="res://Parasites/Enemy.gd" id="1_784ym"]
-[ext_resource type="Texture2D" uid="uid://c1hdad77uqope" path="res://Assets/Parasite Sprites/BossBasicParasitePoison.png" id="2_43m1k"]
-[ext_resource type="PackedScene" uid="uid://c3k2xk7dpb4k4" path="res://Utility/hurt_box.tscn" id="3_y7c1n"]
-[ext_resource type="PackedScene" uid="uid://dqwocph3dxjjr" path="res://Utility/hit_box.tscn" id="4_im6rr"]
+[ext_resource type="Script" path="res://Parasites/Enemy.gd" id="1_dqyfn"]
+[ext_resource type="Texture2D" uid="uid://drujsuqpnksny" path="res://Assets/Parasite Sprites/BossBasicParasiteFire.png" id="2_77li4"]
+[ext_resource type="PackedScene" uid="uid://c3k2xk7dpb4k4" path="res://Utility/hurt_box.tscn" id="3_wat4i"]
+[ext_resource type="PackedScene" uid="uid://dqwocph3dxjjr" path="res://Utility/hit_box.tscn" id="4_yhi6v"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aab2v"]
-atlas = ExtResource("2_43m1k")
+[sub_resource type="AtlasTexture" id="AtlasTexture_siv2n"]
+atlas = ExtResource("2_77li4")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0l014"]
-atlas = ExtResource("2_43m1k")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cv27"]
+atlas = ExtResource("2_77li4")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cw3lx"]
-atlas = ExtResource("2_43m1k")
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhqk3"]
+atlas = ExtResource("2_77li4")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_465s7"]
-atlas = ExtResource("2_43m1k")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkify"]
+atlas = ExtResource("2_77li4")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mgd2a"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aab2v")
+"texture": SubResource("AtlasTexture_siv2n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0l014")
+"texture": SubResource("AtlasTexture_3cv27")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cw3lx")
+"texture": SubResource("AtlasTexture_lhqk3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_465s7")
+"texture": SubResource("AtlasTexture_nkify")
 }],
 "loop": true,
 "name": &"new_animation",
@@ -51,11 +51,11 @@ size = Vector2(18, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0n1n"]
 size = Vector2(16, 15.6)
 
-[node name="Poison Parasite Boss" type="CharacterBody2D"]
+[node name="Fire Parasite Boss" type="CharacterBody2D"]
 scale = Vector2(15, 15)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("1_784ym")
+script = ExtResource("1_dqyfn")
 dropsResearch = true
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
@@ -67,7 +67,7 @@ animation = &"new_animation"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_n71jj")
 
-[node name="HurtBox" parent="." instance=ExtResource("3_y7c1n")]
+[node name="HurtBox" parent="." instance=ExtResource("3_wat4i")]
 collision_layer = 4
 collision_mask = 4
 HurtBoxType = 1
@@ -76,7 +76,7 @@ HurtBoxType = 1
 position = Vector2(-4.76837e-07, -4.76837e-07)
 shape = SubResource("RectangleShape2D_1nna6")
 
-[node name="HitBox" parent="." instance=ExtResource("4_im6rr")]
+[node name="HitBox" parent="." instance=ExtResource("4_yhi6v")]
 collision_layer = 2
 collision_mask = 2
 
