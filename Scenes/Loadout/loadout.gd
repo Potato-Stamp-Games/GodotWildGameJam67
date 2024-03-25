@@ -83,7 +83,7 @@ func _on_play_btn_pressed():
 	gui_sfx.stream = MENU_CONFIRM
 	gui_sfx.play()
 	await get_tree().create_timer(0.15)
-	get_tree().change_scene_to_file("res://Scenes/Levels/IceLevel.tscn")
+	get_tree().change_scene_to_file("res://Scenes/MapLevels/PoisonLevel.tscn")
 func _on_research_btn_pressed():
 	gui_sfx.stream = MENU_CONFIRM
 	gui_sfx.play()
