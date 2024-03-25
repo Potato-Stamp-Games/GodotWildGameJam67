@@ -1,0 +1,89 @@
+[gd_scene load_steps=15 format=3 uid="uid://bu8tr46tpberu"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_rhfyc"]
+[ext_resource type="Texture2D" uid="uid://donb3s1gvfa8p" path="res://Assets/Tiles/PoisonLevelV1.png" id="2_s7pbs"]
+[ext_resource type="PackedScene" uid="uid://oh0r45b5v51f" path="res://Player/playerWithSuit.tscn" id="3_p3bcc"]
+[ext_resource type="PackedScene" uid="uid://bd34a3bxs7eb2" path="res://enemy_spawner.tscn" id="4_5vbvd"]
+[ext_resource type="PackedScene" uid="uid://djymsywqdo47t" path="res://Parasites/BaseLevel/ParasiteSmall.tscn" id="5_jvgq0"]
+[ext_resource type="Script" path="res://Utility/spawn_info.gd" id="6_puspw"]
+[ext_resource type="PackedScene" uid="uid://dl1a65o5s0fbf" path="res://Parasites/BaseLevel/ParasiteBoss.tscn" id="7_fo8b1"]
+[ext_resource type="PackedScene" uid="uid://c31rxvfspm0j1" path="res://Parasites/BaseLevel/Worm.tscn" id="8_uk4my"]
+[ext_resource type="AudioStream" uid="uid://b873iamt3t5hc" path="res://Assets/SoundDesign/ice80bpm.mp3" id="9_kvgm7"]
+
+[sub_resource type="Resource" id="Resource_jtsox"]
+script = ExtResource("6_puspw")
+time_start = 0
+time_end = 120
+enemy = ExtResource("5_jvgq0")
+enemy_num = 1
+enemy_spawn_delay = 2
+
+[sub_resource type="Resource" id="Resource_d3lbr"]
+script = ExtResource("6_puspw")
+time_start = 120
+time_end = 240
+enemy = ExtResource("5_jvgq0")
+enemy_num = 1
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_6lab8"]
+script = ExtResource("6_puspw")
+time_start = 240
+time_end = 240
+enemy = ExtResource("7_fo8b1")
+enemy_num = 1
+enemy_spawn_delay = 0
+
+[sub_resource type="Resource" id="Resource_nenc2"]
+script = ExtResource("6_puspw")
+time_start = 400
+time_end = 800
+enemy = ExtResource("5_jvgq0")
+enemy_num = 1
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_fuiuh"]
+script = ExtResource("6_puspw")
+time_start = 400
+time_end = 800
+enemy = ExtResource("8_uk4my")
+enemy_num = 1
+enemy_spawn_delay = 4
+
+[node name="World" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_rhfyc")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(224, 360)
+scale = Vector2(5, 5)
+texture = ExtResource("2_s7pbs")
+region_enabled = true
+region_rect = Rect2(0, 0, 1024, 896)
+
+[node name="Player" parent="." instance=ExtResource("3_p3bcc")]
+position = Vector2(648, 336)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("4_5vbvd")]
+spawns = Array[ExtResource("6_puspw")]([SubResource("Resource_jtsox"), SubResource("Resource_d3lbr"), SubResource("Resource_6lab8"), SubResource("Resource_nenc2"), SubResource("Resource_fuiuh")])
+
+[node name="Loot" type="Node2D" parent="." groups=["loot"]]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_kvgm7")
+volume_db = -20.332
+autoplay = true
+bus = &"Music"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="InnerWall1" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-352, 896, -352, 1264, -960, 1264, -960, 896)
+
+[node name="InnerWall2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(640, 744, 1568, 736, 1568, 904, 1728, 896, 1728, 2024, 480, 2016, 480, 896, 640, 904)
+
+[node name="OuterWall" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(2232, 2016, -1472, 2024, -1472, -864, -1632, -864, -1632, -992, -1128, -984, -1128, -344, -960, -344, -960, -184, -808, -184, -800, -24, -352, -16, -352, -984, 632, -984, 640, -176, 1568, -176, 1576, -992, 2072, -984, 2080, -824, 2232, -816, 2240, 952, 2776, 960, 2784, -1888, -2336, -1888, -2336, 2600, 2784, 2600, 2776, 960, 2232, 952)
