@@ -1,0 +1,106 @@
+[gd_scene load_steps=15 format=3 uid="uid://ddgbhogilfirm"]
+
+[ext_resource type="Script" path="res://Parasites/Enemy.gd" id="1_lihnl"]
+[ext_resource type="Texture2D" uid="uid://sh3rm4key3os" path="res://Assets/Parasite Sprites/wormparasitefire.png" id="2_dn6up"]
+[ext_resource type="PackedScene" uid="uid://c3k2xk7dpb4k4" path="res://Utility/hurt_box.tscn" id="3_3y2p7"]
+[ext_resource type="PackedScene" uid="uid://dqwocph3dxjjr" path="res://Utility/hit_box.tscn" id="4_w6oeb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ivqa"]
+atlas = ExtResource("2_dn6up")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqawf"]
+atlas = ExtResource("2_dn6up")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5lt1"]
+atlas = ExtResource("2_dn6up")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwfbr"]
+atlas = ExtResource("2_dn6up")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15vd6"]
+atlas = ExtResource("2_dn6up")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dukm"]
+atlas = ExtResource("2_dn6up")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lg8sc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ivqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqawf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5lt1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwfbr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15vd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dukm")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27is2"]
+size = Vector2(21.8, 5.6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qjvc"]
+size = Vector2(22.6, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uadra"]
+size = Vector2(22.6, 6.4)
+
+[node name="FireWorm" type="CharacterBody2D"]
+scale = Vector2(5, 5)
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_lihnl")
+movement_speed = 65.0
+hp = 20
+experience = 5
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_lg8sc")
+animation = &"new_animation"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.3, 0.4)
+shape = SubResource("RectangleShape2D_27is2")
+
+[node name="HurtBox" parent="." instance=ExtResource("3_3y2p7")]
+collision_layer = 4
+collision_mask = 4
+HurtBoxType = 1
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(-0.300001, 0.1)
+shape = SubResource("RectangleShape2D_3qjvc")
+
+[node name="HitBox" parent="." instance=ExtResource("4_w6oeb")]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(-0.0999994, 0.2)
+shape = SubResource("RectangleShape2D_uadra")
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+
+[editable path="HurtBox"]
+[editable path="HitBox"]

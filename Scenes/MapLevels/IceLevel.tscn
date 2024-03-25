@@ -1,0 +1,101 @@
+[gd_scene load_steps=15 format=3 uid="uid://d0yijcsbctpkx"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_tgdhw"]
+[ext_resource type="Texture2D" uid="uid://c168vbdfckfru" path="res://Assets/Tiles/FrostLevelV1.png" id="2_c5d32"]
+[ext_resource type="PackedScene" uid="uid://oh0r45b5v51f" path="res://Player/playerWithSuit.tscn" id="3_0prrw"]
+[ext_resource type="PackedScene" uid="uid://bd34a3bxs7eb2" path="res://enemy_spawner.tscn" id="4_h4sqb"]
+[ext_resource type="PackedScene" uid="uid://b4gl3caj45jng" path="res://Parasites/IceLevel/IceParasiteSmall.tscn" id="5_4hl8a"]
+[ext_resource type="Script" path="res://Utility/spawn_info.gd" id="6_i4gaj"]
+[ext_resource type="PackedScene" uid="uid://b7mq1pb5lfqif" path="res://Parasites/IceLevel/IceWorm.tscn" id="7_7uv0k"]
+[ext_resource type="PackedScene" uid="uid://d4knj26tb5nyb" path="res://Parasites/IceLevel/IceParasiteBoss.tscn" id="8_1l5lw"]
+[ext_resource type="AudioStream" uid="uid://b873iamt3t5hc" path="res://Assets/SoundDesign/ice80bpm.mp3" id="9_kwk5r"]
+
+[sub_resource type="Resource" id="Resource_a0ceu"]
+script = ExtResource("6_i4gaj")
+time_start = 0
+time_end = 240
+enemy = ExtResource("5_4hl8a")
+enemy_num = 1
+enemy_spawn_delay = 2
+
+[sub_resource type="Resource" id="Resource_jmxpo"]
+script = ExtResource("6_i4gaj")
+time_start = 240
+time_end = 270
+enemy = ExtResource("5_4hl8a")
+enemy_num = 1
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_6n04l"]
+script = ExtResource("6_i4gaj")
+time_start = 270
+time_end = 400
+enemy = ExtResource("7_7uv0k")
+enemy_num = 1
+enemy_spawn_delay = 4
+
+[sub_resource type="Resource" id="Resource_ntncf"]
+script = ExtResource("6_i4gaj")
+time_start = 400
+time_end = 400
+enemy = ExtResource("8_1l5lw")
+enemy_num = 1
+enemy_spawn_delay = 0
+
+[sub_resource type="Resource" id="Resource_fyw3t"]
+script = ExtResource("6_i4gaj")
+time_start = 430
+time_end = 600
+enemy = ExtResource("5_4hl8a")
+enemy_num = 1
+enemy_spawn_delay = 1
+
+[node name="World" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_tgdhw")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(224, 360)
+scale = Vector2(5, 5)
+texture = ExtResource("2_c5d32")
+region_enabled = true
+region_rect = Rect2(0, 0, 1024, 896)
+
+[node name="Player" parent="." instance=ExtResource("3_0prrw")]
+position = Vector2(184, 296)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("4_h4sqb")]
+spawns = Array[ExtResource("6_i4gaj")]([SubResource("Resource_a0ceu"), SubResource("Resource_jmxpo"), SubResource("Resource_6n04l"), SubResource("Resource_ntncf"), SubResource("Resource_fyw3t")])
+
+[node name="Loot" type="Node2D" parent="." groups=["loot"]]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_kwk5r")
+volume_db = -20.332
+autoplay = true
+bus = &"Music"
+
+[node name="Collision Walls" type="StaticBody2D" parent="."]
+
+[node name="InnerWall1" type="CollisionPolygon2D" parent="Collision Walls"]
+polygon = PackedVector2Array(-808, 896, -672, 896, -672, 1104, -808, 1104)
+
+[node name="InnerWall2" type="CollisionPolygon2D" parent="Collision Walls"]
+polygon = PackedVector2Array(-1120, 1056, -984, 1056, -992, 1264, -1128, 1264)
+
+[node name="InnerWall3" type="CollisionPolygon2D" parent="Collision Walls"]
+polygon = PackedVector2Array(-320, 576, -24, 576, -32, 784, -328, 784)
+
+[node name="InnerWall4" type="CollisionPolygon2D" parent="Collision Walls"]
+polygon = PackedVector2Array(-320, -224, -32, -224, -24, 144, -328, 144)
+
+[node name="InnerWall5" type="CollisionPolygon2D" parent="Collision Walls"]
+polygon = PackedVector2Array(160, -384, 160, -176, 312, -184, 312, -16, 480, -24, 480, 144, 768, 144, 768, -24, 928, -16, 928, -224, 768, -216, 768, -384)
+
+[node name="InnerWall6" type="CollisionPolygon2D" parent="Collision Walls"]
+polygon = PackedVector2Array(320, 576, 320, 784, 632, 776, 640, 944, 768, 944, 768, 776, 936, 784, 928, 576, 776, 576, 768, 416, 480, 416, 480, 584)
+
+[node name="OuterWall" type="CollisionPolygon2D" parent="Collision Walls"]
+polygon = PackedVector2Array(1752, 1544, 1760, -64, 1920, -64, 1920, -704, 2080, -704, 2080, -1304, 1576, -1304, 1568, -1136, 1416, -1144, 1408, -976, -344, -976, -352, -816, -1120, -816, -1120, -984, -1312, -984, -1312, -816, -1472, -824, -1464, 624, -1624, 616, -1624, 768, -1640, 784, -1784, 784, -1784, 1704, -1632, 1696, -1632, 1864, 0, 1864, 0, 1696, 1408, 1696, 1408, 1864, 1600, 1864, 1600, 1536, 2784, 2600, -2336, 2600, -2336, -1888, 2784, -1880, 2784, 2592, 1600, 1536)

@@ -7,8 +7,8 @@
 atlas = ExtResource("2_tuibp")
 region = Rect2(64, 64, 32, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3s1a1"]
-size = Vector2(120, 10)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kwav"]
+size = Vector2(125, 10)
 
 [node name="MeasuringTape" type="Area2D" groups=["attack"]]
 top_level = true
@@ -22,7 +22,8 @@ scale = Vector2(5, 5)
 texture = SubResource("AtlasTexture_p2tsv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_3s1a1")
+position = Vector2(2.5, 0)
+shape = SubResource("RectangleShape2D_3kwav")
 disabled = true
 
 [node name="AttackTimer" type="Timer" parent="."]

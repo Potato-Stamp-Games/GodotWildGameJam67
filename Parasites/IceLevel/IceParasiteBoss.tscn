@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://d4knj26tb5nyb"]
+
+[ext_resource type="Script" path="res://Parasites/Enemy.gd" id="1_pammo"]
+[ext_resource type="Texture2D" uid="uid://dt81saw5r2iua" path="res://Assets/Parasite Sprites/BossBasicParasiteIce.png" id="2_kh00y"]
+[ext_resource type="PackedScene" uid="uid://c3k2xk7dpb4k4" path="res://Utility/hurt_box.tscn" id="3_72wxk"]
+[ext_resource type="PackedScene" uid="uid://dqwocph3dxjjr" path="res://Utility/hit_box.tscn" id="4_fop1x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fogtv"]
+atlas = ExtResource("2_kh00y")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sho77"]
+atlas = ExtResource("2_kh00y")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wq4wn"]
+atlas = ExtResource("2_kh00y")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqqf3"]
+atlas = ExtResource("2_kh00y")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mgd2a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fogtv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sho77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wq4wn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqqf3")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n71jj"]
+radius = 9.06665
+height = 18.1333
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1nna6"]
+size = Vector2(18, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0n1n"]
+size = Vector2(16, 15.6)
+
+[node name="Ice Parasite Boss" type="CharacterBody2D"]
+scale = Vector2(15, 15)
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_pammo")
+dropsResearch = true
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_mgd2a")
+animation = &"new_animation"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_n71jj")
+
+[node name="HurtBox" parent="." instance=ExtResource("3_72wxk")]
+collision_layer = 4
+collision_mask = 4
+HurtBoxType = 1
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(-4.76837e-07, -4.76837e-07)
+shape = SubResource("RectangleShape2D_1nna6")
+
+[node name="HitBox" parent="." instance=ExtResource("4_fop1x")]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(-0.200001, -0.2)
+shape = SubResource("RectangleShape2D_u0n1n")
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+
+[editable path="HurtBox"]
+[editable path="HitBox"]

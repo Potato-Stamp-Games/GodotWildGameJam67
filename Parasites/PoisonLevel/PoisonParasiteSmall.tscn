@@ -1,0 +1,172 @@
+[gd_scene load_steps=25 format=3 uid="uid://svvm5csguqd3"]
+
+[ext_resource type="Script" path="res://Parasites/Enemy.gd" id="1_2rfnp"]
+[ext_resource type="Texture2D" uid="uid://cdp77uryskyyh" path="res://Assets/Parasite Sprites/LittleParasitePoison.png" id="2_ruyj2"]
+[ext_resource type="PackedScene" uid="uid://c3k2xk7dpb4k4" path="res://Utility/hurt_box.tscn" id="3_svfoi"]
+[ext_resource type="PackedScene" uid="uid://dqwocph3dxjjr" path="res://Utility/hit_box.tscn" id="4_iaycy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqs5i"]
+atlas = ExtResource("2_ruyj2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boqpk"]
+atlas = ExtResource("2_ruyj2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcj50"]
+atlas = ExtResource("2_ruyj2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02c5l"]
+atlas = ExtResource("2_ruyj2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2kik"]
+atlas = ExtResource("2_ruyj2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l26we"]
+atlas = ExtResource("2_ruyj2")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6ga6"]
+atlas = ExtResource("2_ruyj2")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8frm3"]
+atlas = ExtResource("2_ruyj2")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81i2u"]
+atlas = ExtResource("2_ruyj2")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f2wm"]
+atlas = ExtResource("2_ruyj2")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flp6t"]
+atlas = ExtResource("2_ruyj2")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djgss"]
+atlas = ExtResource("2_ruyj2")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwhyt"]
+atlas = ExtResource("2_ruyj2")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwgo4"]
+atlas = ExtResource("2_ruyj2")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tww5o"]
+atlas = ExtResource("2_ruyj2")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4ojo"]
+atlas = ExtResource("2_ruyj2")
+region = Rect2(480, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_up24d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqs5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boqpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcj50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02c5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2kik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l26we")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6ga6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8frm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81i2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f2wm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flp6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djgss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwhyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwgo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tww5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4ojo")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_arph3"]
+radius = 6.2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qjvc"]
+size = Vector2(18, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uadra"]
+size = Vector2(16, 15.6)
+
+[node name="Poison Parasite Small" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_2rfnp")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_up24d")
+animation = &"new_animation"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_arph3")
+
+[node name="HurtBox" parent="." instance=ExtResource("3_svfoi")]
+collision_layer = 4
+collision_mask = 4
+HurtBoxType = 1
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(-4.76837e-07, -4.76837e-07)
+shape = SubResource("RectangleShape2D_3qjvc")
+
+[node name="HitBox" parent="." instance=ExtResource("4_iaycy")]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(-0.200001, -0.2)
+shape = SubResource("RectangleShape2D_uadra")
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+
+[editable path="HurtBox"]
+[editable path="HitBox"]
