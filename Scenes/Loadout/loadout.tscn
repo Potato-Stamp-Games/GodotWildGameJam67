@@ -488,7 +488,7 @@ offset_top = 422.0
 offset_right = 764.0
 offset_bottom = 879.0
 
-[node name="GarageMusic" type="AudioStreamPlayer2D" parent="."]
+[node name="GarageMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_xx6w0")
 volume_db = 0.28
 autoplay = true

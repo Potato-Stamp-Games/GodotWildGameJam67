@@ -75,7 +75,7 @@ var enemy_close = []
 @onready var expBar = get_node(\"%ExperienceBar\")
 @onready var lblLevel = get_node(\"%LevelLabel\")
 @onready var healthBar = get_node(\"%HealthBar\")
-@onready var deathPanel = get_node(\"%$GameOverPanel\")
+@onready var deathPanel = get_node(\"%GameOverPanel\")
 @onready var upgradeOptions = get_node(\"%UpgradeOptions\")
 @onready var itemOptions = preload(\"res://Utility/item_option.tscn\")
 @onready var levelUpPanel = get_node(\"%LevelUpPanel\")
@@ -108,10 +108,12 @@ func _process(delta):
 func determineStartingWeapon():
 	if Global.nailgunEquiped == true:
 		upgrade_character(\"nailgun1\")
-	if Global.tapeMeasureEquiped == true:
+	elif Global.tapeMeasureEquiped == true:
 		upgrade_character(\"measuringtape1\")
-	if Global.sixPackEquiped == true:
+	elif Global.sixPackEquiped == true:
 		upgrade_character(\"sixpack1\")
+	elif Global.nailgunEquiped == false && Global.tapeMeasureEquiped == false && Global.sixPackEquiped == false:
+		upgrade_character(\"nailgun1\")
 	
 	if Global.speedEquiped == true:
 		movement_speed += 50
@@ -137,11 +139,11 @@ func _physics_process(delta):
 
 func attack():
 	if nailgun_level > 0:
-		nailGunTimer.wait_time = (nailgun_attackspeed - (nailgun_attackspeed * (1 + researchAttackSpeed)))
+		nailGunTimer.wait_time = ((nailgun_attackspeed - (nailgun_attackspeed * (1 + researchAttackSpeed))) + .01)
 		if nailGunTimer.is_stopped():
 			nailGunTimer.start()
 	if sixpack_level > 0:
-		SixPackTimer.wait_time = (sixpack_attackspeed - (sixpack_attackspeed * (1 + researchAttackSpeed)))
+		SixPackTimer.wait_time = ((sixpack_attackspeed - (sixpack_attackspeed * (1 + researchAttackSpeed))) + .01)
 		if SixPackTimer.is_stopped():
 			SixPackTimer.start()
 	if measuringtape_level > 0:

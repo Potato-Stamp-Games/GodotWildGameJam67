@@ -1,4 +1,5 @@
 extends ScrollContainer
+
 @onready var musicVolume = %MusicVolume
 @onready var sfxVolume = %SFXVolume
 @onready var togFullscreen = %ToggleFullscreen
