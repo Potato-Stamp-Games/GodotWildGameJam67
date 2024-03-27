@@ -139,7 +139,7 @@ func _physics_process(delta):
 
 func attack():
 	if nailgun_level > 0:
-		nailGunTimer.wait_time = ((nailgun_attackspeed - (nailgun_attackspeed * (1 + researchAttackSpeed))) + .01)
+		nailGunTimer.wait_time = (nailgun_attackspeed - (nailgun_attackspeed * (1 + researchAttackSpeed))) + .01
 		if nailGunTimer.is_stopped():
 			nailGunTimer.start()
 	if sixpack_level > 0:

@@ -77,17 +77,17 @@ func _on_modifier_2_pressed():
 func _on_exit_btn_pressed():
 	gui_sfx.stream = MENU_CONFIRM
 	gui_sfx.play()
-	await get_tree().create_timer(0.15)
+	await get_tree().create_timer(0.15).timeout
 	get_tree().quit()
 func _on_play_btn_pressed():
 	gui_sfx.stream = MENU_CONFIRM
 	gui_sfx.play()
-	await get_tree().create_timer(0.15)
+	await get_tree().create_timer(0.15).timeout
 	get_tree().change_scene_to_file("res://Scenes/MapLevels/PoisonLevel.tscn")
 func _on_research_btn_pressed():
 	gui_sfx.stream = MENU_CONFIRM
 	gui_sfx.play()
-	await get_tree().create_timer(0.15)
+	await get_tree().create_timer(0.15).timeout
 	get_tree().change_scene_to_file("res://Scenes/Loadout/research.tscn")
 
 func _on_work_toolbench_body_shape_entered(_body_rid, _body, _body_shape_index, _local_shape_index):
@@ -111,12 +111,12 @@ func _on_settings_btn_toggled(toggled_on):
 	if toggled_on == true:
 		gui_sfx.stream = MENU_CONFIRM
 		gui_sfx.play()
-		await get_tree().create_timer(0.15)
+		await get_tree().create_timer(0.15).timeout
 		$OptionsMenu.show()
 	elif toggled_on == false:
 		gui_sfx.stream = MENU_DENY
 		gui_sfx.play()
-		await get_tree().create_timer(0.13)
+		await get_tree().create_timer(0.13).timeout
 		$OptionsMenu.hide()
 
 func _process(_delta):
