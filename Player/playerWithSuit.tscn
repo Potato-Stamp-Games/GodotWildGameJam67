@@ -101,7 +101,7 @@ func _ready():
 	set_expbar(experience, calculate_experiencecap())
 	sprite_2d.play(\"default\")
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed(\"pause\"):
 		pauseMenu()
 		
@@ -133,17 +133,17 @@ func pauseMenu():
 	
 	paused = !paused
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	movement()
 	
 
 func attack():
 	if nailgun_level > 0:
-		nailGunTimer.wait_time = (nailgun_attackspeed - (nailgun_attackspeed * (1 + researchAttackSpeed))) + .01
+		nailGunTimer.wait_time = (nailgun_attackspeed * (1 - spell_cooldown))
 		if nailGunTimer.is_stopped():
 			nailGunTimer.start()
 	if sixpack_level > 0:
-		SixPackTimer.wait_time = ((sixpack_attackspeed - (sixpack_attackspeed * (1 + researchAttackSpeed))) + .01)
+		SixPackTimer.wait_time = (sixpack_attackspeed * (1 - spell_cooldown))
 		if SixPackTimer.is_stopped():
 			SixPackTimer.start()
 	if measuringtape_level > 0:
@@ -205,7 +205,7 @@ func _on_nail_gun_attack_timer_timeout():
 		if nailgun_ammo > 0:
 			nailGunAttackTimer.start()
 		else:
-			nailGunAttackTimer.stop
+			nailGunAttackTimer.stop()
 
 func _on_pack_timer_timeout():
 	sixpack_ammo += sixpack_baseammo
@@ -222,7 +222,7 @@ func _on_pack_attack_timer_timeout():
 		if sixpack_ammo > 0:
 			SixPackAttackTimer.start()
 		else:
-			SixPackAttackTimer.stop
+			SixPackAttackTimer.stop()
 
 func get_random_target():
 	if enemy_close.size() > 0:
@@ -287,7 +287,7 @@ func calculate_experiencecap():
 	if experience_level < 20:
 		exp_cap = experience_level*5
 	elif experience_level < 40:
-		exp_cap + 95 * (experience_level-19)*8
+		exp_cap = 95 * (experience_level-19)*8
 	else:
 		exp_cap = 255 + (experience_level-39)*12
 	return exp_cap
@@ -415,20 +415,20 @@ func get_random_item():
 func _on_restart_button_pressed():
 	gui_sfx.stream = MENU_CONFIRM
 	gui_sfx.play()
-	await get_tree().create_timer(0.15)
+	await get_tree().create_timer(0.15).timeout
 	get_tree().change_scene_to_file(Global.currentLevel)
 
 func _on_loadout_button_pressed():
 	gui_sfx.stream = MENU_CONFIRM
 	gui_sfx.play()
-	await get_tree().create_timer(0.15)
+	await get_tree().create_timer(0.15).timeout
 	get_tree().change_scene_to_file(\"res://Scenes/Loadout/loadout.tscn\")
 
 
 func _on_quit_button_pressed():
 	gui_sfx.stream = MENU_CONFIRM
 	gui_sfx.play()
-	await get_tree().create_timer(0.15)
+	await get_tree().create_timer(0.15).timeout
 	get_tree().change_scene_to_file(\"res://Scenes/MainMenu/main_menu.tscn\")
 	
 func death():

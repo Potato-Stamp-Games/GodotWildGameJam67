@@ -4,13 +4,13 @@ extends Node2D
 var paused = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
 		pass
 		
 func pauseMenu():
 	if paused:
-		pause_menu.hide
+		pause_menu.hide()
 		Engine.time_scale = 1
 	else:
 		pause_menu.show()
