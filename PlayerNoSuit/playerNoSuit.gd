@@ -6,7 +6,7 @@ var movement_speed = 200
 func _ready():
 	sprite_2d.play("default")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	movement()
 	
 
@@ -14,8 +14,6 @@ func movement():
 	var x_mov = Input.get_action_strength("right") - Input.get_action_strength("left")
 	var y_mov = Input.get_action_raw_strength("down") - Input.get_action_raw_strength("up")
 	var mov = Vector2(x_mov, y_mov)
-	velocity = mov.normalized()*movement_speed
-	move_and_slide()
 	
 	if Input.is_action_just_pressed("up"):
 		sprite_2d.play("walk_backward")
@@ -25,3 +23,8 @@ func movement():
 		sprite_2d.play("walk_left")
 	if Input.is_action_just_pressed("right"):
 		sprite_2d.play("walk_right")
+	
+	velocity = mov.normalized()*movement_speed
+	move_and_slide()
+	
+	

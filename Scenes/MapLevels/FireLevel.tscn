@@ -1,0 +1,96 @@
+[gd_scene load_steps=15 format=3 uid="uid://b4n4fmxdvhol6"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_bmuth"]
+[ext_resource type="Texture2D" uid="uid://fibyhdtv4x0r" path="res://Assets/Tiles/FireLevelV1.png" id="2_2f5a5"]
+[ext_resource type="PackedScene" uid="uid://oh0r45b5v51f" path="res://Player/playerWithSuit.tscn" id="3_wemmm"]
+[ext_resource type="PackedScene" uid="uid://bd34a3bxs7eb2" path="res://enemy_spawner.tscn" id="4_5td78"]
+[ext_resource type="PackedScene" uid="uid://30i3t4bricoj" path="res://Parasites/FireLevel/FireParasiteSmall.tscn" id="5_5n4th"]
+[ext_resource type="Script" path="res://Utility/spawn_info.gd" id="6_at5hx"]
+[ext_resource type="PackedScene" uid="uid://ddgbhogilfirm" path="res://Parasites/FireLevel/FireWorm.tscn" id="7_emfxn"]
+[ext_resource type="PackedScene" uid="uid://dbwhp2w6w40mm" path="res://Parasites/FireLevel/FireParasiteBoss.tscn" id="8_y0182"]
+[ext_resource type="AudioStream" uid="uid://b873iamt3t5hc" path="res://Assets/SoundDesign/ice80bpm.mp3" id="9_li6g1"]
+
+[sub_resource type="Resource" id="Resource_d7dvt"]
+script = ExtResource("6_at5hx")
+time_start = 0
+time_end = 240
+enemy = ExtResource("5_5n4th")
+enemy_num = 1
+enemy_spawn_delay = 2
+
+[sub_resource type="Resource" id="Resource_6lmxt"]
+script = ExtResource("6_at5hx")
+time_start = 240
+time_end = 300
+enemy = ExtResource("7_emfxn")
+enemy_num = 1
+enemy_spawn_delay = 3
+
+[sub_resource type="Resource" id="Resource_xf2s2"]
+script = ExtResource("6_at5hx")
+time_start = 300
+time_end = 400
+enemy = ExtResource("5_5n4th")
+enemy_num = 1
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_u4jtn"]
+script = ExtResource("6_at5hx")
+time_start = 400
+time_end = 400
+enemy = ExtResource("8_y0182")
+enemy_num = 1
+enemy_spawn_delay = 0
+
+[sub_resource type="Resource" id="Resource_1mhwo"]
+script = ExtResource("6_at5hx")
+time_start = 450
+time_end = 600
+enemy = ExtResource("7_emfxn")
+enemy_num = 1
+enemy_spawn_delay = 0
+
+[node name="FireWorld" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_bmuth")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(224, 360)
+scale = Vector2(5, 5)
+texture = ExtResource("2_2f5a5")
+region_enabled = true
+region_rect = Rect2(0, 0, 1024, 896)
+
+[node name="Player" parent="." instance=ExtResource("3_wemmm")]
+position = Vector2(624, 272)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("4_5td78")]
+spawns = Array[ExtResource("6_at5hx")]([SubResource("Resource_d7dvt"), SubResource("Resource_6lmxt"), SubResource("Resource_xf2s2"), SubResource("Resource_u4jtn"), SubResource("Resource_1mhwo")])
+
+[node name="Loot" type="Node2D" parent="." groups=["loot"]]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_li6g1")
+volume_db = -20.332
+autoplay = true
+bus = &"Music"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="InnerWall1" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(480, 424, 768, 416, 768, 576, 936, 576, 936, 736, 1088, 736, 1088, 944, 800, 944, 792, 784, 640, 784, 632, 624, 472, 624)
+
+[node name="InnerWall2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(288, 416, 288, 624, 136, 624, 128, 944, -168, 944, -160, 736, -8, 736, 0, 416)
+
+[node name="InnerWall3" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(1088, 1056, 800, 1056, 792, 1368, 480, 1376, 472, 1536, 296, 1544, 288, 1376, 136, 1376, 128, 1208, -160, 1208, -160, 1416, -8, 1424, 0, 1584, 152, 1584, 160, 1744, 608, 1744, 616, 1584, 920, 1576, 936, 1256, 1088, 1256)
+
+[node name="OuterWall" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-512, 1376, -504, 1544, -344, 1536, -344, 1704, -192, 1696, -184, 1864, 1112, 1856, 1120, 1704, 1272, 1696, 1280, 1536, 1432, 1536, 1440, 1376, 1592, 1376, 1600, 1216, 1752, 1216, 1760, 1056, 1920, 1056, 1920, 896, 2072, 896, 2072, 736, 2240, 736, 2232, -184, 2080, -184, 2072, -344, 1920, -344, 1912, -664, 1760, -656, 1752, -976, 1600, -984, 1592, -1136, 1408, -1136, 1408, -984, 1248, -976, 1248, -816, 960, -816, 952, -976, 800, -976, 792, -1136, 640, -1136, 632, -1296, 480, -1304, 472, -1456, 296, -1456, 288, -1304, 136, -1296, 128, -1144, -24, -1144, -32, -984, -184, -976, -192, -824, -344, -816, -352, -664, -504, -656, -512, -344, -640, -336, -648, -504, -800, -496, -808, -976, -984, -976, -992, -824, -1144, -824, -1152, -24, -1304, -16, -1304, 896, -1152, 896, -1144, 1216, -992, 1216, -984, 1376, -944, 2600, -2336, 2600, -2336, -1880, 2784, -1880, 2784, 2600, -944, 2600, -984, 1376)
+
+[editable path="Player"]
+[editable path="Player/HurtBox"]
+[editable path="Player/CanvasLayer/PauseMenu"]

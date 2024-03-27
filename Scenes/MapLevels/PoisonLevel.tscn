@@ -71,7 +71,7 @@ spawns = Array[ExtResource("6_puspw")]([SubResource("Resource_o6xvy"), SubResour
 
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_kvgm7")
 volume_db = -20.332
 autoplay = true
@@ -87,3 +87,7 @@ polygon = PackedVector2Array(640, 744, 1568, 736, 1568, 904, 1728, 896, 1728, 20
 
 [node name="OuterWall" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(2232, 2016, -1472, 2024, -1472, -864, -1632, -864, -1632, -992, -1128, -984, -1128, -344, -960, -344, -960, -184, -808, -184, -800, -24, -352, -16, -352, -984, 632, -984, 640, -176, 1568, -176, 1576, -992, 2072, -984, 2080, -824, 2232, -816, 2240, 952, 2776, 960, 2784, -1888, -2336, -1888, -2336, 2600, 2784, 2600, 2776, 960, 2232, 952)
+
+[editable path="Player"]
+[editable path="Player/HurtBox"]
+[editable path="Player/CanvasLayer/PauseMenu"]

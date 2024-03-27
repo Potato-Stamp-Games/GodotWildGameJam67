@@ -15,7 +15,7 @@ run/main_scene="res://Scenes/MainMenu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/image="res://Assets/MenuAssets/GameIcon.png"
 boot_splash/use_filter=false
-config/icon="res://PlaceholderSprites/icon.svg"
+config/icon="res://Assets/MenuAssets/GameIcon.png"
 
 [autoload]
 

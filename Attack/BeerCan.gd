@@ -90,4 +90,4 @@ func _physics_process(delta):
 
 
 func _on_timer_timeout():
-	emit_signal("remove_from_array")
+	emit_signal("remove_from_array", self)
