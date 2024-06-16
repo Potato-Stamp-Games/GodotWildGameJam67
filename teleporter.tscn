@@ -1,0 +1,306 @@
+[gd_scene load_steps=25 format=3 uid="uid://c5m6sxo7u4hqo"]
+
+[ext_resource type="Texture2D" uid="uid://ddtek8p2mljr8" path="res://Assets/Pickup Sprites/teleporter.png" id="1_wjwwf"]
+[ext_resource type="Script" path="res://teleporter.gd" id="2_jalvb"]
+[ext_resource type="Texture2D" uid="uid://camujexa7mw5p" path="res://Assets/MenuAssets/MenuIcons.png" id="3_lwyv2"]
+[ext_resource type="Texture2D" uid="uid://hgtlb75r0tp1" path="res://Assets/Pickup Sprites/Pickuptileset.png" id="4_4chjj"]
+[ext_resource type="Texture2D" uid="uid://cu8hpxhqca0kc" path="res://Assets/Pickup Sprites/FrostUpgrade.png" id="4_e8k5v"]
+[ext_resource type="Texture2D" uid="uid://c21fxud3u4pjm" path="res://Assets/Pickup Sprites/FireUpgrade.png" id="5_6xk3b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47u5g"]
+atlas = ExtResource("1_wjwwf")
+region = Rect2(0, 0, 32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbx1i"]
+atlas = ExtResource("1_wjwwf")
+region = Rect2(32, 0, 32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1ine"]
+atlas = ExtResource("1_wjwwf")
+region = Rect2(64, 0, 32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxc5a"]
+atlas = ExtResource("1_wjwwf")
+region = Rect2(96, 0, 32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt88x"]
+atlas = ExtResource("1_wjwwf")
+region = Rect2(128, 0, 32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mjue"]
+atlas = ExtResource("1_wjwwf")
+region = Rect2(160, 0, 32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfak5"]
+atlas = ExtResource("1_wjwwf")
+region = Rect2(192, 0, 32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tt21q"]
+atlas = ExtResource("1_wjwwf")
+region = Rect2(224, 0, 32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ixpl"]
+atlas = ExtResource("1_wjwwf")
+region = Rect2(256, 0, 32, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_82kmm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47u5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbx1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1ine")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxc5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xt88x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mjue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfak5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tt21q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ixpl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_htn53"]
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0rpx"]
+atlas = ExtResource("3_lwyv2")
+region = Rect2(80, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtl2n"]
+atlas = ExtResource("4_e8k5v")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="Animation" id="Animation_8alkd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0174533]
+}
+
+[sub_resource type="Animation" id="Animation_4i3jp"]
+resource_name = "rotate"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0174533, 0.0349066, 0.0523599, 0.0349066, 0.0174533, 0.0, -0.0174533, -0.0349066, -0.0523599, -0.0698132, -0.0523599, -0.0349066, -0.0174533]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sf2bl"]
+_data = {
+"RESET": SubResource("Animation_8alkd"),
+"rotate-loop": SubResource("Animation_4i3jp")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_saj3y"]
+atlas = ExtResource("5_6xk3b")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8oxdu"]
+atlas = ExtResource("4_4chjj")
+region = Rect2(96, 96, 32, 32)
+
+[node name="Teleporter" type="AnimatedSprite2D"]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_82kmm")
+frame_progress = 0.424174
+script = ExtResource("2_jalvb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_htn53")
+
+[node name="LevelButtonLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="Buttons" type="Control" parent="LevelButtonLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="IceBtn" type="TextureButton" parent="LevelButtonLayer/Buttons"]
+process_mode = 3
+top_level = true
+texture_filter = 1
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1024.0
+offset_top = -1272.0
+offset_right = -896.0
+offset_bottom = -1144.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_c0rpx")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="IceIcon" type="TextureRect" parent="LevelButtonLayer/Buttons/IceBtn"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -52.0
+offset_right = -16.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+mouse_filter = 2
+texture = SubResource("AtlasTexture_qtl2n")
+
+[node name="RsAnimate" type="AnimationPlayer" parent="LevelButtonLayer/Buttons/IceBtn/IceIcon"]
+unique_name_in_owner = true
+process_mode = 3
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_sf2bl")
+}
+speed_scale = 2.0
+
+[node name="FireBtn" type="TextureButton" parent="LevelButtonLayer/Buttons"]
+process_mode = 3
+top_level = true
+texture_filter = 1
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1184.0
+offset_top = -1240.0
+offset_right = -1056.0
+offset_bottom = -1112.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_c0rpx")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="FireIcon" type="TextureRect" parent="LevelButtonLayer/Buttons/FireBtn"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -52.0
+offset_right = -16.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0174533
+scale = Vector2(3, 3)
+mouse_filter = 2
+texture = SubResource("AtlasTexture_saj3y")
+
+[node name="RsAnimate" type="AnimationPlayer" parent="LevelButtonLayer/Buttons/FireBtn/FireIcon"]
+process_mode = 3
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_sf2bl")
+}
+speed_scale = 2.0
+
+[node name="PoisonBtn" type="TextureButton" parent="LevelButtonLayer/Buttons"]
+process_mode = 3
+top_level = true
+texture_filter = 1
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -864.0
+offset_top = -1240.0
+offset_right = -736.0
+offset_bottom = -1112.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_c0rpx")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PoisonIcon" type="TextureRect" parent="LevelButtonLayer/Buttons/PoisonBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -52.0
+offset_right = -16.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0174533
+scale = Vector2(3, 3)
+mouse_filter = 2
+texture = SubResource("AtlasTexture_8oxdu")
+
+[node name="RsAnimate" type="AnimationPlayer" parent="LevelButtonLayer/Buttons/PoisonBtn/PoisonIcon"]
+process_mode = 3
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_sf2bl")
+}
+speed_scale = 2.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]
+[connection signal="pressed" from="LevelButtonLayer/Buttons/IceBtn" to="." method="_on_ice_btn_pressed"]
+[connection signal="pressed" from="LevelButtonLayer/Buttons/FireBtn" to="." method="_on_fire_btn_pressed"]
+[connection signal="pressed" from="LevelButtonLayer/Buttons/PoisonBtn" to="." method="_on_poison_btn_pressed"]

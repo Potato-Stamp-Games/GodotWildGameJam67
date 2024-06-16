@@ -50,7 +50,7 @@ enemy = ExtResource("5_lby6p")
 enemy_num = 2
 enemy_spawn_delay = 0
 
-[node name="World3" type="Node2D"]
+[node name="World3" type="Node2D" groups=["world"]]
 process_mode = 1
 script = ExtResource("1_rhfyc")
 

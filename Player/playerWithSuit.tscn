@@ -157,13 +157,13 @@ func movement():
 	if mov != Vector2.ZERO:
 		last_movement = mov
 
-	if Input.is_action_just_pressed(\"up\"):
+	if Input.is_action_pressed(\"up\"):
 		sprite_2d.play(\"walk_backward\")
-	if Input.is_action_just_pressed(\"down\"):
+	if Input.is_action_pressed(\"down\"):
 		sprite_2d.play(\"walk_forward\")
-	if Input.is_action_just_pressed(\"left\"):
+	if Input.is_action_pressed(\"left\"):
 		sprite_2d.play(\"walk_left\")
-	if Input.is_action_just_pressed(\"right\"):
+	if Input.is_action_pressed(\"right\"):
 		sprite_2d.play(\"walk_right\")
 	
 	velocity = mov.normalized()*(movement_speed + (movement_speed * (1 + researchSpeed)))
@@ -298,9 +298,10 @@ func set_expbar(set_value = 1, set_max_value = 100):
 
 func levelup():
 	lblLevel.text = str(\"Level: \",experience_level)
-	levelUpPanel.visible = true
 	gui_sfx.stream = LEVEL_UP
 	gui_sfx.play()
+	await get_tree().create_timer(0.6).timeout
+	levelUpPanel.visible = true
 	var options = 0
 	var optionsmax = 3
 	while options < optionsmax:

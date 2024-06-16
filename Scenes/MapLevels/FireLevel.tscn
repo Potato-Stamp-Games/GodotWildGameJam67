@@ -50,7 +50,7 @@ enemy = ExtResource("7_emfxn")
 enemy_num = 1
 enemy_spawn_delay = 0
 
-[node name="FireWorld" type="Node2D"]
+[node name="FireWorld" type="Node2D" groups=["world"]]
 process_mode = 1
 script = ExtResource("1_bmuth")
 
