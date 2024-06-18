@@ -206,7 +206,7 @@ func change_time(argtime = 0):
 	time = argtime
 	var get_m = int(time/60.0)
 	var get_s = time % 60
-	if get_m >= 10:
+	if get_m >= 100:
 		victoryPanel.visible = true
 		get_tree().paused = true
 	if get_m < 10:

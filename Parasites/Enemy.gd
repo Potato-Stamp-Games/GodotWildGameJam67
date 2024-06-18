@@ -5,13 +5,16 @@ extends CharacterBody2D
 @export var knockback_recovery = 3.5
 @export var experience = 1
 @export var dropsResearch = false
+@export var teleporterDrop = false
 var knockback = Vector2.ZERO
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var loot_base = get_tree().get_first_node_in_group("loot")
+@onready var world = get_tree().get_first_node_in_group("world")
 
 const RESEARCH_POINT = preload("res://Utility/research_point.tscn")
 const EXPERIENCE_PAW = preload("res://Utility/experience_paw.tscn")
+const TELEPORTER = preload("res://teleporter.tscn")
 
 signal remove_from_array(object)
 
@@ -34,6 +37,10 @@ func death():
 		new_researchPoint.global_position = global_position
 		new_researchPoint.researchPoints = 1
 		loot_base.call_deferred("add_child", new_researchPoint)
+	if teleporterDrop == true:
+		var new_teleporter = TELEPORTER.instantiate()
+		new_teleporter.global_position = global_position
+		world.call_deferred("add_child", new_teleporter)
 	new_expPaw.global_position = global_position
 	new_expPaw.experience = experience
 	loot_base.call_deferred("add_child", new_expPaw)
